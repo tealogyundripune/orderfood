@@ -257,12 +257,24 @@ function renderMenu(selectedCategory='frequently'){
           ${item.name}
         </div>
 
-        <div class="price">
-         
-			₹${item.basePrice}
+        
+<div class="price">
 
-		${item.addonPrice ? <div class="text-xs text-gray-500"> ${item.addonLabel}: ₹${item.addonPrice} </div> :
-		}
+  ₹${item.basePrice}
+
+  ${
+    item.addonPrice
+      ? `
+        <div class="text-xs text-gray-500">
+          ${item.addonLabel}: ₹${item.addonPrice}
+        </div>
+      `
+      : ''
+  }
+
+</div>
+
+
 		
 
 
@@ -296,7 +308,7 @@ function renderMenu(selectedCategory='frequently'){
 
           <button
             class="qty-btn"
-            <!-- onclick="increase('${item.id}','${item.name}',${item.price})"> -->
+            
 				onclick="increase('${item.id}','${item.name}',${item.basePrice})"
 
             +
