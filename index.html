@@ -192,6 +192,8 @@ async function loadMenu(){
   createMenuButtons();
 
   renderMenu('frequently');
+	
+
 }
 
 function createMenuButtons(){
@@ -256,7 +258,16 @@ function renderMenu(selectedCategory='frequently'){
         </div>
 
         <div class="price">
-          ₹${item.price}
+          <!-- ₹${item.price} -->
+			₹${item.basePrice}
+
+		${item.addonPrice
+		 <div class="text-xs text-gray-500">
+			${item.addonLabel}: ₹${item.addonPrice}
+		</div>
+		}
+
+
         </div>
 
         <div
@@ -287,7 +298,8 @@ function renderMenu(selectedCategory='frequently'){
 
           <button
             class="qty-btn"
-            onclick="increase('${item.id}','${item.name}',${item.price})">
+            <!-- onclick="increase('${item.id}','${item.name}',${item.price})"> -->
+				onclick="increase('${item.id}','${item.name}',${item.basePrice})"
 
             +
 
