@@ -1,4 +1,23 @@
 [
+	{
+    "id":"frequently",
+    "category":"Frequently Ordered",
+    "items":[
+      {
+        "id":"cutting_chai_f",
+        "name":"Cutting Chai",
+        "price":15,
+        "details":"90ml serving | Strong tea with milk and ginger"
+      },
+      {
+        "id":"cold_coffee_f",
+        "name":"Cold Coffee",
+        "price":89,
+        "details":"300ml chilled coffee with ice cream"
+      }
+    ]
+  },
+	
   {
     "id": "desi_chai",
     "category": "Desi Chai",
