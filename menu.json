@@ -7,7 +7,7 @@
         "id":"cutting_chai_f",
         "name":"Cutting Chai",
         "basePrice":15,
-        "details":"90ml serving | Strong tea with milk and ginger"
+        "details":"90ml serving | Strong tea with milk and ginger",
 		"addonLabel": "Kulhad",
         "addonPrice": 58
       },
