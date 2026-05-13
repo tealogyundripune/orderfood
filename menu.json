@@ -1,63 +1,221 @@
 [
   {
-    "id":"frequently",
-    "category":"Frequently Ordered",
-    "items":[
+    "id": "desi_chai",
+    "category": "Desi Chai",
+    "items": [
       {
-        "id":"cutting_chai_f",
-        "name":"Cutting Chai",
-        "price":15,
-        "details":"90ml serving | Strong tea with milk and ginger"
+        "id": "cutting_chai_2nos",
+        "name": "Cutting Chai ( 2Nos )",
+        "basePrice": 44,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 58
       },
       {
-        "id":"cold_coffee_f",
-        "name":"Cold Coffee",
-        "price":89,
-        "details":"300ml chilled coffee with ice cream"
+        "id": "adrak_tea_2nos",
+        "name": "Adrak Tea ( 2Nos )",
+        "basePrice": 58,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 73
+      },
+      {
+        "id": "baarish_wali_chai_2nos",
+        "name": "Baarish Wali Chai ( 2Nos )",
+        "basePrice": 44,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 58
+      },
+      {
+        "id": "elaichi_tea_2nos",
+        "name": "Elaichi Tea ( 2Nos )",
+        "basePrice": 58,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 73
+      },
+      {
+        "id": "masala_tea_2nos",
+        "name": "Masala Tea ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
+      },
+      {
+        "id": "gud_wali_chai_2nos",
+        "name": "Gud Wali Chai ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
       }
     ]
   },
-
   {
-    "id":"beverages",
-    "category":"Beverages",
-    "items":[
+    "id": "flavoured_tea",
+    "category": "Flavoured Tea",
+    "items": [
       {
-        "id":"cutting_chai",
-        "name":"Cutting Chai",
-        "price":15,
-        "details":"90ml serving | Strong tea with milk and ginger"
+        "id": "chocolate_tea_2nos",
+        "name": "Chocolate Tea ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
       },
       {
-        "id":"masala_tea",
-        "name":"Masala Tea",
-        "price":15,
-        "details":"100ml serving | Tea with house masala spices"
+        "id": "paan_tea_2nos",
+        "name": "Paan Tea ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
       },
       {
-        "id":"cold_coffee",
-        "name":"Cold Coffee",
-        "price":89,
-        "details":"300ml chilled coffee with ice cream"
+        "id": "kesar_tea_2nos",
+        "name": "Kesar Tea ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
+      },
+      {
+        "id": "rose_tea_2nos",
+        "name": "Rose Tea ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
+      },
+      {
+        "id": "mango_tea_2nos",
+        "name": "Mango Tea ( 2Nos )",
+        "basePrice": 73,
+        "details": "Freshly prepared at Tealogy Cafe",
+        "addonLabel": "Kulhad",
+        "addonPrice": 88
       }
     ]
   },
-
   {
-    "id":"snacks",
-    "category":"Snacks",
-    "items":[
+    "id": "coffee",
+    "category": "Coffee",
+    "items": [
       {
-        "id":"french_fries",
-        "name":"French Fries",
-        "price":89,
-        "details":"Crispy salted fries with dip"
+        "id": "hot_coffee_2nos",
+        "name": "Hot Coffee ( 2Nos )",
+        "basePrice": 88,
+        "details": "Freshly prepared at Tealogy Cafe"
       },
       {
-        "id":"vada_pav",
-        "name":"Vada Pav",
-        "price":25,
-        "details":"Mumbai style vada pav with chutney"
+        "id": "chocolate_hot_coffee_2nos",
+        "name": "Chocolate Hot Coffee( 2Nos )",
+        "basePrice": 102,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "cold_coffee",
+    "category": "Cold Coffee",
+    "items": [
+      {
+        "id": "cold_coffee_with_ice_cream",
+        "name": "Cold Coffee With Ice Cream",
+        "basePrice": 159,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "chocolate_cold_coffee",
+        "name": "Chocolate Cold Coffee",
+        "basePrice": 145,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "cheesecake_milk_shake",
+    "category": "Cheesecake Milk Shake",
+    "items": [
+      {
+        "id": "mango_cheese_cake_milk_shake",
+        "name": "Mango Cheese Cake Milk Shake",
+        "basePrice": 218,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "strawberry_cheese_cake_milk_shake",
+        "name": "Strawberry Cheese Cake Milk Shake",
+        "basePrice": 218,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "blueberry_cheese_cake_milk_shake",
+        "name": "Blueberry Cheese Cake Milk Shake",
+        "basePrice": 218,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "peri_peri_french_fries",
+    "category": "Peri Peri French Fries",
+    "items": [
+      {
+        "id": "potato_shots_12_nos",
+        "name": "Potato Shots (12 Nos)",
+        "basePrice": 115,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "desi",
+    "category": "Desi",
+    "items": [
+      {
+        "id": "vada_pav",
+        "name": "Vada Pav",
+        "basePrice": 36,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "combo_s",
+    "category": "Combo'S",
+    "items": [
+      {
+        "id": "butter_toast_chai_2nos",
+        "name": "Butter Toast+Chai ( 2Nos )",
+        "basePrice": 102,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "bun_maska_chai_2nos",
+        "name": "Bun Maska + Chai ( 2Nos )",
+        "basePrice": 102,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "masala_tea_fries_2nos",
+        "name": "Masala Tea+Fries ( 2Nos )",
+        "basePrice": 175,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "packing_charges",
+    "category": "Packing Charges",
+    "items": [
+      {
+        "id": "zomato_swiggy_platform",
+        "name": "Zomato/Swiggy Platform",
+        "basePrice": null,
+        "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
   }
