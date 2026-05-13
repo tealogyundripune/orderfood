@@ -6,14 +6,17 @@
       {
         "id":"cutting_chai_f",
         "name":"Cutting Chai",
-        "price":15,
+        "basePrice":15,
         "details":"90ml serving | Strong tea with milk and ginger"
+		"addonLabel": "Kulhad",
+        "addonPrice": 58
       },
       {
         "id":"cold_coffee_f",
         "name":"Cold Coffee",
-        "price":89,
+        "basePrice":89,
         "details":"300ml chilled coffee with ice cream"
+		
       }
     ]
   },
