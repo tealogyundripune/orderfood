@@ -687,9 +687,45 @@ const whatsappURL =
 
 window.open(whatsappURL,'_blank');
 
+const whatsappURL =
+  'https://wa.me/918793337720?text=' +
+  encodeURIComponent(message);
+
+window.open(whatsappURL,'_blank');
 
 
-	
+// RESET APP AFTER ORDER
+
+for(let itemId in cart){
+  delete cart[itemId];
+}
+
+paymentSuccess = false;
+razorpayPaymentId = '';
+
+document.getElementById('name').value = '';
+document.getElementById('phone').value = '';
+document.getElementById('address').value = '';
+document.getElementById('instructions').value = '';
+
+document.getElementById('payment').selectedIndex = 0;
+document.getElementById('orderType').selectedIndex = 0;
+
+document.getElementById('confirmBtn')
+  .classList.add('opacity-50');
+
+document.getElementById('confirmBtn')
+  .disabled = true;
+
+closeCart();
+
+updateCart();
+
+renderMenu('frequently');
+
+alert('Order sent successfully on WhatsApp!');
+
+
  
 }
 
