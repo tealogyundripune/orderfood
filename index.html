@@ -491,30 +491,7 @@ function payNow(){
   },1000);
 }
 
-document.addEventListener('input',function(e){
 
-  if(e.target.id === 'transactionId'){
-
-    const txn =
-      e.target.value.trim();
-
-    const btn =
-      document.getElementById('confirmBtn');
-
-    if(txn.length >= 6){
-
-      btn.disabled = false;
-
-      btn.classList.remove('opacity-50');
-
-    }else{
-
-      btn.disabled = true;
-
-      btn.classList.add('opacity-50');
-    }
-  }
-});
 
 
 function startPayment(){
@@ -721,26 +698,6 @@ document.getElementById('instructions').value = '';
 document.getElementById('payment').selectedIndex = 0;
 document.getElementById('orderType').selectedIndex = 0;
 
-document.getElementById('orderType')
-  .addEventListener('change', function(){
-
-    const address =
-      document.getElementById('address');
-
-    if(this.value === 'Delivery'){
-
-      address.style.display = 'block';
-
-    }else{
-
-      address.style.display = 'none';
-      address.value = '';
-
-    }
-
-});
-
-
 
 document.getElementById('confirmBtn')
   .classList.add('opacity-50');
@@ -776,6 +733,9 @@ function closeCart(){
 
 
 loadMenu();
+
+
+
 
 </script>
 
