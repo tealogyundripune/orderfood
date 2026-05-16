@@ -17,7 +17,11 @@
 	
 
   <style>
-
+	
+	html{
+	scroll-behavior:smooth;
+	}
+	
     body{
       background:#f8f8f8;
       font-family:Arial,sans-serif;
@@ -123,15 +127,20 @@
       📍 Find Us on Google Maps
     </a>
   </h3>
-
+	
 	<div class="text-xs text-center text-gray-500 mb-3">
 		₹15 packing charges applicable
 	</div>
 	
-  <div id="menu"></div>
+	<div class="text-xs text-center text-gray-500 mb-3">
+		Use Add-On category to explore more options for your favorite dish.
+	</div>
   
+  <div id="menu"></div>
 	
-
+	<div class="text-center text-xs text-gray-400 mt-8 mb-6">
+		Powered by Tealogy Digital Ordering
+	</div>
 </div>
 
 <!-- Floating Menu Button -->
@@ -430,7 +439,7 @@ function updateCart(){
   document.getElementById('total').innerText = total;
 
   document.getElementById('floatingCount').innerText =
-    itemCount;
+  `${itemCount} | ₹${total}`;
 
   menu.forEach(category=>{
 
@@ -553,6 +562,8 @@ function startPayment(){
         'Payment Successful!\nPayment ID: ' +
         razorpayPaymentId
       );
+	  
+	  showToast('✅ Payment Successful');
 
       const btn =
         document.getElementById(
@@ -710,6 +721,27 @@ document.getElementById('instructions').value = '';
 document.getElementById('payment').selectedIndex = 0;
 document.getElementById('orderType').selectedIndex = 0;
 
+document.getElementById('orderType')
+  .addEventListener('change', function(){
+
+    const address =
+      document.getElementById('address');
+
+    if(this.value === 'Delivery'){
+
+      address.style.display = 'block';
+
+    }else{
+
+      address.style.display = 'none';
+      address.value = '';
+
+    }
+
+});
+
+
+
 document.getElementById('confirmBtn')
   .classList.add('opacity-50');
 
@@ -723,7 +755,7 @@ updateCart();
 renderMenu('frequently');
 
 alert('Order sent successfully on WhatsApp!');
-
+showToast('✅ Order sent successfully');
 
  
 }
@@ -755,8 +787,7 @@ loadMenu();
   class="fixed bottom-4 right-4 bg-red-500 text-white px-5 py-3 rounded-full shadow-lg z-50 cursor-pointer font-bold">
 
   🛒 Cart (
-  <span id="floatingCount">0</span>,₹
-  <span id="total">0</span>
+  <span id="floatingCount">0</span>
   )
 
 </div>
@@ -815,6 +846,7 @@ loadMenu();
 
       <textarea
         id="address"
+		style="display:none"
         class="w-full border p-3 rounded mb-3"
         placeholder="Delivery Address"></textarea>
 
@@ -870,10 +902,13 @@ loadMenu();
 			Please note : 
 		</div>
 		<div class="text-left-side text-sm text-black-600 mb-3">
-		  1. Transaction ID is mandatory to confirm the order.<br>
+		  1. Order once placed can't be cancelled after 5 mins. Cancellation charges applies.<br>
 		  2. Please make the payment before confirming the Orders to help serve you better.<br>
 		  3. Ensure to include Special Instructions (e.g. No Sugar).<br>
-		  
+		  4. Validate Order before payment.Any modifications after order is placed may attract applicable charges, if any.<br>
+		  5. Order Preparation time is 30 mins.<br>
+		  6. If you opt for pickup, we recommend you to book Pickup after 30 mins of placing an order.<br>
+		  7. In case if you wish us to deliver the order, ensure to share exact Address and Google Location link for smooth delivery.<br>
 		</div>
 
     </div>

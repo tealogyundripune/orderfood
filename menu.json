@@ -5,7 +5,7 @@
     "items":[
       {
         "id":"cutting_chai_f",
-        "name":"CUTTING CHAI ( 2nos )",
+        "name":"Cutting Chai",
         "basePrice":31,
         "details":"90ml serving | Strong tea with milk and ginger",
 		"addonLabel": "Kulhad",
@@ -15,14 +15,57 @@
         "id":"cold_coffee_f",
         "name":"COLD COFFEE",
         "basePrice":91,
-        "details":"300ml chilled coffee"
-	  }
+        "details":"300ml chilled coffee with ice cream"
+	  },
+      {
+        "id": "adrak_tea_2nos_k",
+        "name": "ADRAK TEA(2nos;Kulhad)",
+        "basePrice": 51,
+        "details": "90ml serving | Strong tea with milk and ginger",
+        "addonLabel": "Kulhad",
+        "addonPrice": 51
+      },
+      {
+        "id": "baarish_wali_chai_2nos_k",
+        "name": "BAARISH WALI CHAI(2nos;Kulhad)",
+        "basePrice": 51,
+        "details": "90ml serving | Strong milk tea with ginger and elachi",
+        "addonLabel": "Kulhad",
+        "addonPrice": 41
+      }
+    ]
+  },
+  
+  {
+    "id":"extra",
+    "category":"Add-on",
+    "items":[
+      {
+        "id":"xtra_cheese",
+        "name":"EXTRA CHEESE",
+        "basePrice":20,
+        "details":"Toss up your sandwich with extra cheese",
+      },
+      {
+        "id":"pav_single",
+        "name":"PAV (SINGLE)",
+        "basePrice":10,
+        "details":"Single Pav"
+	  },
+      
+	  {
+        "id":"pav_single",
+        "name":"PAV (PAIR(2x))",
+        "basePrice":20,
+        "details":"2 Pav"
+	  },
+      
     ]
   },
   
   {
     "id": "desi_chai",
-    "category": "DESI CHAI",
+    "category": "DESI CHAI (PAPER CUP)",
     "items": [
       {
         "id": "cutting_chai_2nos",
@@ -74,6 +117,62 @@
       }
     ]
   },
+  
+  {
+    "id": "desi_chai_K",
+    "category": "DESI CHAI (KULHAD)",
+    "items": [
+      {
+        "id": "cutting_chai_2nos_k",
+        "name": "CUTTING CHAI(2nos;Kulhad)",
+        "basePrice": 41,
+        "details": "90ml serving | Strong tea with milk",
+        "addonLabel": "Kulhad",
+        "addonPrice": 41
+      },
+      {
+        "id": "adrak_tea_2nos_k",
+        "name": "ADRAK TEA(2nos;Kulhad)",
+        "basePrice": 51,
+        "details": "90ml serving | Strong tea with milk and ginger",
+        "addonLabel": "Kulhad",
+        "addonPrice": 51
+      },
+      {
+        "id": "baarish_wali_chai_2nos_k",
+        "name": "BAARISH WALI CHAI(2nos;Kulhad)",
+        "basePrice": 51,
+        "details": "90ml serving | Strong milk tea with ginger and elachi",
+        "addonLabel": "Kulhad",
+        "addonPrice": 51
+      },
+      {
+        "id": "elaichi_tea_2nos_k",
+        "name": "ELAICHI TEA(2nos;Kulhad)",
+        "basePrice": 51,
+        "details": "90ml serving | Strong milk tea with elachi",
+        "addonLabel": "Kulhad",
+        "addonPrice": 51
+      },
+      {
+        "id": "masala_tea_2nos_k",
+        "name": "MASALA TEA(2nos;Kulhad)",
+        "basePrice": 61,
+        "details": "90ml serving | Strong milk tea with Tea Masala",
+        "addonLabel": "Kulhad",
+        "addonPrice": 61
+      },
+      {
+        "id": "gud_wali_chai_2nos_k",
+        "name": "GUD WALI CHAI(2nos;Kulhad)",
+        "basePrice": 61,
+        "details": "90ml serving | Strong milk tea with Jaggry Powder",
+        "addonLabel": "Kulhad",
+        "addonPrice": 61
+      }
+    ]
+  },
+  
   {
     "id": "flavoured_tea",
     "category": "FLAVOURED TEA",
@@ -87,25 +186,61 @@
       {
         "id": "paan_tea_2nos",
         "name": "PAAN TEA ( 2nos )",
-        "basePrice": 27,
+        "basePrice": 26,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "kesar_tea_2nos",
         "name": "KESAR TEA ( 2nos )",
-        "basePrice": 28,
+        "basePrice": 26,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "rose_tea_2nos",
         "name": "ROSE TEA ( 2nos )",
-        "basePrice": 29,
+        "basePrice": 26,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "mango_tea_2nos",
         "name": "MANGO TEA ( 2nos )",
-        "basePrice": 30,
+        "basePrice": 26,
+        "details": "Freshly prepared at Tealogy Cafe"
+      }
+    ]
+  },
+  {
+    "id": "flavoured_tea_kulhad",
+    "category": "FLAVOURED TEA (KULHAD)",
+    "items": [
+      {
+        "id": "chocolate_tea_2nos_k",
+        "name": "CHOCOLATE TEA(2nos;Kulhad)",
+        "basePrice": 31,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "paan_tea_2nos_k",
+        "name": "PAAN TEA(2nos;Kulhad)",
+        "basePrice": 31,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "kesar_tea_2nos_k",
+        "name": "KESAR TEA(2nos;Kulhad)",
+        "basePrice": 31,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "rose_tea_2nos_k",
+        "name": "ROSE TEA(2nos;Kulhad)",
+        "basePrice": 31,
+        "details": "Freshly prepared at Tealogy Cafe"
+      },
+      {
+        "id": "mango_tea_2nos_k",
+        "name": "MANGO TEA(2nos;Kulhad)",
+        "basePrice": 31,
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
@@ -140,13 +275,13 @@
     "items": [
       {
         "id": "badam_kesar_milk",
-        "name": "BADAM KESAR MILK",
+        "name": "BADAM KESAR MILK(Kulhad)",
         "basePrice": 91,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "hot_chocolate",
-        "name": "HOT CHOCOLATE",
+        "name": "HOT CHOCOLATE(Kulhad)",
         "basePrice": 60,
         "details": "Freshly prepared at Tealogy Cafe"
       }
