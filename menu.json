@@ -1,4 +1,25 @@
 [
+	{
+    "id":"frequently",
+    "category":"Frequently Ordered",
+    "items":[
+      {
+        "id":"cutting_chai_f",
+        "name":"Cutting Chai",
+        "basePrice":15,
+        "details":"90ml serving | Strong tea with milk and ginger",
+		"addonLabel": "Kulhad",
+        "addonPrice": 58
+      },
+      {
+        "id":"cold_coffee_f",
+        "name":"Cold Coffee",
+        "basePrice":89,
+        "details":"300ml chilled coffee with ice cream"
+	  }
+    ]
+  },
+  
   {
     "id": "desi_chai",
     "category": "DESI CHAI",
