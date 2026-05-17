@@ -129,7 +129,7 @@
   </h3>
 	
 	<div class="text-xs text-center text-gray-500 mb-3">
-		₹15 packing charges applicable
+		₹25 packing charges applicable. GST extra as per Government Rules.
 	</div>
 	
 	<div class="text-xs text-center text-gray-500 mb-3">
@@ -415,24 +415,42 @@ function updateCart(){
 
   if(total > 0){
 
-    total += 15;
+  const packingCharge = 25;
 
-    html += `
+  const gst =
+    Math.round(total * 0.05);
 
-      <div class="flex justify-between text-sm text-gray-500 mt-2">
+  total =
+    total + packingCharge + gst;
 
-        <span>
-          Packing
-        </span>
+  html += `
 
-        <span>
-          ₹15
-        </span>
+    <div class="flex justify-between text-sm text-gray-500 mt-2">
 
-      </div>
+      <span>
+        Packing
+      </span>
 
-    `;
-  }
+      <span>
+        ₹${packingCharge}
+      </span>
+
+    </div>
+
+    <div class="flex justify-between text-sm text-gray-500 mt-2">
+
+      <span>
+        GST (5%)
+      </span>
+
+      <span>
+        ₹${gst}
+      </span>
+
+    </div>
+
+  `;
+}
 
   document.getElementById('cartItems').innerHTML = html;
 
@@ -650,11 +668,10 @@ const message =
 🛒 *Items Ordered:*
 ${orderText}
 
-📦 Packing: ₹15
-
 💰 *Total: ₹${total}*
 
 🚚 Order Type: ${orderType}
+🚚💰 *TO BE PAID BY CUSTOMER TO DELIVERY PARTNER*
 
 📍 Address:
 ${address}
@@ -664,14 +681,8 @@ ${address}
 📝 Instructions:
 ${instructions}
 
-📝 UPI ID: 9730314889@pthdfc
-
 💳 Razorpay Payment ID:
 ${razorpayPaymentId}`;
-
-
-
-
 
 
 const whatsappURL =
@@ -711,7 +722,6 @@ updateCart();
 renderMenu('frequently');
 
 alert('Order sent successfully on WhatsApp!');
-
 
  
 }
@@ -799,7 +809,7 @@ loadMenu();
         class="w-full border p-3 rounded mb-3">
 
         <option>Pickup</option>
-        <option>Delivery</option>
+        <option>Delivery (Customer Pays to Delivery Partner)</option>
 
       </select>
 
@@ -860,13 +870,21 @@ loadMenu();
 			Please note : 
 		</div>
 		<div class="text-left-side text-sm text-black-600 mb-3">
-		  1. Order once placed can't be cancelled after 5 mins. Cancellation charges applies.<br>
-		  2. Please make the payment before confirming the Orders to help serve you better.<br>
-		  3. Ensure to include Special Instructions (e.g. No Sugar).<br>
-		  4. Validate Order before payment.Any modifications after order is placed may attract applicable charges, if any.<br>
-		  5. Order Preparation time is 30 mins.<br>
-		  6. If you opt for pickup, we recommend you to book Pickup after 30 mins of placing an order.<br>
-		  7. In case if you wish us to deliver the order, ensure to share exact Address and Google Location link for smooth delivery.<br>
+		  1. Menu prices are subject to change without prior notice. The final payable amount includes the menu price, applicable taxes (like GST), and packaging charges.<br>
+		  2. Restaurants reserve the right to cancel orders due to stock unavailability, unforeseen operational issues, or incorrect address listings.<br>
+		  3. Order once placed can't be cancelled after 5 mins. Cancellation charges applies.<br>
+		  4. Please consider to place your order through Food Order app only. Do not send your order directly on WhatsApp.<br>
+		  5. Please make the payment before confirming the Orders to help serve you better.<br>
+		  6. Ensure to include Special Instructions (e.g. No Sugar).<br>
+		  7. Validate Order before payment.Any modifications after order is placed may attract as applicable charges, if any.<br>
+		  8. Order Preparation time is 30 mins.<br>
+		  9. If you opt for pickup, we recommend you to book Pickup after 30 mins of placing an order.<br>
+		  10. In case if you wish us to deliver the order, ensure to share exact Address and Google Location link for smooth delivery.<br>
+		  11. <a class="font-bold text-red-600"> Customer to pay the delivery charges to delivery partner. Not included in Order value. </a> <br>
+		  11. We use third party delivery app and the delivery itself is governed by their specific terms.<br> 
+		  12. The restaurant is not responsible for damages, delays, or unprofessional behavior by the delivery partner once the food leaves the premises.<br>
+		  13. Delivery charges are variable and are determined by distance, demand, and prevailing weather conditions.
+		  	
 		</div>
 
     </div>
