@@ -131,9 +131,11 @@
 	<div class="text-xs text-center text-gray-500 mb-3">
 		₹25 packing charges applicable. GST extra as per Government Rules.
 	</div>
-	 <div class="text-xs text-center text-gray-500 mb-3">
+	
+	<div class="text-xs text-center text-gray-500 mb-3">
 		Use Add-On category to explore more options for your favorite dish.
 	</div>
+  
   <div id="menu"></div>
 	
 	<div class="text-center text-xs text-gray-400 mt-8 mb-6">
@@ -651,12 +653,18 @@ const message =
 📞 Phone: ${phone}
 
 🛒 *Items Ordered:*
-• ${orderText}
+${orderText}
+
+🧾 *Bill Summary*
+• Subtotal: ₹${total - packingCharge - gst}
+• Packing Charges: ₹${packingCharge}
+• GST: ₹${gst}
 
 💰 *Total: ₹${total}*
 
 🚚 Order Type: ${orderType}
-🚚💰 *TO BE PAID BY CUSTOMER TO DELIVERY PARTNER*
+
+🚚💰 *Delivery Charges To Be Paid Separately To Delivery Partner*
 
 📍 Address:
 ${address}
