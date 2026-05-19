@@ -170,14 +170,15 @@
 let menu = [];
 const cart = {};
 
-let paymentDone = false;
+let paymentInProgress = false;
 
 let paymentSuccess = false;
+
 let razorpayPaymentId = '';
 
+let orderSubmitting = false;
 
-const UPI_LINK =
-'upi://pay?pa=vyapar.176504947298@hdfcbank';
+
 
 const GOOGLE_SCRIPT_URL =
 'https://script.google.com/macros/s/AKfycbyBBz_uVuaMT-eqrRgpYTLdUhblWxVu2nm_fQVSiBXG0oPCYSL3FiOGoc5JiaKWDT3Daw/exec';
@@ -489,34 +490,12 @@ function updateCart(){
 }
 
 
-function payNow(){
-
-  let total =
-    parseInt(
-      document.getElementById('total').innerText
-    );
-
-  const paymentURL =
-    `${UPI_LINK}&am=${total}&cu=INR`;
-
- 
-	window.location.href = paymentURL;
-
-
-  setTimeout(()=>{
-
-    const txnField =
-      document.getElementById('transactionId');
-
-    txnField.focus();
-
-  },1000);
-}
-
-
-
-
 function startPayment(){
+
+  if(paymentInProgress){
+
+    return;
+  }
 
   let total =
     parseInt(
@@ -530,52 +509,67 @@ function startPayment(){
     return;
   }
 
-	
-const name =
-  document.getElementById('name').value.trim();
+  const name =
+    document.getElementById('name').value.trim();
 
-const phone =
-  document.getElementById('phone').value.trim();
+  const phone =
+    document.getElementById('phone').value.trim();
 
-const orderType =
-  document.getElementById('orderType').value;
+  const orderType =
+    document.getElementById('orderType').value;
 
-const address =
-  document.getElementById('address').value.trim();
+  const address =
+    document.getElementById('address').value.trim();
 
-if(name === ''){
+  if(name === ''){
 
-  alert('Please enter your name');
+    alert('Please enter your name');
 
-  return;
-}
+    return;
+  }
 
-if(phone === ''){
+  if(phone === ''){
 
-  alert('Please enter WhatsApp number');
+    alert('Please enter WhatsApp number');
 
-  return;
-}
+    return;
+  }
 
-if(!/^\d{10}$/.test(phone)){
+  if(!/^\d{10}$/.test(phone)){
 
-  alert('Please enter valid WhatsApp number');
+    alert('Please enter valid WhatsApp number');
 
-  return;
-}
+    return;
+  }
 
-if(
-  orderType.includes('Delivery')
-  &&
-  address === ''
-){
+  if(
+    orderType.includes('Delivery')
+    &&
+    address === ''
+  ){
 
-  alert('Please enter delivery address');
+    alert('Please enter delivery address');
 
-  return;
-}
+    return;
+  }
 
+  paymentInProgress = true;
 
+  const payButton =
+    document.getElementById('payButton');
+
+  payButton.disabled = true;
+
+  payButton.innerText =
+    'Processing Payment...';
+
+  window.onbeforeunload = function () {
+
+    if(paymentInProgress){
+
+      return 'Payment is in progress';
+    }
+  };
 
   const options = {
 
@@ -588,36 +582,45 @@ if(
     name: 'Tealogy Cafe',
 
     description: 'Cafe Order Payment',
-	
-	method: {
-  upi: true,
-  card: true,
-  netbanking: true,
-  wallet: true
-},
 
-	
-	handler: function(response){
+    method: {
 
-  paymentSuccess = true;
-	document.body.style.pointerEvents = 'auto';
-	document.body.style.opacity = '1';
-	
-  razorpayPaymentId =
-    response.razorpay_payment_id;
+      upi: true,
+      card: true,
+      netbanking: true,
+      wallet: true
+    },
 
-  // DIRECTLY SEND TO WHATSAPP FLOW
-  submitOrder();
-},
+    handler: function(response){
 
-   
+      paymentSuccess = true;
+
+      razorpayPaymentId =
+        response.razorpay_payment_id;
+
+      submitOrder();
+    },
+
+    modal: {
+
+      ondismiss: function(){
+
+        paymentInProgress = false;
+
+        payButton.disabled = false;
+
+        payButton.innerText =
+          'Pay & Place Order';
+
+        window.onbeforeunload = null;
+      }
+    },
+
     prefill: {
 
-      name:
-        document.getElementById('name').value,
+      name: name,
 
-      contact:
-        document.getElementById('phone').value
+      contact: phone
     },
 
     theme: {
@@ -629,12 +632,36 @@ if(
   const rzp =
     new Razorpay(options);
 
+  rzp.on('payment.failed', function () {
+
+    paymentInProgress = false;
+
+    payButton.disabled = false;
+
+    payButton.innerText =
+      'Pay & Place Order';
+
+    window.onbeforeunload = null;
+
+    alert(
+      'Payment failed. Please try again.'
+    );
+  });
+
   rzp.open();
 }
 
 
 
-function submitOrder(){
+
+async function submitOrder(){
+
+  if(orderSubmitting){
+
+    return;
+  }
+
+  orderSubmitting = true;
 
   const name =
     document.getElementById('name').value;
@@ -654,25 +681,8 @@ function submitOrder(){
   const instructions =
     document.getElementById('instructions').value;
 
-
-
-
-
-  if(name=='' || phone==''){
-
-    alert('Please enter name and phone');
-
-    return;
-  }
-
-  if(Object.keys(cart).length === 0){
-
-    alert('Please add items to cart');
-
-    return;
-  }
-
   let orderText='';
+
   let total=0;
 
   for(let itemId in cart){
@@ -690,72 +700,102 @@ function submitOrder(){
       `• ${item.name} x${qty} = ₹${itemTotal}\n`;
   }
 
-	const packingCharge = 25;
-	const gst = Math.round(total * 0.05);
-	total = total + packingCharge + gst;
+  const packingCharge = 25;
 
+  const gst =
+    Math.round(total * 0.05);
 
-const orderData = {
+  total =
+    total + packingCharge + gst;
 
-  orderId:
-    'ORD' + Date.now(),
+  const orderData = {
 
-  orderReceived:
-    new Date().toLocaleString(),
+    orderId:
+      'ORD' + Date.now(),
 
-  customer: name,
+    orderReceived:
+      new Date().toLocaleString(),
 
-  phone: phone,
+    customer: name,
 
-  items: orderText,
+    phone: phone,
 
-  subtotal:
-    total - packingCharge - gst,
+    items: orderText,
 
-  packing: packingCharge,
+    subtotal:
+      total - packingCharge - gst,
 
-  gst: gst,
+    packing: packingCharge,
 
-  total: total,
+    gst: gst,
 
-  orderType: orderType,
+    total: total,
 
-  paymentId: razorpayPaymentId
+    orderType: orderType,
 
-};
+    address: address,
 
+    instructions: instructions,
 
-fetch(GOOGLE_SCRIPT_URL, {
+    paymentId: razorpayPaymentId,
 
-  method: 'POST',
+    status: 'NEW'
+  };
 
-  mode: 'no-cors',
+  let googleSheetSuccess = false;
 
-  headers: {
-    'Content-Type': 'text/plain'
-  },
+  try{
 
-  body: JSON.stringify(orderData)
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
 
-})
-.then(() => {
+		  method: 'POST',
 
-  console.log('Order Saved');
+		  headers: {
+			'Content-Type': 'text/plain'
+		  },
 
-})
-.catch(error => {
+		  body: JSON.stringify(orderData)
+		});
 
-  console.error('Error:', error);
+		if(response.ok){
 
-});
+		  googleSheetSuccess = true;
 
+		}else{
 
+		  googleSheetSuccess = false;
+		}
+    console.log('Order Saved');
 
-	
-const message =
+  }catch(error){
+
+    console.error(error);
+  }
+
+  paymentInProgress = false;
+
+  orderSubmitting = false;
+
+  const payButton =
+    document.getElementById('payButton');
+
+  payButton.disabled = false;
+
+  payButton.innerText =
+    'Pay & Place Order';
+
+  if(googleSheetSuccess){
+
+    alert(
+      '✅ Order placed successfully!\n\n' +
+      'Payment received.\n' +
+      'Kitchen has received your order.'
+    );
+
+  }else{
+
+    const message =
 `☕ *TEALOGY CAFE - PAID ORDER*
-
-✅ Payment Successful
 
 👤 Customer: ${name}
 📞 Phone: ${phone}
@@ -763,16 +803,7 @@ const message =
 🛒 *Items Ordered:*
 ${orderText}
 
-🧾 *Bill Summary*
-• Subtotal: ₹${total - packingCharge - gst}
-• Packing Charges: ₹${packingCharge}
-• GST: ₹${gst}
-
-💰 *Total: ₹${total}*
-
-🚚 Order Type: ${orderType}
-
-🚚💰 *Delivery Charges To Be Paid Separately To Delivery Partner*
+💰 Total: ₹${total}
 
 📍 Address:
 ${address}
@@ -780,59 +811,57 @@ ${address}
 📝 Instructions:
 ${instructions}
 
-💳 Payment: ${payment}
 💳 Razorpay Payment ID:
 ${razorpayPaymentId}`;
 
+    const whatsappURL =
+      'https://wa.me/917385556163?text=' +
+      encodeURIComponent(message);
 
-const whatsappURL =
-  'https://wa.me/917385556163?text=' +
-  encodeURIComponent(message);
+    alert(
+      '⚠️ Backup mode activated.\n\n' +
+      'Google Sheet connection failed.\n\n' +
+      'WhatsApp will open now.\n' +
+      'Please tap SEND once.'
+    );
 
-alert(
-  'Payment successful! Please tap SEND on WhatsApp to confirm your order.'
-);
+    window.open(
+      whatsappURL,
+      '_blank'
+    );
+  }
 
-window.open(whatsappURL,'_blank');
+	window.onbeforeunload = null;
+	
 
-document.body.style.pointerEvents = 'auto';
-document.body.style.opacity = '1';
+  for(let itemId in cart){
 
-// RESET APP AFTER ORDER
+    delete cart[itemId];
+  }
 
-for(let itemId in cart){
-  delete cart[itemId];
+  paymentSuccess = false;
+
+  razorpayPaymentId = '';
+
+  document.getElementById('name').value = '';
+
+  document.getElementById('phone').value = '';
+
+  document.getElementById('address').value = '';
+
+  document.getElementById('instructions').value = '';
+
+  document.getElementById('payment').selectedIndex = 0;
+
+  document.getElementById('orderType').selectedIndex = 0;
+
+  closeCart();
+
+  updateCart();
+
+  renderMenu('frequently');
 }
 
-paymentSuccess = false;
-razorpayPaymentId = '';
-
-document.getElementById('name').value = '';
-document.getElementById('phone').value = '';
-document.getElementById('address').value = '';
-document.getElementById('instructions').value = '';
-
-document.getElementById('payment').selectedIndex = 0;
-document.getElementById('orderType').selectedIndex = 0;
-
-
-
-
-
-closeCart();
-
-updateCart();
-
-renderMenu('frequently');
-
-alert(
-  '✅ Payment successful!\n\n' +
-  'WhatsApp will now open.\n\n' +
-  'Please tap the GREEN SEND button once to confirm your order.'
-);
-
- 
-}
 
 function openCart(){
 
@@ -909,6 +938,7 @@ loadMenu();
 
       <input
         id="phone"
+		type = "tel"
         class="w-full border p-3 rounded mb-3"
         placeholder="WhatsApp Number">
 
@@ -941,14 +971,12 @@ loadMenu();
         placeholder="Special Instructions"></textarea>
 
      
-	<div class="bg-yellow-100 border border-yellow-400 text-yellow-800 p-3 rounded-lg text-sm mb-3">
-		⚠️ After successful payment, WhatsApp will open automatically.<br><br>
-		Please tap the GREEN SEND button on WhatsApp to confirm your order.
-	</div>		
+		
 	  
 	<button
-	  onclick="startPayment()"
-	  class="btn w-full text-lg mb-3 bg-green-600">
+		id="payButton"
+		onclick="startPayment()"
+		class="btn w-full text-lg mb-3 bg-green-600">
 
 	  Pay & Place Order
 
