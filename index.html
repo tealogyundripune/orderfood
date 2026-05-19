@@ -179,6 +179,11 @@ let razorpayPaymentId = '';
 const UPI_LINK =
 'upi://pay?pa=vyapar.176504947298@hdfcbank';
 
+const GOOGLE_SCRIPT_URL =
+'https://script.google.com/macros/s/AKfycbyBBz_uVuaMT-eqrRgpYTLdUhblWxVu2nm_fQVSiBXG0oPCYSL3FiOGoc5JiaKWDT3Daw/exec';
+
+
+
 
 function toggleMenu(){
 
@@ -643,6 +648,62 @@ function submitOrder(){
 	const gst = Math.round(total * 0.05);
 	total = total + packingCharge + gst;
 
+
+const orderData = {
+
+  orderId:
+    'ORD' + Date.now(),
+
+  orderReceived:
+    new Date().toLocaleString(),
+
+  customer: name,
+
+  phone: phone,
+
+  items: orderText,
+
+  subtotal:
+    total - packingCharge - gst,
+
+  packing: packingCharge,
+
+  gst: gst,
+
+  total: total,
+
+  orderType: orderType,
+
+  paymentId: razorpayPaymentId
+
+};
+
+
+fetch(GOOGLE_SCRIPT_URL, {
+
+  method: 'POST',
+
+  headers: {
+    'Content-Type': 'application/json'
+  },
+
+  body: JSON.stringify(orderData)
+
+})
+
+.then(response => response.json())
+.then(data => {
+
+  console.log('Order Saved:', data);
+
+})
+.catch(error => {
+
+  console.error('Error:', error);
+
+});
+
+
 	
 const message =
 `☕ *TEALOGY CAFE - PAID ORDER*
@@ -708,11 +769,8 @@ document.getElementById('payment').selectedIndex = 0;
 document.getElementById('orderType').selectedIndex = 0;
 
 
-document.getElementById('confirmBtn')
-  .classList.add('opacity-50');
 
-document.getElementById('confirmBtn')
-  .disabled = true;
+
 
 closeCart();
 
