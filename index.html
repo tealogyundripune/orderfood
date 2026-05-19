@@ -184,7 +184,6 @@ const GOOGLE_SCRIPT_URL =
 
 
 
-
 function toggleMenu(){
 
   document
@@ -683,18 +682,18 @@ fetch(GOOGLE_SCRIPT_URL, {
 
   method: 'POST',
 
+  mode: 'no-cors',
+
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'text/plain'
   },
 
   body: JSON.stringify(orderData)
 
 })
+.then(() => {
 
-.then(response => response.json())
-.then(data => {
-
-  console.log('Order Saved:', data);
+  console.log('Order Saved');
 
 })
 .catch(error => {
@@ -702,6 +701,7 @@ fetch(GOOGLE_SCRIPT_URL, {
   console.error('Error:', error);
 
 });
+
 
 
 	
