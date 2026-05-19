@@ -530,6 +530,53 @@ function startPayment(){
     return;
   }
 
+	
+const name =
+  document.getElementById('name').value.trim();
+
+const phone =
+  document.getElementById('phone').value.trim();
+
+const orderType =
+  document.getElementById('orderType').value;
+
+const address =
+  document.getElementById('address').value.trim();
+
+if(name === ''){
+
+  alert('Please enter your name');
+
+  return;
+}
+
+if(phone === ''){
+
+  alert('Please enter WhatsApp number');
+
+  return;
+}
+
+if(!/^\d{10}$/.test(phone)){
+
+  alert('Please enter valid WhatsApp number');
+
+  return;
+}
+
+if(
+  orderType.includes('Delivery')
+  &&
+  address === ''
+){
+
+  alert('Please enter delivery address');
+
+  return;
+}
+
+
+
   const options = {
 
     key: 'rzp_test_SolQWc1hx06kEf',
