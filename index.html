@@ -442,7 +442,31 @@ function increase(id,name,basePrice){
   updateCart();
 }
 
+function decrease(id){
 
+  const matchingKeys =
+    Object.keys(cart).filter(key =>
+      key === id ||
+      key.startsWith(id + '__')
+    );
+
+  if(matchingKeys.length === 0){
+
+    return;
+  }
+
+  const lastKey =
+    matchingKeys[matchingKeys.length - 1];
+
+  cart[lastKey].qty--;
+
+  if(cart[lastKey].qty <= 0){
+
+    delete cart[lastKey];
+  }
+
+  updateCart();
+}
 
 function updateCart(){
 
@@ -528,11 +552,22 @@ function updateCart(){
 
     category.items.forEach(item=>{
 
-      let qty =
-        cart[item.id]
-        ? cart[item.id].qty
-        : 0;
+      
+	
+	let qty = 0;
 
+	Object.keys(cart).forEach(cartKey => {
+
+	  if(
+		cartKey === item.id ||
+		cartKey.startsWith(item.id + '__')
+	  ){
+
+		qty += cart[cartKey].qty;
+	  }
+
+	});
+	
       const qtyElement =
         document.getElementById(
           'qty-' + item.id
