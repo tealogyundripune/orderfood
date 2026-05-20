@@ -151,9 +151,33 @@
     ]
   },
   {
+	  
     "id": "desi_chai",
     "category": "Desi Chai (Paper Cup) ☕",
     "items": [
+		
+		{
+		"id": "desi_chai_2",
+		"name": "Desi Chai (02 Nos)",
+		"basePrice": 41,
+
+		  "addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 10
+			},
+
+  {
+    "name": "Extra Strong",
+    "price": 5
+  }
+
+		  ],
+
+		  "details": "Traditional Indian tea"
+		},
+		
       {
         "id": "cutting_chai_2nos",
         "name": "CUTTING CHAI (2 Nos.)",

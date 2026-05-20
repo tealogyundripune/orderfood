@@ -288,19 +288,40 @@ function renderMenu(selectedCategory='frequently'){
 
         <div class="price mt-1">
 
-          ₹${item.basePrice}
+  ₹${item.basePrice}
 
-          ${
-            item.addonPrice
-              ? `
-                <div class="text-xs text-gray-500 mt-1">
-                  ${item.addonLabel}: ₹${item.addonPrice}
-                </div>
-              `
-              : ''
-          }
+</div>
 
-        </div>
+${
+  item.addons
+    ? `
+
+      <div class="mt-2 text-xs text-gray-700">
+
+        ${item.addons.map(addon => `
+
+          <label class="flex items-center gap-2 mb-1">
+
+            <input
+              type="checkbox"
+              id="${item.id}-${addon.name}">
+
+            <span>
+
+              ${addon.name}
+              (+₹${addon.price})
+
+            </span>
+
+          </label>
+
+        `).join('')}
+
+      </div>
+
+    `
+    : ''
+}
 
         <div
           class="details-link"
@@ -353,36 +374,75 @@ function showDetails(name,details){
   alert(name + '\n\n' + details);
 }
 
-function increase(id,name,price){
 
-  if(!cart[id]){
+function increase(id,name,basePrice){
 
-    cart[id] = {
-      name:name,
-      qty:0,
-      price:price
+  let selectedAddons = [];
+
+  let finalPrice = basePrice;
+
+  const item =
+    menu
+      .flatMap(cat => cat.items)
+      .find(i => i.id === id);
+
+  if(item && item.addons){
+
+    item.addons.forEach(addon => {
+
+      const checkbox =
+        document.getElementById(
+          `${id}-${addon.name}`
+        );
+
+      if(checkbox && checkbox.checked){
+
+        selectedAddons.push(addon);
+
+        finalPrice += addon.price;
+      }
+
+    });
+
+  }
+
+  const addonKey =
+    selectedAddons
+      .map(a => a.name)
+      .join('|');
+
+  const cartId =
+    addonKey
+      ? `${id}__${addonKey}`
+      : id;
+
+  const displayName =
+    selectedAddons.length > 0
+      ? `${name} (${selectedAddons.map(a => a.name).join(', ')})`
+      : name;
+
+  if(!cart[cartId]){
+
+    cart[cartId] = {
+
+      id: cartId,
+
+      name: displayName,
+
+      qty: 0,
+
+      price: finalPrice,
+
+      addons: selectedAddons
     };
   }
 
-  cart[id].qty++;
+  cart[cartId].qty++;
 
   updateCart();
 }
 
-function decrease(id){
 
-  if(cart[id]){
-
-    cart[id].qty--;
-
-    if(cart[id].qty <= 0){
-
-      delete cart[id];
-    }
-  }
-
-  updateCart();
-}
 
 function updateCart(){
 
