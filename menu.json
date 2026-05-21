@@ -6,13 +6,30 @@
       {
         "id": "adrak_tea_2nos_f_k",
         "name": "ADRAK TEA (2 Nos.)",
-        "basePrice": 51,
+        "basePrice": 31,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+
         "details": "90ml serving | Strong tea with milk and ginger"
       },
       {
         "id": "baarish_wali_chai_2nos_f_k",
         "name": "BAARISH WALI CHAI (2 Nos.)",
-        "basePrice": 51,
+        "basePrice": 41,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong milk tea with ginger and elachi"
       },
 	  {
@@ -37,24 +54,56 @@
         "id": "dabeli_f",
         "name": "DABELI",
         "basePrice": 40,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
 	  {
         "id": "cheese_corn_sandwich_f",
         "name": "CHEESE CORN SANDWICH",
         "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "vegetable_club_sandwich_f",
         "name": "VEGETABLE CLUB SANDWICH",
         "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
 	  {
-        "id": "vagetable_maggi_f",
+        "id": "vegetable_maggi_f",
         "name": "VEGETABLE MAGGI",
         "basePrice": 81,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
 	  {
@@ -85,25 +134,33 @@
       {
         "id": "butter_toast_chai_2nos",
         "name": "CHAI(2 Nos.)+ BUTTER TOAST",
-        "basePrice": 51,
+        "basePrice": 66,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "bun_maska_chai_2nos",
         "name": "CHAI(2 Nos.) + BUN MASKA",
-        "basePrice": 51,
+        "basePrice": 66,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "masala_tea_fries_2nos_combo",
         "name": "FRIES + MASALA TEA(2 Nos.)",
-        "basePrice": 101,
+        "basePrice": 116,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "masala_sandwich_cold_coffee_combo",
         "name": "MASALA SANDWICH + COLD COFFEE",
         "basePrice": 152,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
@@ -128,13 +185,35 @@
         "id": "vegetable_club_cold_coffee_combo",
         "name": "VEGETABLE CLUB SANDWICH + COLD COFFEE",
         "basePrice": 274,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "PAV_BHAJI_SHIKANJI_combo",
         "name": "PAV BHAJI + SHIKANJI",
         "basePrice": 274,
-        "details": "Freshly prepared at Tealogy Cafe"
+		"addons": [
+			{
+			  "name": "Extra Butter",
+			  "price": 21
+			},
+			{
+				"name": "Single Pav(1x)",
+				"price": 5
+			},
+			{
+				"name": "Double Pav(2x)",
+				"price": 10
+			}
+		],
+		"details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "POTATO_SHOTS_CHEESE_CORN_SANDWICH_CHOCOLATE_combo",
@@ -153,25 +232,20 @@
   {
 	  
     "id": "desi_chai",
-    "category": "Desi Chai (Paper Cup) ☕",
+    "category": "Desi Chai ☕",
     "items": [
 		
 		{
 		"id": "desi_chai_2",
 		"name": "Desi Chai (02 Nos)",
-		"basePrice": 41,
+		"basePrice": 31,
 
 		  "addons": [
 
 			{
 			  "name": "In Kulhad",
-			  "price": 10
-			},
-
-  {
-    "name": "Extra Strong",
-    "price": 5
-  }
+			  "price": 11
+			}
 
 		  ],
 
@@ -182,79 +256,85 @@
         "id": "cutting_chai_2nos",
         "name": "CUTTING CHAI (2 Nos.)",
         "basePrice": 31,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong tea with milk"
       },
       {
         "id": "adrak_tea_2nos",
         "name": "ADRAK TEA (2 Nos.)",
         "basePrice": 41,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong tea with milk and ginger"
       },
       {
         "id": "baarish_wali_chai_2nos",
         "name": "BAARISH WALI CHAI (2 Nos.)",
-        "basePrice": 31,
+        "basePrice": 41,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong milk tea with ginger and elachi"
       },
       {
         "id": "elaichi_tea_2nos",
         "name": "ELAICHI TEA (2 Nos.)",
-        "basePrice": 41,
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong milk tea with elachi"
       },
       {
         "id": "masala_tea_2nos",
         "name": "MASALA TEA (2 Nos.)",
-        "basePrice": 51,
+        "basePrice": 31,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong milk tea with Tea Masala"
       },
       {
         "id": "gud_wali_chai_2nos",
         "name": "GUD WALI CHAI (2 Nos.)",
         "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "90ml serving | Strong milk tea with Jaggry Powder"        
-      }
-    ]
-  },
-  {
-    "id": "desi_chai_K",
-    "category": "Desi Chai (Kulhad)",
-    "items": [
-      {
-        "id": "cutting_chai_2nos_k",
-        "name": "CUTTING CHAI (2 Nos.)",
-        "basePrice": 41,
-        "details": "90ml serving | Strong tea with milk"
-      },
-      {
-        "id": "adrak_tea_2nos_k",
-        "name": "ADRAK TEA (2 Nos.)",
-        "basePrice": 51,
-        "details": "90ml serving | Strong tea with milk and ginger"
-      },
-      {
-        "id": "baarish_wali_chai_2nos_k",
-        "name": "BAARISH WALI CHAI (2 Nos.)",
-        "basePrice": 51,
-        "details": "90ml serving | Strong milk tea with ginger and elachi"
-      },
-      {
-        "id": "elaichi_tea_2nos_k",
-        "name": "ELAICHI TEA (2 Nos.)",
-        "basePrice": 51,
-        "details": "90ml serving | Strong milk tea with elachi"
-      },
-      {
-        "id": "masala_tea_2nos_k",
-        "name": "MASALA TEA (2 Nos.)",
-        "basePrice": 61,
-        "details": "90ml serving | Strong milk tea with Tea Masala"
-      },
-      {
-        "id": "gud_wali_chai_2nos_k",
-        "name": "GUD WALI CHAI (2 Nos.)",
-        "basePrice": 61,
-        "details": "90ml serving | Strong milk tea with Jaggry Powder"
       }
     ]
   },
@@ -265,67 +345,71 @@
       {
         "id": "chocolate_tea_2nos",
         "name": "CHOCOLATE TEA (2 Nos.)",
-        "basePrice": 26,
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "paan_tea_2nos",
         "name": "PAAN TEA (2 Nos.)",
-        "basePrice": 26,
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "kesar_tea_2nos",
         "name": "KESAR TEA (2 Nos.)",
-        "basePrice": 26,
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "rose_tea_2nos",
         "name": "ROSE TEA (2 Nos.)",
-        "basePrice": 26,
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "mango_tea_2nos",
         "name": "MANGO TEA (2 Nos.)",
-        "basePrice": 26,
-        "details": "Freshly prepared at Tealogy Cafe"
-      }
-    ]
-  },
-  {
-    "id": "flavoured_tea_kulhad",
-    "category": "Flavoured Tea (Kulhad)",
-    "items": [
-      {
-        "id": "chocolate_tea_2nos_k",
-        "name": "CHOCOLATE TEA (2 Nos.)",
-        "basePrice": 31,
-        "details": "Freshly prepared at Tealogy Cafe"
-      },
-      {
-        "id": "paan_tea_2nos_k",
-        "name": "PAAN TEA (2 Nos.)",
-        "basePrice": 31,
-        "details": "Freshly prepared at Tealogy Cafe"
-      },
-      {
-        "id": "kesar_tea_2nos_k",
-        "name": "KESAR TEA (2 Nos.)",
-        "basePrice": 31,
-        "details": "Freshly prepared at Tealogy Cafe"
-      },
-      {
-        "id": "rose_tea_2nos_k",
-        "name": "ROSE TEA (2 Nos.)",
-        "basePrice": 31,
-        "details": "Freshly prepared at Tealogy Cafe"
-      },
-      {
-        "id": "mango_tea_2nos_k",
-        "name": "MANGO TEA (2 Nos.)",
-        "basePrice": 31,
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
@@ -337,25 +421,25 @@
       {
         "id": "green_tea",
         "name": "GREEN TEA",
-        "basePrice": 31,
+        "basePrice": 15,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "black_tea",
         "name": "BLACK TEA",
-        "basePrice": 31,
+        "basePrice": 15,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "lemon_tea",
         "name": "LEMON TEA",
-        "basePrice": 31,
+        "basePrice": 15,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "lemon_honey_tea",
         "name": "LEMON HONEY TEA",
-        "basePrice": 31,
+        "basePrice": 15,
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
@@ -367,13 +451,13 @@
       {
         "id": "black_coffee",
         "name": "BLACK COFFEE",
-        "basePrice": 20,
+        "basePrice": 31,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "hot_coffee_2nos",
         "name": "HOT COFFEE (2 Nos.)",
-        "basePrice": 61,
+        "basePrice": 51,
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
@@ -404,6 +488,18 @@
         "id": "french_fries",
         "name": "FRENCH FRIES",
         "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 11
+			},
+			{
+				"name": "Extra Thousand Island",
+				"price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
@@ -414,7 +510,7 @@
       },
       {
         "id": "potato_shots_12nos",
-        "name": "POTATO SHOTS (12 nos)",
+        "name": "POTATO SHOTS",
         "basePrice": 81,
         "details": "Freshly prepared at Tealogy Cafe"
       }
@@ -434,6 +530,14 @@
         "id": "dabeli",
         "name": "DABELI",
         "basePrice": 40,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
@@ -458,6 +562,22 @@
         "id": "pav_bhaji",
         "name": "PAV BHAJI",
         "basePrice": 111,
+		"addons": [
+
+			{
+			  "name": "Extra Butter",
+			  "price": 21
+			},
+			{
+				"name": "Single Pav(1x)",
+				"price": 5
+			},
+			{
+				"name": "Double Pav(2x)",
+				"price": 10
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
@@ -473,7 +593,7 @@
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
-        "id": "vagetable_maggi",
+        "id": "vegetable_maggi",
         "name": "VEGETABLE MAGGI",
         "basePrice": 81,
         "details": "Freshly prepared at Tealogy Cafe"
@@ -482,6 +602,14 @@
         "id": "cheese_corn_maggi",
         "name": "CHEESE CORN MAGGI",
         "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 11
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
@@ -494,24 +622,56 @@
         "id": "coleslaw_sandwich",
         "name": "COLESLAW SANDWICH",
         "basePrice": 60,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "masala_sandwich",
         "name": "MASALA SANDWICH",
         "basePrice": 70,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "cheese_chutney_sandwich",
         "name": "CHEESE CHUTNEY SANDWICH",
         "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
         "id": "cheese_corn_sandwich",
         "name": "CHEESE CORN SANDWICH",
         "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       },
       {
@@ -524,6 +684,14 @@
         "id": "vegetable_club_sandwich",
         "name": "VEGETABLE CLUB SANDWICH",
         "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
@@ -733,7 +901,7 @@
       {
         "id": "lemon_mint_iced_tea",
         "name": "LEMON MINT ICED TEA",
-        "basePrice": 81,
+        "basePrice": 91,
         "details": "Freshly prepared at Tealogy Cafe"
       }
     ]
