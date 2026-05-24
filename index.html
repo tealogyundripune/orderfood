@@ -557,6 +557,7 @@ function updateCart(){
   }
 
 
+
 if(itemCount === 0){
 
   document.getElementById('orderType').selectedIndex = 0;
@@ -567,6 +568,7 @@ if(itemCount === 0){
 
   toggleDeliveryFields();
 }
+
 
 
 
@@ -649,21 +651,6 @@ if(
     </div>
 
   `;
-}
-	
-	if(itemCount === 0){
-
-  document.getElementById('orderType').selectedIndex = 0;
-
-  const deliveryAreaElement =
-    document.getElementById('deliveryArea');
-
-  if(deliveryAreaElement){
-
-    deliveryAreaElement.selectedIndex = 0;
-  }
-
-  toggleDeliveryFields();
 }
 	
   document.getElementById('cartItems').innerHTML = html;
