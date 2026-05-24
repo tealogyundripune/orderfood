@@ -203,9 +203,7 @@ let orderSubmitting = false;
 
 
 const GOOGLE_SCRIPT_URL =
-'https://script.google.com/macros/s/AKfycbyBBz_uVuaMT-eqrRgpYTLdUhblWxVu2nm_fQVSiBXG0oPCYSL3FiOGoc5JiaKWDT3Daw/exec';
-
-
+'https://script.google.com/macros/s/AKfycbwhnGZWszjdPMqtbzlVMs8Y5Q9KeLWcBSv0m9-OgTSRdKuMKWtgqhuE-uRpex4kDITfdg/exec';
 
 function toggleMenu(){
 
@@ -566,7 +564,9 @@ if(itemCount === 0){
 
   document.getElementById('address').value = '';
 
-  toggleDeliveryFields();
+  document
+    .getElementById('deliveryAreaContainer')
+    .classList.add('hidden');
 }
 
 
@@ -994,8 +994,11 @@ if(
 
 		  body: JSON.stringify(orderData)
 		});
+		
+		const result =
+		  await response.json();
 
-		if(response.ok){
+		if(result.success){
 
 		  googleSheetSuccess = true;
 
@@ -1003,6 +1006,8 @@ if(
 
 		  googleSheetSuccess = false;
 		}
+
+		
     console.log('Order Saved');
 
   }catch(error){
@@ -1098,13 +1103,20 @@ ${razorpayPaymentId}`;
   document.getElementById('orderType').selectedIndex = 0;
   
   document.getElementById('deliveryArea').selectedIndex = 0;
+  
+  document.getElementById('cartItems').innerHTML = '';
 
-  closeCart();
+document.getElementById('total').innerText = '0';
 
-  updateCart();
+document.getElementById('floatingCount').innerText = '0';
 
-  renderMenu('frequently');
-  toggleDeliveryFields();
+	updateCart();
+
+	renderMenu('frequently');
+
+	toggleDeliveryFields();
+
+	closeCart();
 }
 
 
