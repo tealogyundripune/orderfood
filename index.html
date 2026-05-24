@@ -230,7 +230,7 @@ function toggleDeliveryFields(){
     '';
 	}
 	
-  if(orderType.includes('Delivery')){
+  if(orderType === 'Delivery'){
 
     container.classList.remove('hidden');
 
@@ -556,23 +556,25 @@ function updateCart(){
     `;
   }
 
+
+if(itemCount === 0){
+
+  document.getElementById('orderType').selectedIndex = 0;
+
+  document.getElementById('deliveryArea').selectedIndex = 0;
+
+  document.getElementById('address').value = '';
+
+  toggleDeliveryFields();
+}
+
+
+
   if(total > 0){
 
   const packingCharge = 25;
   
-  if(itemCount === 0){
-
-  document.getElementById('orderType').value =
-    'Pickup';
-
-  document.getElementById('deliveryArea').value =
-    '';
-
-  document.getElementById('address').value =
-    '';
-
-  toggleDeliveryFields();
-}
+  
 
   const gst =
     Math.round(total * 0.05);
@@ -1202,8 +1204,12 @@ loadMenu();
         id="orderType"
 		onchange="toggleDeliveryFields()"
         class="w-full border p-3 rounded mb-3">
-		<option>Pickup</option>
-        <option>Delivery (Delivery fee auto-calculated based on area)</option>
+		<option value="Pickup">Pickup</option>
+
+		<option value="Delivery">
+			Delivery (Delivery fee auto-calculated based on area)
+		</option>
+		
 		</select>
 		
 		<div
