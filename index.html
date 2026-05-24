@@ -170,6 +170,28 @@
 let menu = [];
 const cart = {};
 
+const deliveryCharges = {
+
+  "Undri": 29,
+
+  "Wadachi Wadi": 39,
+
+  "Mohammed Wadi": 49,
+
+  "Handewadi": 49,
+
+  "Pisoli": 59,
+
+  "Yewalewadi": 59,
+
+  "NIBM Road / NIBM Annexe": 69,
+
+  "Kondhwa (selected areas)": 79,
+
+  "Wanowrie": 89
+
+};
+
 let paymentInProgress = false;
 
 let paymentSuccess = false;
@@ -190,6 +212,32 @@ function toggleMenu(){
   document
     .getElementById('menuDrawer')
     .classList.toggle('hidden');
+}
+
+function toggleDeliveryFields(){
+
+  const orderType =
+    document.getElementById('orderType').value;
+
+  const container =
+    document.getElementById(
+      'deliveryAreaContainer'
+    );
+
+  if(orderType.includes('Delivery')){
+
+    container.classList.remove('hidden');
+
+  }else{
+
+    container.classList.add('hidden');
+
+    document.getElementById(
+      'deliveryArea'
+    ).selectedIndex = 0;
+  }
+
+  updateCart();
 }
 
 function showCategory(categoryId){
@@ -316,10 +364,6 @@ ${
           </label>
 
         `).join('')}
-		
-		<div class="text-[10px] text-gray-400 mt-1">
-			Select add-ons before clicking +
-		</div>
 
       </div>
 
@@ -512,6 +556,46 @@ function updateCart(){
 
   const gst =
     Math.round(total * 0.05);
+	
+let deliveryFee = 0;
+
+const orderType =
+  document.getElementById('orderType')
+  ? document.getElementById('orderType').value
+  : '';
+
+const deliveryArea =
+  document.getElementById('deliveryArea')
+  ? document.getElementById('deliveryArea').value
+  : '';
+
+if(
+  orderType.includes('Delivery')
+  &&
+  deliveryArea
+){
+
+  deliveryFee =
+    deliveryCharges[deliveryArea] || 0;
+
+  total += deliveryFee;
+
+  html += `
+
+    <div class="flex justify-between text-sm text-gray-500 mt-2">
+
+      <span>
+        Delivery Fee
+      </span>
+
+      <span>
+        ₹${deliveryFee}
+      </span>
+
+    </div>
+
+  `;
+}	
 
   total =
     total + packingCharge + gst;
@@ -619,6 +703,9 @@ function startPayment(){
 
   const address =
     document.getElementById('address').value.trim();
+	
+		const deliveryArea =
+  document.getElementById('deliveryArea').value;
 
   if(name === ''){
 
@@ -640,6 +727,17 @@ function startPayment(){
 
     return;
   }
+  
+  if(
+  orderType.includes('Delivery')
+  &&
+  deliveryArea === ''
+){
+
+  alert('Please select delivery area');
+
+  return;
+}
 
   if(
     orderType.includes('Delivery')
@@ -779,6 +877,9 @@ async function submitOrder(){
 
   const instructions =
     document.getElementById('instructions').value;
+	
+	const deliveryArea =
+  document.getElementById('deliveryArea').value;
 
   let orderText='';
 
@@ -803,6 +904,20 @@ async function submitOrder(){
 
   const gst =
     Math.round(total * 0.05);
+	
+	let deliveryFee = 0;
+
+if(
+  orderType.includes('Delivery')
+  &&
+  deliveryArea
+){
+
+  deliveryFee =
+    deliveryCharges[deliveryArea] || 0;
+
+  total += deliveryFee;
+}
 
   total =
     total + packingCharge + gst;
@@ -822,11 +937,13 @@ async function submitOrder(){
     items: orderText,
 
     subtotal:
-      total - packingCharge - gst,
+	total - packingCharge - gst - deliveryFee,
 
     packing: packingCharge,
 
     gst: gst,
+	
+	deliveryArea: deliveryArea,
 
     total: total,
 
@@ -902,6 +1019,8 @@ async function submitOrder(){
 🛒 *Items Ordered:*
 ${orderText}
 
+🚚 Delivery Fee: ₹${deliveryFee}
+
 💰 Total: ₹${total}
 
 📍 Address:
@@ -953,12 +1072,15 @@ ${razorpayPaymentId}`;
   document.getElementById('payment').selectedIndex = 0;
 
   document.getElementById('orderType').selectedIndex = 0;
+  
+  document.getElementById('deliveryArea').selectedIndex = 0;
 
   closeCart();
 
   updateCart();
 
   renderMenu('frequently');
+  toggleDeliveryFields();
 }
 
 
@@ -1043,13 +1165,47 @@ loadMenu();
 
       <select
         id="orderType"
+		onchange="toggleDeliveryFields()"
         class="w-full border p-3 rounded mb-3">
+		<option>Pickup</option>
+        <option>Delivery (Delivery fee auto-calculated based on area)</option>
+		</select>
+		
+		<div
+  id="deliveryAreaContainer"
+  class="hidden">
 
-        <option>Pickup</option>
-        <option>Delivery (Customer Pays to Delivery Partner)</option>
+  <select
+    id="deliveryArea"
+	onchange="updateCart()"
+    class="w-full border p-3 rounded mb-3">
+	
+    <option value="">
+      Select Delivery Area
+    </option>
 
-      </select>
+    <option>Undri</option>
 
+    <option>Wadachi Wadi</option>
+
+    <option>Mohammed Wadi</option>
+
+    <option>Handewadi</option>
+
+    <option>Pisoli</option>
+
+    <option>Yewalewadi</option>
+
+    <option>NIBM Road / NIBM Annexe</option>
+
+    <option>Kondhwa (selected areas)</option>
+
+    <option>Wanowrie</option>
+
+  </select>
+
+</div>	
+		
       <textarea
         id="address"
 		class="w-full border p-3 rounded mb-3"
@@ -1097,10 +1253,8 @@ loadMenu();
 		  8. Order Preparation time is 30 mins.<br>
 		  9. If you opt for pickup, we recommend you to book Pickup after 30 mins of placing an order.<br>
 		  10. In case if you wish us to deliver the order, ensure to share exact Address and Google Location link for smooth delivery.<br>
-		  11. <a class="font-bold text-red-600"> Customer to pay the delivery charges to delivery partner. Not included in Order value. </a> <br>
 		  11. We use third party delivery app and the delivery itself is governed by their specific terms.<br> 
 		  12. The restaurant is not responsible for damages, delays, or unprofessional behavior by the delivery partner once the food leaves the premises.<br>
-		  13. Delivery charges are variable and are determined by distance, demand, and prevailing weather conditions.
 		  	
 		</div>
 
