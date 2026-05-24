@@ -132,27 +132,33 @@
 	"highlight": true,
     "items": [
       {
+        "id": "poha_vadapav_chai_2nos",
+        "name": "CHAI(2 Nos.)+ INDORI POHA + VADA PAV",
+        "basePrice": 119,
+        "details": "Chai In Combination with Golden, crispy toast generously spread with creamy butter. Simple, warm, and delightfully comforting in every bite. "
+      },
+	  {
         "id": "butter_toast_chai_2nos",
         "name": "CHAI(2 Nos.)+ BUTTER TOAST",
-        "basePrice": 66,
+        "basePrice": 69,
         "details": "Chai In Combination with Golden, crispy toast generously spread with creamy butter. Simple, warm, and delightfully comforting in every bite. "
       },
       {
         "id": "bun_maska_chai_2nos",
         "name": "CHAI(2 Nos.) + BUN MASKA",
-        "basePrice": 66,
+        "basePrice": 69,
         "details": "Chai in combination with Freshly baked pillowy soft sweet bun sliced in the middle and generously slathered with tealogy special maska cream, some even oozing out from the sides."
       },
       {
         "id": "masala_tea_fries_2nos_combo",
         "name": "FRIES + MASALA TEA(2 Nos.)",
-        "basePrice": 116,
+        "basePrice": 119,
         "details": "Masala tea in combiation with Crispy, crunchy, and a perfect accompaniment to any meal. These golden, fried potato sticks are a favorite among all ages."
       },
       {
         "id": "masala_sandwich_cold_coffee_combo",
         "name": "MASALA SANDWICH + COLD COFFEE",
-        "basePrice": 152,
+        "basePrice": 149,
 		"addons": [
 
 			{
@@ -166,25 +172,42 @@
       {
         "id": "masala_maggi_mango_shake_combo",
         "name": "MASALA MAGGI + MANGO SHAKE",
-        "basePrice": 152,
+        "basePrice": 149,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],		
+		
         "details": "Enjoy your favorite Mango Shake with a delicious combination of masala and Maggi noodles, this dish is a wholesome meal that will satisfy your hunger."
       },
       {
         "id": "Vada_Pav_Masala_Lemon_combo",
         "name": "VADA PAV + MASALA LEMON",
-        "basePrice": 143,
+        "basePrice": 91,
         "details": "Mumbai Style Vada Pav  paired with a zesty Masala Lemon cooler for a spicy refreshing and satisfying combo"
       },
       {
         "id": "dabeli_classic_jeeru_combo",
         "name": "DABELI ( 2PCS )+ CLASSIC JEERU",
-        "basePrice": 205,
+        "basePrice": 149,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "Sweet Spicy and Tangy Dabeli served with a  Classic Jeeru Cooler for a bold and refreshing mini snack combo"
       },
       {
         "id": "vegetable_club_cold_coffee_combo",
         "name": "VEGETABLE CLUB SANDWICH + COLD COFFEE",
-        "basePrice": 274,
+        "basePrice": 189,
 		"addons": [
 
 			{
@@ -198,10 +221,10 @@
       {
         "id": "PAV_BHAJI_SHIKANJI_combo",
         "name": "PAV BHAJI + SHIKANJI",
-        "basePrice": 274,
+        "basePrice": 189,
 		"addons": [
 			{
-			  "name": "Extra Butter",
+			  "name": "Extra Cheese",
 			  "price": 21
 			},
 			{
@@ -218,13 +241,29 @@
       {
         "id": "POTATO_SHOTS_CHEESE_CORN_SANDWICH_CHOCOLATE_combo",
         "name": "CHILLI GARLIC POTATO SHOTS + CHEESE CORN SANDWICH + COLD COFFEE(CHOCOLATE)",
-        "basePrice": 366,
+        "basePrice": 259,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],	
         "details": "Cheezy Corn Sandwich paired with rich Chocolate cold coffee and crispy potato shots ideal for brunch"
       },
       {
         "id": "vegetable_maggi_cold_coffee_combo",
         "name": "Vegetable Maggi + Cold Coffee",
-        "basePrice": 244,
+        "basePrice": 169,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],		
         "details": "Comforting hot-and-cold meal combo"
       }
     ]
@@ -234,23 +273,6 @@
     "id": "desi_chai",
     "category": "Desi Chai ☕",
     "items": [
-		
-		{
-		"id": "desi_chai_2",
-		"name": "Desi Chai (02 Nos)",
-		"basePrice": 31,
-
-		  "addons": [
-
-			{
-			  "name": "In Kulhad",
-			  "price": 11
-			}
-
-		  ],
-
-		  "details": "Traditional Indian tea"
-		},
 		
       {
         "id": "cutting_chai_2nos",
@@ -488,18 +510,6 @@
         "id": "french_fries",
         "name": "FRENCH FRIES",
         "basePrice": 91,
-		"addons": [
-
-			{
-			  "name": "Extra Cheese",
-			  "price": 11
-			},
-			{
-				"name": "Extra Thousand Island",
-				"price": 11
-			}
-
-		  ],
         "details": "Crispy, crunchy, and a perfect accompaniment to any meal. These golden, fried potato sticks are a favorite among all ages."
       },
       {
@@ -565,7 +575,7 @@
 		"addons": [
 
 			{
-			  "name": "Extra Butter",
+			  "name": "Extra Cheese",
 			  "price": 21
 			},
 			{
@@ -590,26 +600,35 @@
         "id": "masala_maggi",
         "name": "MASALA MAGGI",
         "basePrice": 70,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],		
         "details": "A delicious combination of masala and Maggi noodles, this dish is a wholesome meal that will satisfy your hunger."
       },
       {
         "id": "vegetable_maggi",
         "name": "VEGETABLE MAGGI",
         "basePrice": 81,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],		
         "details": "A tasty and nutritious dish that is perfect for vegetarians. It is a spicy and flavorful dish that contains mixed vegetables and noodles in a flavorful gravy."
       },
       {
         "id": "cheese_corn_maggi",
         "name": "CHEESE CORN MAGGI",
         "basePrice": 91,
-		"addons": [
-
-			{
-			  "name": "Extra Cheese",
-			  "price": 11
-			}
-
-		  ],
+		
         "details": "Maggi always remains the favourite recipe for kids. Add a twist to this quick and easy recipe by adding cheese and corn. Tada! the cheese and corn maggi for new fav."
       }
     ]
@@ -678,6 +697,14 @@
         "id": "chocolate_sandwich",
         "name": "CHOCOLATE SANDWICH",
         "basePrice": 81,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21
+			}
+
+		  ],
         "details": "A quick-fix dessert or snack featuring crispy, butter-toasted bread stuffed with melted chocolate,"
       },
       {
@@ -867,6 +894,12 @@
         "name": "KALA KHATTA",
         "basePrice": 81,
         "details": "Tangy and sweet Indian-style black jamun syrup drink — bold, refreshing, and bursting with nostalgic summer flavors."
+      },
+	  {
+        "id": "lemon_mint_iced_tea",
+        "name": "LEMON MINT ICED TEA",
+        "basePrice": 91,
+        "details": "A refreshing beverage made with the perfect blend of tea and lemon, to quench your thirst in the hot and humid weather. The perfect way to cool down."
       }
     ]
   },
@@ -891,18 +924,6 @@
         "name": "BLUEBERRY",
         "basePrice": 81,
         "details": "Naturally sweet, fruity, and perfectly chilled."
-      }
-    ]
-  },
-  {
-    "id": "iced_tea",
-    "category": "Iced Tea 🍹",
-    "items": [
-      {
-        "id": "lemon_mint_iced_tea",
-        "name": "LEMON MINT ICED TEA",
-        "basePrice": 91,
-        "details": "A refreshing beverage made with the perfect blend of tea and lemon, to quench your thirst in the hot and humid weather. The perfect way to cool down."
       }
     ]
   },
@@ -980,7 +1001,7 @@
   },
   {
     "id": "cheese_milk_shake",
-    "category": "Cheese Milk Shake 🥛",
+    "category": "Cheesecake Milk Shake 🥛",
     "items": [
       {
         "id": "mango_cheese_cake_milk_shake",
