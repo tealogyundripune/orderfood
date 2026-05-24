@@ -223,7 +223,13 @@ function toggleDeliveryFields(){
     document.getElementById(
       'deliveryAreaContainer'
     );
+	
+	if(orderType !== 'Delivery'){
 
+	document.getElementById('deliveryArea').value =
+    '';
+	}
+	
   if(orderType.includes('Delivery')){
 
     container.classList.remove('hidden');
@@ -553,6 +559,20 @@ function updateCart(){
   if(total > 0){
 
   const packingCharge = 25;
+  
+  if(itemCount === 0){
+
+  document.getElementById('orderType').value =
+    'Pickup';
+
+  document.getElementById('deliveryArea').value =
+    '';
+
+  document.getElementById('address').value =
+    '';
+
+  toggleDeliveryFields();
+}
 
   const gst =
     Math.round(total * 0.05);
@@ -628,7 +648,22 @@ if(
 
   `;
 }
+	
+	if(itemCount === 0){
 
+  document.getElementById('orderType').selectedIndex = 0;
+
+  const deliveryAreaElement =
+    document.getElementById('deliveryArea');
+
+  if(deliveryAreaElement){
+
+    deliveryAreaElement.selectedIndex = 0;
+  }
+
+  toggleDeliveryFields();
+}
+	
   document.getElementById('cartItems').innerHTML = html;
 
   document.getElementById('total').innerText = total;
@@ -940,16 +975,14 @@ if(
 	total - packingCharge - gst - deliveryFee,
 
     packing: packingCharge,
-
+	deliveryFee: deliveryFee,
     gst: gst,
+	total: total,
+	orderType: orderType,
 	
 	deliveryArea: deliveryArea,
 
-    total: total,
-
-    orderType: orderType,
-
-    address: address,
+    deliveryAddress: address,
 
     instructions: instructions,
 
@@ -1015,6 +1048,8 @@ if(
 
 👤 Customer: ${name}
 📞 Phone: ${phone}
+🚚 Delivery Area: ${deliveryArea}
+🚚 Delivery Address: ${address}
 
 🛒 *Items Ordered:*
 ${orderText}
