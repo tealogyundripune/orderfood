@@ -1038,7 +1038,7 @@ if(
     alert(
       '✅ Order placed successfully!\n\n' +
       'Payment received.\n' +
-      'Kitchen has received your order.'+
+      'Kitchen has received your order.\n'+
 	  'WhatsApp will open now.\n' +
       'Please tap SEND once.'
     );
@@ -1047,9 +1047,9 @@ if(
   else
   {
 	alert(
-      ' Some problem with Google Sheet.!\n\n' +
+      'Some problem with Google Sheet.!\n\n' +
       'Payment received.\n' +
-      'Kitchen will receive your order via WhatsApp backup.'+
+      'Kitchen will receive your order via WhatsApp backup.\n'+
 	  'WhatsApp will open now.\n' +
       'Please tap SEND once.'
   )
@@ -1061,6 +1061,7 @@ if(
 
 👤 Customer: ${name}
 📞 Phone: ${phone}
+🚗 OrderTYpe : ${orderType}     
 🚚 Delivery Area: ${deliveryArea}
 🚚 Delivery Address: ${address}
 
@@ -1083,11 +1084,6 @@ ${razorpayPaymentId}`;
     const whatsappURL =
       'https://wa.me/917385556163?text=' +
       encodeURIComponent(message);
-
-    alert(
-      'WhatsApp will open now.\n' +
-      'Please tap SEND once.'
-    );
 
     window.open(
       whatsappURL,
