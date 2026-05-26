@@ -1038,7 +1038,9 @@ if(
     alert(
       '✅ Order placed successfully!\n\n' +
       'Payment received.\n' +
-      'Kitchen has received your order.'
+      'Kitchen has received your order.'+
+	  'WhatsApp will open now.\n' +
+      'Please tap SEND once.'
     );
 
   }
@@ -1047,7 +1049,9 @@ if(
 	alert(
       ' Some problem with Google Sheet.!\n\n' +
       'Payment received.\n' +
-      'Kitchen will receive your order via WhatsApp backup.'
+      'Kitchen will receive your order via WhatsApp backup.'+
+	  'WhatsApp will open now.\n' +
+      'Please tap SEND once.'
   )
   }
   
@@ -1081,8 +1085,6 @@ ${razorpayPaymentId}`;
       encodeURIComponent(message);
 
     alert(
-      '⚠️ Backup mode activated.\n\n' +
-      'Google Sheet connection failed.\n\n' +
       'WhatsApp will open now.\n' +
       'Please tap SEND once.'
     );
