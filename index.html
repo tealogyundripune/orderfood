@@ -1032,7 +1032,8 @@ if(
   payButton.innerText =
     'Pay & Place Order (Secured by Razorpay Payment)';
 
-  if(googleSheetSuccess){
+  if(googleSheetSuccess)
+  {
 
     alert(
       '✅ Order placed successfully!\n\n' +
@@ -1040,8 +1041,15 @@ if(
       'Kitchen has received your order.'
     );
 
-  }else{
-
+  }
+  else
+  {
+	alert(
+      ' Some problem with Google Sheet.!\n\n' +
+      'Payment received.\n' +
+      'Kitchen will receive your order via WhatsApp backup.'
+  )
+  
     const message =
 `☕ *TEALOGY CAFE - PAID ORDER*
 
@@ -1081,7 +1089,7 @@ ${razorpayPaymentId}`;
       whatsappURL,
       '_blank'
     );
-  }
+  
 
 	window.onbeforeunload = null;
 	
