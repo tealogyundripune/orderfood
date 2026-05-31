@@ -186,6 +186,7 @@ let storeStatusMessage = '';
 
 
 
+
 const deliveryCharges = {
 
   "Undri": 29,
@@ -215,7 +216,7 @@ let paymentSuccess = false;
 let razorpayPaymentId = '';
 
 let orderSubmitting = false;
-
+let whatsappWindow = null;
 
 
 const GOOGLE_SCRIPT_URL =
@@ -314,8 +315,12 @@ function evaluateStoreStatus(){
     return;
   }
 
-  const now =
-    new Date();
+  const now = new Date(
+  new Date().toLocaleString(
+    "en-US",
+    { timeZone: "Asia/Kolkata" }
+  )
+);
 
   const currentMinutes =
     now.getHours() * 60 +
@@ -357,9 +362,15 @@ function evaluateStoreStatus(){
   }else{
 
     storeStatusMessage =
-      `🔴 Cafe is Closed for Today. Next Orders: Tomorrow Open ${openTime} - ${closeTime}`;
+      `🔴 Cafe is Closed for Today. Next Orders: Tomorrow Open ${openTime} - ${lastOrderTime}`;
   }
-
+	console.log({
+  currentMinutes,
+  openMinutes,
+  closeMinutes,
+  lastOrderTime,
+  orderingEnabled
+});
   updateStoreBanner();
 }
 
@@ -929,7 +940,9 @@ if(!orderingEnabled){
   }
 
   paymentInProgress = true;
-
+	
+	whatsappWindow = window.open('', '_blank');
+	
   const payButton =
     document.getElementById('payButton');
 
@@ -979,7 +992,15 @@ if(!orderingEnabled){
     modal: {
 
       ondismiss: function(){
-
+		
+		if(
+			whatsappWindow &&
+			!whatsappWindow.closed
+		){
+			whatsappWindow.close();
+			whatsappWindow = null;
+		}
+  
         paymentInProgress = false;
 
         payButton.disabled = false;
@@ -1008,9 +1029,16 @@ if(!orderingEnabled){
     new Razorpay(options);
 
   rzp.on('payment.failed', function () {
-
+	
+	if(
+		whatsappWindow &&
+		!whatsappWindow.closed
+	){
+		whatsappWindow.close();
+		whatsappWindow = null;
+	}
+	
     paymentInProgress = false;
-
     payButton.disabled = false;
 
     payButton.innerText =
@@ -1230,15 +1258,23 @@ ${instructions}
 💳 Razorpay Payment ID:
 ${razorpayPaymentId}`;
 
-    const whatsappURL =
-      'https://wa.me/917385556163?text=' +
-      encodeURIComponent(message);
+     
+	const whatsappURL =
+	'https://wa.me/917385556163?text=' +
+	encodeURIComponent(message);
 
-    window.open(
-      whatsappURL,
-      '_blank'
-    );
-  
+	if(whatsappWindow){
+
+	  whatsappWindow.location =
+		whatsappURL;
+
+	}else{
+
+	  window.open(
+		whatsappURL,
+		'_blank'
+	  );
+	}
 
 	window.onbeforeunload = null;
 	
@@ -1251,6 +1287,7 @@ ${razorpayPaymentId}`;
   paymentSuccess = false;
 
   razorpayPaymentId = '';
+  whatsappWindow = null;
 
   document.getElementById('name').value = '';
 
