@@ -54,6 +54,10 @@
       font-size:18px;
       font-weight:bold;
     }
+	.qty-btn:disabled{
+		opacity:0.4;
+		cursor:not-allowed;
+	}
 
     .drawer-btn{
       display:block;
@@ -136,6 +140,9 @@
 	<div class="text-xs text-center text-gray-500 mb-3">
 		Select add-ons before clicking + for your favorite dish.
 	</div>
+	
+	<div  id="storeStatus"  class="text-center text-sm font-bold mb-4">
+	</div>
   
   <div id="menu"></div>
 	
@@ -170,6 +177,14 @@
 
 let menu = [];
 const cart = {};
+
+let storeConfig = {};
+
+let orderingEnabled = true;
+
+let storeStatusMessage = '';
+
+
 
 const deliveryCharges = {
 
@@ -252,6 +267,117 @@ function showCategory(categoryId){
   document
     .getElementById('menuDrawer')
     .classList.add('hidden');
+}
+
+async function loadStoreConfig(){
+
+  try{
+
+    const response =
+      await fetch('store-config.json');
+					
+    storeConfig =
+      await response.json();
+
+    evaluateStoreStatus();
+
+  }catch(error){
+
+    console.error(
+      'Store config load failed',
+      error
+    );
+
+    orderingEnabled = false;
+
+  storeStatusMessage =
+    '🔴 Store Status Unavailable. Please refresh and try after sometime.';
+
+  updateStoreBanner();
+  }
+
+}
+
+function evaluateStoreStatus(){
+
+  if(
+    storeConfig.storeOpen === false
+  ){
+
+    orderingEnabled = false;
+
+    storeStatusMessage =
+      '🔴 Store Closed';
+
+    updateStoreBanner();
+
+    return;
+  }
+
+  const now =
+    new Date();
+
+  const currentMinutes =
+    now.getHours() * 60 +
+    now.getMinutes();
+
+  const openTime =
+    storeConfig.schedule.daily.open;
+
+  const closeTime =
+    storeConfig.schedule.daily.close;
+
+  const openParts =
+    openTime.split(':');
+
+  const closeParts =
+    closeTime.split(':');
+
+  const openMinutes =
+    parseInt(openParts[0]) * 60 +
+    parseInt(openParts[1]);
+
+  const closeMinutes =
+    parseInt(closeParts[0]) * 60 +
+    parseInt(closeParts[1]);
+
+  const lastOrderTime =
+    closeMinutes -
+    storeConfig.lastOrderBufferMinutes;
+
+  orderingEnabled =
+    currentMinutes >= openMinutes &&
+    currentMinutes < lastOrderTime;
+
+  if(orderingEnabled){
+
+    storeStatusMessage =
+      `🟢 Accepting Orders till ${openTime} - ${lastOrderTime}`;
+
+  }else{
+
+    storeStatusMessage =
+      `🔴 Cafe is Closed for Today. Next Orders: Tomorrow Open ${openTime} - ${closeTime}`;
+  }
+
+  updateStoreBanner();
+}
+
+function updateStoreBanner(){
+
+  const banner =
+    document.getElementById(
+      'storeStatus'
+    );
+
+  if(!banner){
+
+    return;
+  }
+
+  banner.innerHTML =
+    storeStatusMessage;
+
 }
 
 
@@ -373,6 +499,7 @@ ${
 		<div class="text-[10px] text-gray-400 mt-1">
 			Select add-ons before clicking +
 		</div>
+		
 
       </div>
 
@@ -408,6 +535,7 @@ ${
 
           <button
             class="qty-btn"
+			${orderingEnabled ? '' : 'disabled'}
             onclick="increase('${item.id}','${item.name}',${item.basePrice})">
 
             +
@@ -434,6 +562,16 @@ function showDetails(name,details){
 
 function increase(id,name,basePrice){
 
+if(!orderingEnabled){
+
+  alert(
+    'Store is currently closed for new orders.'
+  );
+
+  return;
+}
+
+
   let selectedAddons = [];
 
   let finalPrice = basePrice;
@@ -442,6 +580,8 @@ function increase(id,name,basePrice){
     menu
       .flatMap(cat => cat.items)
       .find(i => i.id === id);
+	  
+	  
 
   if(item && item.addons){
 
@@ -703,6 +843,15 @@ if(
 
 
 function startPayment(){
+
+if(!orderingEnabled){
+
+  alert(
+    'Store is currently closed for new orders.'
+  );
+
+  return;
+}
 
   if(paymentInProgress){
 
@@ -1148,7 +1297,13 @@ function closeCart(){
 }
 
 
-loadMenu();
+(async function(){
+
+  await loadStoreConfig();
+
+  await loadMenu();
+
+})();
 
 
 
