@@ -1,7 +1,7 @@
 {
   "storeOpen": true,
 
-  "lastOrderBufferMinutes": 30,
+  "lastOrderBufferMinutes": 0,
 
   "schedule": {
     "daily": {
