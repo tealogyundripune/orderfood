@@ -216,7 +216,7 @@ let paymentSuccess = false;
 let razorpayPaymentId = '';
 
 let orderSubmitting = false;
-let whatsappWindow = null;
+
 
 
 const GOOGLE_SCRIPT_URL =
@@ -357,12 +357,12 @@ function evaluateStoreStatus(){
   if(orderingEnabled){
 
     storeStatusMessage =
-      `🟢 Accepting Orders till ${openTime} - ${lastOrderTime}`;
+      `🟢 Accepting Orders till ${openTime} - ${closeTime}`;
 
   }else{
 
     storeStatusMessage =
-      `🔴 Cafe is Closed for Today. Next Orders: Tomorrow Open ${openTime} - ${lastOrderTime}`;
+      `🔴 Cafe is Closed for Today. Next Orders: Tomorrow Open ${openTime} - ${closeTime}`;
   }
 	console.log({
   currentMinutes,
@@ -941,7 +941,7 @@ if(!orderingEnabled){
 
   paymentInProgress = true;
 	
-	whatsappWindow = window.open('', '_blank');
+
 	
   const payButton =
     document.getElementById('payButton');
@@ -993,13 +993,7 @@ if(!orderingEnabled){
 
       ondismiss: function(){
 		
-		if(
-			whatsappWindow &&
-			!whatsappWindow.closed
-		){
-			whatsappWindow.close();
-			whatsappWindow = null;
-		}
+	
   
         paymentInProgress = false;
 
@@ -1030,13 +1024,7 @@ if(!orderingEnabled){
 
   rzp.on('payment.failed', function () {
 	
-	if(
-		whatsappWindow &&
-		!whatsappWindow.closed
-	){
-		whatsappWindow.close();
-		whatsappWindow = null;
-	}
+	
 	
     paymentInProgress = false;
     payButton.disabled = false;
@@ -1258,23 +1246,16 @@ ${instructions}
 💳 Razorpay Payment ID:
 ${razorpayPaymentId}`;
 
-     
 	const whatsappURL =
 	'https://wa.me/917385556163?text=' +
 	encodeURIComponent(message);
 
-	if(whatsappWindow){
-
-	  whatsappWindow.location =
-		whatsappURL;
-
-	}else{
 
 	  window.open(
 		whatsappURL,
 		'_blank'
 	  );
-	}
+	
 
 	window.onbeforeunload = null;
 	
@@ -1287,7 +1268,7 @@ ${razorpayPaymentId}`;
   paymentSuccess = false;
 
   razorpayPaymentId = '';
-  whatsappWindow = null;
+  
 
   document.getElementById('name').value = '';
 
