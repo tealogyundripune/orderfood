@@ -484,58 +484,51 @@ function renderMenu(selectedCategory='frequently'){
 
 </div>
 
-${item.addons.map(addon => `
+${item.addons ? `
 
-  <div class="flex items-center justify-between mb-2">
+  ${item.addons.map(addon => `
 
-    <span>
+    <div class="flex items-center justify-between mb-2">
 
-      ${addon.name}
-      (+₹${addon.price})
-
-    </span>
-
-    <div class="flex items-center gap-2">
-
-      <button
-        type="button"
-        class="qty-btn"
-        onclick="decreaseAddonQty('${item.id}','${addon.name}')">
-
-        -
-
-      </button>
-
-      <span
-        id="addonqty-${item.id}-${addon.name}">
-
-        0
-
+      <span>
+        ${addon.name} (+₹${addon.price})
       </span>
 
-      <button
-        type="button"
-        class="qty-btn"
-        onclick="increaseAddonQty('${item.id}','${addon.name}')">
+      <div class="flex items-center gap-2">
 
-        +
+        <button
+          type="button"
+          class="qty-btn"
+          onclick="decreaseAddonQty('${item.id}','${addon.name}')">
+          -
+        </button>
 
-      </button>
+        <span id="addonqty-${item.id}-${addon.name}">
+          ${
+            addonQuantities[
+              item.id + '__' + addon.name
+            ] || 0
+          }
+        </span>
 
-    </div>
-
-  </div>
-
-`).join('')}
-		
-		<div class="font-bold text-[10px] text-green-500 mt-1">
-			Select add-ons before clicking +
-		</div>
-		
+        <button
+          type="button"
+          class="qty-btn"
+          onclick="increaseAddonQty('${item.id}','${addon.name}')">
+          +
+        </button>
 
       </div>
 
-    `
+    </div>
+
+  `).join('')}
+
+  <div class="font-bold text-[10px] text-green-500 mt-1">
+    Select add-ons before clicking +
+  </div>
+
+` : ''}
     
 
         <div
