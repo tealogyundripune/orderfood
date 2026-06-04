@@ -375,7 +375,7 @@
   },
   {
     "id": "flavoured_tea",
-    "category": "Flavoured Tea (Paper Cup) 🍵",
+    "category": "Flavoured Tea 🍵",
     "items": [
       {
         "id": "chocolate_tea_2nos",
@@ -455,26 +455,26 @@
     "items": [
       {
         "id": "green_tea",
-        "name": "GREEN TEA",
-        "basePrice": 15,
+        "name": "GREEN TEA (2 Nos)",
+        "basePrice": 31,
         "details": "A refreshing blend of green tea leaves with a touch of mint and lemongrass, this beverage is a perfect way to start your day."
       },
       {
         "id": "black_tea",
         "name": "BLACK TEA (2 Nos)",
-        "basePrice": 30,
+        "basePrice": 31,
         "details": "Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
       },
       {
         "id": "lemon_tea",
-        "name": "LEMON TEA",
-        "basePrice": 15,
+        "name": "LEMON TEA (2 Nos)",
+        "basePrice": 31,
         "details": "Lemon flavored black tea.Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
       },
       {
         "id": "lemon_honey_tea",
-        "name": "LEMON HONEY TEA",
-        "basePrice": 15,
+        "name": "LEMON HONEY TEA (2 Nos)",
+        "basePrice": 31,
         "details": "Sipping hot cup of water with honey and lemon is both tasty and soothing. Honey, Chia seeds and lemons may also have many health benefits, such as melting fat, clearing up acne, or flushing out toxins from the body."
       }
     ]
