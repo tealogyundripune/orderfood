@@ -705,10 +705,13 @@ const addonKey =
       ? `${id}__${addonKey}`
       : id;
 
+    
   const displayName =
-    selectedAddons.length > 0
-      ? `${name} (${selectedAddons.map(a => a.name).join(', ')})`
-      : name;
+  selectedAddons.length > 0
+    ? `${name} (${selectedAddons
+        .map(a => `${a.name} x${a.qty}`)
+        .join(', ')})`
+    : name;		
 
   if(!cart[cartId]){
 
