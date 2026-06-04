@@ -349,12 +349,26 @@ function evaluateStoreStatus(){
     parseInt(closeParts[1]);
 
   const lastOrderTime =
-    closeMinutes -
-    storeConfig.lastOrderBufferMinutes;
+  closeMinutes -
+  storeConfig.lastOrderBufferMinutes;
 
-  orderingEnabled =
-    currentMinutes >= openMinutes &&
-    currentMinutes < lastOrderTime;
+	if(closeMinutes > openMinutes){
+
+	  // Same-day schedule
+
+	  orderingEnabled =
+		currentMinutes >= openMinutes &&
+		currentMinutes < lastOrderTime;
+
+	}else{
+
+	  // Schedule crosses midnight
+
+	  orderingEnabled =
+		currentMinutes >= openMinutes ||
+		currentMinutes < lastOrderTime;
+
+	}
 
   if(orderingEnabled){
 
