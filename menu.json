@@ -6,7 +6,7 @@
       {
         "id": "adrak_tea_2nos_f_k",
         "name": "ADRAK TEA (2 Nos.)",
-        "basePrice": 41,
+        "basePrice": 31,
 		"addons": [
 
 			{
@@ -58,7 +58,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -72,7 +73,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -86,7 +88,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -100,7 +103,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -120,7 +124,7 @@
 	  },
 	  {
         "id": "naughty_nutella_waffle_f",
-        "name": "NAUGHTY NUTELLA",
+        "name": "NAUGHTY NUTELLA WAFFLE",
         "basePrice": 132,
         "details": "Warm, crispy  waffle slathered with rich, creamy  Nutella spread"
       }
@@ -163,7 +167,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -177,7 +182,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],		
@@ -198,7 +204,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -212,7 +219,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -225,15 +233,18 @@
 		"addons": [
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			},
 			{
 				"name": "Single Pav(1x)",
-				"price": 5
+				"price": 5,
+					"qty": 0
 			},
 			{
 				"name": "Double Pav(2x)",
-				"price": 10
+				"price": 10,
+				"qty": 0
 			}
 		],
 		"details": "Flavourful Pav Bhaji Paired with Minty and Tangy Refreshing Shikanji Cooler"
@@ -246,7 +257,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],	
@@ -260,7 +272,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],		
@@ -448,8 +461,8 @@
       },
       {
         "id": "black_tea",
-        "name": "BLACK TEA",
-        "basePrice": 15,
+        "name": "BLACK TEA (2 Nos)",
+        "basePrice": 30,
         "details": "Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
       },
       {
@@ -472,8 +485,8 @@
     "items": [
       {
         "id": "black_coffee",
-        "name": "BLACK COFFEE",
-        "basePrice": 31,
+        "name": "BLACK COFFEE (2 Nos)",
+        "basePrice": 62,
         "details": "Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
       },
       {
@@ -544,7 +557,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -576,15 +590,18 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			},
 			{
 				"name": "Single Pav(1x)",
-				"price": 5
+				"price": 5,
+				"qty": 0
 			},
 			{
 				"name": "Double Pav(2x)",
-				"price": 10
+				"price": 10,
+				"qty": 0
 			}
 
 		  ],
@@ -604,7 +621,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],		
@@ -618,7 +636,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],		
@@ -645,7 +664,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],
@@ -659,7 +679,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],
@@ -673,7 +694,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -687,7 +709,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],
@@ -701,7 +724,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+			"qty": 0
 			}
 
 		  ],
@@ -715,7 +739,8 @@
 
 			{
 			  "name": "Extra Cheese",
-			  "price": 21
+			  "price": 21,
+				"qty": 0
 			}
 
 		  ],
@@ -765,55 +790,55 @@
     "items": [
       {
         "id": "chocolate_waffle",
-        "name": "CHOCOLATE WAFFLE",
+        "name": "CHOCOLATE WAFFLE WAFFLE",
         "basePrice": 101,
         "details": "Crispy chocolate waffle stuffed with   chocolate spread"
       },
       {
         "id": "white_chocolate_waffle",
-        "name": "WHITE CHOCOLATE",
+        "name": "WHITE CHOCOLATE WAFFLE",
         "basePrice": 107,
         "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with white chocolate"
       },
       {
         "id": "fantasy_dark_white_waffle",
-        "name": "FANTASY (DARK + WHITE)",
+        "name": "FANTASY (DARK + WHITE) WAFFLE",
         "basePrice": 107,
         "details": "Crispy chocolate waffle stuffed with dark n white  chocolate spread"
       },
       {
         "id": "oreo_delight_waffle",
-        "name": "OREO DELIGHT",
+        "name": "OREO DELIGHT WAFFLE",
         "basePrice": 111,
         "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with crushed oreo bites bites"
       },
       {
         "id": "krazy_kitkat_waffle",
-        "name": "KRAZY KITKAT",
+        "name": "KRAZY KITKAT WAFFLE",
         "basePrice": 111,
         "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with crunchy KitKat bites"
       },
       {
         "id": "cokkie_n_cream_waffle",
-        "name": "COOKIE N CREAM",
+        "name": "COOKIE N CREAM WAFFLE",
         "basePrice": 132,
         "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with creamy cookie n cream filling"
       },
       {
         "id": "chewy_caramel_waffle",
-        "name": "CHEWY CARAMEL",
+        "name": "CHEWY CARAMEL WAFFLE",
         "basePrice": 132,
         "details": "Crispy chocolate waffle stuffed with  chocolate spread and loaded with chewy caramel inside"
       },
       {
         "id": "fudgy_brownie_waffle",
-        "name": "FUDGY BROWNIE",
+        "name": "FUDGY BROWNIE WAFFLE",
         "basePrice": 132,
         "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with walnut brownie"
       },
       {
         "id": "naughty_nutella_waffle",
-        "name": "NAUGHTY NUTELLA",
+        "name": "NAUGHTY NUTELLA WAFFLE",
         "basePrice": 132,
         "details": "Warm, crispy  waffle slathered with rich, creamy  Nutella spread"
       }
@@ -922,6 +947,12 @@
       {
         "id": "blueberry_ice_crush",
         "name": "BLUEBERRY",
+        "basePrice": 81,
+        "details": "Naturally sweet, fruity, and perfectly chilled."
+      },
+      {
+        "id": "kalakhatta_ice_crush",
+        "name": "KALA KHATTA",
         "basePrice": 81,
         "details": "Naturally sweet, fruity, and perfectly chilled."
       }
