@@ -139,7 +139,7 @@
 	</h3>
 	
 	
-	<div class="font-bold text-xs text-center text-green-500 mb-3">
+	<div class="font-bold text-s text-center text-green-500 mb-3">
 		Select add-ons before clicking + for your favorite dish.
 	</div>
 	
@@ -484,32 +484,51 @@ function renderMenu(selectedCategory='frequently'){
 
 </div>
 
-${
-  item.addons
-    ? `
+${item.addons.map(addon => `
 
-      <div class="mt-2 text-xs text-gray-700">
+  <div class="flex items-center justify-between mb-2">
 
-        ${item.addons.map(addon => `
+    <span>
 
-          <label class="flex items-center gap-2 mb-1">
+      ${addon.name}
+      (+₹${addon.price})
 
-            <input
-              type="checkbox"
-              id="${item.id}-${addon.name}">
+    </span>
 
-            <span>
+    <div class="flex items-center gap-2">
 
-              ${addon.name}
-              (+₹${addon.price})
+      <button
+        type="button"
+        class="qty-btn"
+        onclick="decreaseAddonQty('${item.id}','${addon.name}')">
 
-            </span>
+        -
 
-          </label>
+      </button>
 
-        `).join('')}
+      <span
+        id="addonqty-${item.id}-${addon.name}">
+
+        0
+
+      </span>
+
+      <button
+        type="button"
+        class="qty-btn"
+        onclick="increaseAddonQty('${item.id}','${addon.name}')">
+
+        +
+
+      </button>
+
+    </div>
+
+  </div>
+
+`).join('')}
 		
-		<div class="text-[10px] text-green-400 mt-1">
+		<div class="font-bold text-[10px] text-green-500 mt-1">
 			Select add-ons before clicking +
 		</div>
 		
@@ -567,6 +586,49 @@ ${
   document.getElementById('menu').innerHTML = html;
 }
 
+const addonQuantities = {};
+
+function increaseAddonQty(itemId,addonName){
+
+  const key =
+    itemId + '__' + addonName;
+
+  addonQuantities[key] =
+    (addonQuantities[key] || 0) + 1;
+
+  updateAddonDisplay(itemId,addonName);
+}
+
+function decreaseAddonQty(itemId,addonName){
+
+  const key =
+    itemId + '__' + addonName;
+
+  addonQuantities[key] =
+    Math.max(
+      0,
+      (addonQuantities[key] || 0) - 1
+    );
+
+  updateAddonDisplay(itemId,addonName);
+}
+
+function updateAddonDisplay(itemId,addonName){
+
+  const key =
+    itemId + '__' + addonName;
+
+  const span =
+    document.getElementById(
+      `addonqty-${itemId}-${addonName}`
+    );
+
+  if(span){
+
+    span.innerText =
+      addonQuantities[key] || 0;
+  }
+}
 function showDetails(name,details){
 
   alert(name + '\n\n' + details);
@@ -598,28 +660,39 @@ if(!orderingEnabled){
 
   if(item && item.addons){
 
-    item.addons.forEach(addon => {
+  item.addons.forEach(addon => {
 
-      const checkbox =
-        document.getElementById(
-          `${id}-${addon.name}`
-        );
+    const key =
+      id + '__' + addon.name;
 
-      if(checkbox && checkbox.checked){
+    const qty =
+      addonQuantities[key] || 0;
 
-        selectedAddons.push(addon);
+    if(qty > 0){
 
-        finalPrice += addon.price;
-      }
+      selectedAddons.push({
 
-    });
+        name: addon.name,
 
-  }
+        price: addon.price,
 
-  const addonKey =
-    selectedAddons
-      .map(a => a.name)
-      .join('|');
+        qty: qty
+
+      });
+
+      finalPrice +=
+        addon.price * qty;
+
+    }
+
+  });
+
+}
+
+const addonKey =
+  selectedAddons
+    .map(a => `${a.name}_${a.qty}`)
+    .join('|');
 
   const cartId =
     addonKey
