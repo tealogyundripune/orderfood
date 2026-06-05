@@ -234,17 +234,12 @@
 			{
 			  "name": "Extra Cheese",
 			  "price": 21,
-				"qty": 0
-			},
-			{
-				"name": "Single Pav(1x)",
-				"price": 5,
-					"qty": 0
+			  "qty": 0
 			},
 			{
 				"name": "Double Pav(2x)",
 				"price": 10,
-				"qty": 0
+				"type": "qtyaddon"
 			}
 		],
 		"details": "Flavourful Pav Bhaji Paired with Minty and Tangy Refreshing Shikanji Cooler"
@@ -594,14 +589,9 @@
 				"qty": 0
 			},
 			{
-				"name": "Single Pav(1x)",
-				"price": 5,
-				"qty": 0
-			},
-			{
 				"name": "Double Pav(2x)",
 				"price": 10,
-				"qty": 0
+				"type": "qtyaddon"
 			}
 
 		  ],
