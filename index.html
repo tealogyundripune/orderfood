@@ -498,45 +498,30 @@ function renderMenu(selectedCategory='frequently'){
 
 </div>
 
-${item.addons ? `
+${
+  item.addons
+    ? `
 
-  ${item.addons.map(addon => `
+      <div class="mt-2 text-xs text-gray-700">
 
-    <div class="flex items-center justify-between mb-2">
+        ${item.addons.map(addon => `
 
-      <span>
-        ${addon.name} (+₹${addon.price})
-      </span>
+          <label class="flex items-center gap-2 mb-1">
 
-      <div class="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="${item.id}-${addon.name}">
 
-        <button
-          type="button"
-          class="qty-btn"
-          onclick="decreaseAddonQty('${item.id}','${addon.name}')">
-          -
-        </button>
+            <span>
 
-        <span id="addonqty-${item.id}-${addon.name}">
-          ${
-            addonQuantities[
-              item.id + '__' + addon.name
-            ] || 0
-          }
-        </span>
+              ${addon.name}
+              (+₹${addon.price})
 
-        <button
-          type="button"
-          class="qty-btn"
-          onclick="increaseAddonQty('${item.id}','${addon.name}')">
-          +
-        </button>
+            </span>
 
-      </div>
+          </label>
 
-    </div>
-
-  `).join('')}
+        `).join('')}
 
   <div class="font-bold text-[10px] text-green-500 mt-1">
     Select add-ons before clicking +
@@ -668,26 +653,16 @@ if(!orderingEnabled){
 
   item.addons.forEach(addon => {
 
-    const key =
-      id + '__' + addon.name;
+    const checkbox =
+        document.getElementById(
+          `${id}-${addon.name}`
+        );
 
-    const qty =
-      addonQuantities[key] || 0;
+      if(checkbox && checkbox.checked){
 
-    if(qty > 0){
+        selectedAddons.push(addon);
 
-      selectedAddons.push({
-
-        name: addon.name,
-
-        price: addon.price,
-
-        qty: qty
-
-      });
-
-      finalPrice +=
-        addon.price * qty;
+        finalPrice += addon.price;
 
     }
 
@@ -695,10 +670,10 @@ if(!orderingEnabled){
 
 }
 
-const addonKey =
-  selectedAddons
-    .map(a => `${a.name}_${a.qty}`)
-    .join('|');
+ const addonKey =
+    selectedAddons
+      .map(a => a.name)
+      .join('|');
 
   const cartId =
     addonKey
@@ -708,10 +683,8 @@ const addonKey =
     
   const displayName =
   selectedAddons.length > 0
-    ? `${name} (${selectedAddons
-        .map(a => `${a.name} x${a.qty}`)
-        .join(', ')})`
-    : name;		
+    ? `${name} (${selectedAddons.map(a => a.name).join(', ')})`
+      : name;	
 
   if(!cart[cartId]){
 
