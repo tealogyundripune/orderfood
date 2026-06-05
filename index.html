@@ -1286,10 +1286,10 @@ async function submitOrder(){
     ? item.addons
         .map(a =>
           a.qty
-            ? `${a.name} x${a.qty}`
+            ? `${a.name} | Qty = ${a.qty}`
             : a.name
         )
-        .join(', ')
+        .join('; ')
     : '';
 
 orderText +=
