@@ -504,24 +504,66 @@ ${
 
       <div class="mt-2 text-xs text-gray-700">
 
-        ${item.addons.map(addon => `
+        ${item.addons.map(addon => {
 
-          <label class="flex items-center gap-2 mb-1">
+  if(addon.type === 'qtyaddon'){
 
-            <input
-              type="checkbox"
-              id="${item.id}-${addon.name}">
+    return `
 
-            <span>
+      <div class="flex items-center justify-between mb-1">
 
-              ${addon.name}
-              (+₹${addon.price})
+        <span>
+          ${addon.name}
+          (+₹${addon.price})
+        </span>
 
-            </span>
+        <div class="flex items-center gap-2">
 
-          </label>
+          <button
+            type="button"
+            class="qty-btn"
+            onclick="decreaseAddonQty('${item.id}','${addon.name}')">
+            -
+          </button>
 
-        `).join('')}
+          <span
+            id="addonqty-${item.id}-${addon.name}">
+            0
+          </span>
+
+          <button
+            type="button"
+            class="qty-btn"
+            onclick="increaseAddonQty('${item.id}','${addon.name}')">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+  return `
+
+    <label class="flex items-center gap-2 mb-1">
+
+      <input
+        type="checkbox"
+        id="${item.id}-${addon.name}">
+
+      <span>
+        ${addon.name}
+        (+₹${addon.price})
+      </span>
+
+    </label>
+
+  `;
+
+}).join('')}
 
 	  <div class="font-bold text-[10px] text-green-500 mt-1">
 		Select add-ons before clicking +
@@ -655,27 +697,52 @@ if(!orderingEnabled){
 
   item.addons.forEach(addon => {
 
-    const checkbox =
-        document.getElementById(
-          `${id}-${addon.name}`
-        );
+  if(addon.type === 'qtyaddon'){
 
-      if(checkbox && checkbox.checked){
+    const key =
+      id + '__' + addon.name;
 
-        selectedAddons.push(addon);
+    const qty =
+      addonQuantities[key] || 0;
 
-        finalPrice += addon.price;
+    if(qty > 0){
 
+      selectedAddons.push({
+        ...addon,
+        qty: qty
+      });
+
+      finalPrice +=
+        addon.price * qty;
     }
 
-  });
+    return;
+  }
+
+  const checkbox =
+    document.getElementById(
+      `${id}-${addon.name}`
+    );
+
+  if(checkbox && checkbox.checked){
+
+    selectedAddons.push(addon);
+
+    finalPrice += addon.price;
+  }
+
+});
 
 }
 
  const addonKey =
-    selectedAddons
-      .map(a => a.name)
-      .join('|');
+  selectedAddons
+    .map(a =>
+      a.qty
+      ? `${a.name}:${a.qty}`
+      : a.name
+    )
+    .join('|');
 
   const cartId =
     addonKey
@@ -685,8 +752,14 @@ if(!orderingEnabled){
     
   const displayName =
   selectedAddons.length > 0
-    ? `${name} (${selectedAddons.map(a => a.name).join(', ')})`
-      : name;	
+    ? `${name} (${selectedAddons
+        .map(a =>
+          a.qty
+            ? `${a.name} x${a.qty}`
+            : a.name
+        )
+        .join(', ')})`
+    : name;
 
   if(!cart[cartId]){
 
@@ -705,7 +778,24 @@ if(!orderingEnabled){
   }
 
   cart[cartId].qty++;
+	
+	item.addons?.forEach(addon => {
 
+  if(addon.type === 'qtyaddon'){
+
+    const key =
+      id + '__' + addon.name;
+
+    addonQuantities[key] = 0;
+
+    updateAddonDisplay(
+      id,
+      addon.name
+    );
+  }
+
+});
+	
   updateCart();
 }
 
