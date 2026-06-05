@@ -750,16 +750,7 @@ if(!orderingEnabled){
       : id;
 
     
-  const displayName =
-  selectedAddons.length > 0
-    ? `${name} (${selectedAddons
-        .map(a =>
-          a.qty
-            ? `${a.name} x${a.qty}`
-            : a.name
-        )
-        .join(', ')})`
-    : name;
+  const displayName = name;
 
   if(!cart[cartId]){
 
@@ -779,22 +770,7 @@ if(!orderingEnabled){
 
   cart[cartId].qty++;
 	
-	item.addons?.forEach(addon => {
-
-  if(addon.type === 'qtyaddon'){
-
-    const key =
-      id + '__' + addon.name;
-
-    addonQuantities[key] = 0;
-
-    updateAddonDisplay(
-      id,
-      addon.name
-    );
-  }
-
-});
+	
 	
   updateCart();
 }
@@ -821,7 +797,52 @@ function decrease(id){
 
     delete cart[lastKey];
   }
+	
+	const stillExists =
+  Object.keys(cart).some(key =>
+    key === id ||
+    key.startsWith(id + '__')
+  );
 
+if(!stillExists){
+
+  const item =
+    menu
+      .flatMap(cat => cat.items)
+      .find(i => i.id === id);
+
+  item?.addons?.forEach(addon => {
+
+    if(addon.type === 'qtyaddon'){
+
+      const key =
+        id + '__' + addon.name;
+
+      addonQuantities[key] = 0;
+
+      updateAddonDisplay(
+        id,
+        addon.name
+      );
+    }
+    else{
+
+      const checkbox =
+        document.getElementById(
+          `${id}-${addon.name}`
+        );
+
+      if(checkbox){
+
+        checkbox.checked = false;
+      }
+
+    }
+
+  });
+
+}
+	
   updateCart();
 }
 
@@ -842,21 +863,42 @@ function updateCart(){
 
     itemCount += item.qty;
 
-    html += `
+    const addonText =
+  item.addons?.length
+    ? item.addons
+        .map(a =>
+          a.qty
+            ? `${a.name} x${a.qty}`
+            : a.name
+        )
+        .join(', ')
+    : '';
 
-      <div class="flex justify-between mb-2">
+html += `
 
-        <span>
-          ${item.name} x${item.qty}
-        </span>
+  <div class="flex justify-between mb-2">
 
-        <span>
-          ₹${itemTotal}
-        </span>
+    <span>
 
-      </div>
+      ${item.name} x${item.qty}
 
-    `;
+      ${
+        addonText
+          ? `<div class="text-xs text-gray-500">
+               Addon: ${addonText}
+             </div>`
+          : ''
+      }
+
+    </span>
+
+    <span>
+      ₹${itemTotal}
+    </span>
+
+  </div>
+
+`;
   }
 
 
@@ -1239,8 +1281,26 @@ async function submitOrder(){
 
     total += itemTotal;
 
-    orderText +=
-      `• ${item.name} | Qty = ${qty} \n`;
+  const addonText =
+  item.addons?.length
+    ? item.addons
+        .map(a =>
+          a.qty
+            ? `${a.name} x${a.qty}`
+            : a.name
+        )
+        .join(', ')
+    : '';
+
+orderText +=
+  `• ${item.name} | Qty = ${qty}\n`;
+
+if(addonText){
+
+  orderText +=
+    `   Addon: ${addonText}\n`;
+
+}
   }
 
   const packingCharge = 25;
