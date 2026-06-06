@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tealogy Kitchen Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+}
+
+.status-header{
+  font-weight:bold;
+  padding:10px;
+  margin-top:8px;
+  border-radius:8px;
+}
+
+.status-PRINTED{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.status-PREPARING{
+  background:#ffedd5;
+  color:#c2410c;
+}
+
+.status-READY{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.status-DELIVERED{
+  background:#e5e7eb;
+  color:#374151;
+}
+
+.order-link{
+  cursor:pointer;
+  padding:8px 12px;
+  margin:4px 0;
+  border-radius:8px;
+}
+
+.order-link:hover{
+  background:#f3f4f6;
+}
+
+.area-title{
+  font-size:16px;
+  color:#374151;
+  font-weight:700;
+  padding:8px 8px;
+  margin-left:8px;
+}
+
+.selected{
+  background:#dbeafe;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="h-screen flex">
+
+  <!-- LEFT PANEL -->
+
+  <div class="w-1/3 border-r bg-white overflow-y-auto">
+
+    <div class="p-3 border-b sticky top-0 bg-white z-10">
+
+      <h1 class="text-xl font-bold">
+        🍽 Kitchen Dashboard
+      </h1>
+
+      <input
+        id="search"
+        placeholder="Search customer..."
+        class="w-full mt-3 border rounded p-2"
+        onkeyup="renderNavigation()">
+
+      <div class="text-xs text-gray-500 mt-2">
+        Auto Refresh : 15 sec
+      </div>
+
+    </div>
+
+    <div id="navigation"></div>
+
+  </div>
+
+  <!-- RIGHT PANEL -->
+
+  <div class="flex-1 overflow-y-auto">
+
+    <div
+      id="details"
+      class="p-6">
+
+      <div class="text-gray-400 text-lg">
+        Select an order
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbwhnGZWszjdPMqtbzlVMs8Y5Q9KeLWcBSv0m9-OgTSRdKuMKWtgqhuE-uRpex4kDITfdg/exec";
+
+let orders = [];
+let selectedOrderId = null;
+
+const expandedStatuses = {
+
+  NEW: true,
+  PRINTED: false,
+  PREPARING: false,
+  READY: false,
+  DELIVERED: false
+
+};
+
+function toggleStatus(status){
+
+  expandedStatuses[status] =
+    !expandedStatuses[status];
+
+  renderNavigation();
+
+}
+
+
+async function loadOrders(){
+
+  try{
+
+    const response =
+      await fetch(API_URL);
+
+    orders =
+      await response.json();
+	  
+	  console.log("TOTAL ORDERS", orders.length);
+
+const newOrders =
+  orders.filter(
+    o =>
+      (o.STATUS || "")
+      .trim()
+      .toUpperCase() === "NEW"
+  );
+
+console.log("NEW ORDERS", newOrders);
+
+    orders.sort((a,b)=>
+      new Date(b["Order Received"]) -
+      new Date(a["Order Received"])
+    );
+
+    renderNavigation();
+
+    if(
+      selectedOrderId &&
+      orders.find(
+        o=>o.OrderID===selectedOrderId
+      )
+    ){
+      showOrder(selectedOrderId);
+    }
+
+  }
+  catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+function renderNavigation(){
+
+  const nav =
+    document.getElementById(
+      "navigation"
+    );
+
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase();
+
+  nav.innerHTML = "";
+
+  const statuses = [
+
+	"NEW",
+    "PRINTED",
+    "PREPARING",
+    "READY",
+    "DELIVERED"
+	
+
+  ];
+
+  statuses.forEach(status=>{
+
+    const statusOrders =
+      orders.filter(order=>
+
+        (order.STATUS || "")
+			.trim()
+			.toUpperCase() === status
+
+        &&
+
+        (
+          !search ||
+
+          (order.Customer || "")
+            .toLowerCase()
+            .includes(search)
+        )
+
+      );
+
+    if(statusOrders.length===0){
+      return;
+    }
+
+    const header =
+      document.createElement("div");
+
+    header.className =
+      "status-header status-" + status;
+
+    const icon =
+		expandedStatuses[status]
+		? "▼"
+		: "▶";
+
+		header.innerText =
+		`${icon} ${status} (${statusOrders.length})`;
+
+		header.style.cursor = "pointer";
+
+		header.onclick = () =>
+		toggleStatus(status);
+
+    nav.appendChild(header);
+	
+	if(!expandedStatuses[status]){
+	return;
+	}
+
+    const areaGroups = {};
+
+    statusOrders.forEach(order=>{
+
+      const area =
+        order["Delivery Area"] ||
+        "Unknown";
+
+      if(!areaGroups[area]){
+
+        areaGroups[area] = [];
+
+      }
+
+      areaGroups[area].push(order);
+
+    });
+
+    Object.keys(areaGroups)
+      .sort()
+      .forEach(area=>{
+
+        const areaTitle =
+          document.createElement("div");
+
+        areaTitle.className =
+          "area-title";
+
+        areaTitle.innerText = area;
+
+        nav.appendChild(areaTitle);
+
+        areaGroups[area]
+          .forEach(order=>{
+
+            const div =
+              document.createElement(
+                "div"
+              );
+
+           	div.className = "order-link ml-6";
+
+            if(
+              order.OrderID ===
+              selectedOrderId
+            ){
+              div.classList.add(
+                "selected"
+              );
+            }
+
+            div.innerHTML = `
+				<div class="text-sm font-semibold">
+				  └── ${order.Customer}| ${order.OrderID}
+				</div>
+
+				<div class="text-xs text-gray-500 ml-5">
+				  ${order.OrderType}
+				</div>`;
+
+            div.onclick = ()=>{
+
+              showOrder(
+                order.OrderID
+              );
+
+            };
+
+            nav.appendChild(div);
+
+          });
+
+      });
+
+  });
+
+}
+
+function showOrder(orderId){
+
+  selectedOrderId = orderId;
+
+  renderNavigation();
+
+  const order =
+    orders.find(
+      o=>o.OrderID===orderId
+    );
+
+  if(!order){
+    return;
+  }
+
+  document
+    .getElementById("details")
+    .innerHTML = `
+
+	<div class="flex justify-between items-center mb-4">
+
+	  <h2 class="text-2xl font-bold">
+		${order.OrderID}
+	  </h2>
+
+	  <button
+		onclick="printOrder('${order.OrderID}')"
+		class="bg-blue-600 text-white px-4 py-2 rounded"
+	  >
+		🖨️ Print Order
+	  </button>
+
+	</div>
+		
+      <div class="grid md:grid-cols-2 gap-4">
+	
+        <div>
+
+          <div>
+            <b>Customer:</b>
+            ${order.Customer}
+          </div>
+		  <div>
+
+		  <b>Phone:</b>
+			 ${order.Phone}
+		  <a
+			href="https://wa.me/91${order.Phone}"
+			target="_blank"
+			class="text-green-600 font-bold">
+
+			📱 WhatsApp Customer
+
+		  </a>
+
+		</div>
+
+          <div>
+            <b>Status:</b>
+            ${order.STATUS}
+          </div>
+
+          <div>
+            <b>Order Type:</b>
+            ${order.OrderType}
+          </div>
+
+          <div>
+            <b>Delivery Area:</b>
+            ${order["Delivery Area"]}
+          </div>
+
+        </div>
+
+        <div>
+
+          <div>
+            <b>Received:</b><br>
+            ${order["Order Received"]}
+          </div>
+
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div>
+
+        <b>Delivery Address</b>
+
+        <div class="mt-2">
+          ${order["Delivery Address"] || "-"}
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div>
+
+        <b>Items</b>
+
+        <pre class="mt-2 whitespace-pre-wrap bg-gray-100 p-3 rounded">
+${order.Items}
+        </pre>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+
+        <div>
+          <b>Subtotal</b><br>
+          ₹${order.Subtotal}
+        </div>
+
+        <div>
+          <b>Packing</b><br>
+          ₹${order.Packing}
+        </div>
+
+        <div>
+          <b>Delivery</b><br>
+          ₹${order["Delivery Fee"]}
+        </div>
+
+        <div>
+          <b>GST</b><br>
+          ₹${order.GST}
+        </div>
+
+        <div>
+          <b>Total</b><br>
+          ₹${order.Total}
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div>
+
+        <b>Instructions</b>
+
+        <div class="mt-2">
+          ${order.Instructions || "-"}
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div>
+
+        <b>Payment ID</b>
+
+        <div class="mt-2 break-all">
+          ${order.PaymentID || "-"}
+        </div>
+
+      </div>
+
+    `;
+
+}
+function printOrder(orderId){
+
+  const order =
+    orders.find(
+      o => o.OrderID === orderId
+    );
+
+  if(!order){
+    return;
+  }
+
+  const win =
+    window.open(
+      "",
+      "_blank",
+      "width=800,height=900"
+    );
+
+  win.document.write(`
+<html>
+<head>
+<title>${order.OrderID}</title>
+
+<style>
+
+@page{
+  size:80mm auto;
+  margin:3mm;
+}
+
+body{
+  font-family:monospace;
+  font-size:12px;
+  width:72mm;
+  margin:0;
+  padding:0;
+}
+
+.center{
+  text-align:center;
+}
+
+.line{
+  border-top:1px dashed #000;
+  margin:4px 0;
+}
+
+.total{
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.items{
+  white-space:pre-wrap;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="center">
+  <b>TEALOGY CAFE</b><br>
+  Undri, Pune
+</div>
+
+<div class="line"></div>
+
+Order : ${order.OrderID}<br>
+Date  : ${order["Order Received"]}<br>
+Cust  : ${order.Customer}<br>
+Phone : ${order.Phone}<br>
+
+<div class="line"></div>
+
+Order Type : ${order.OrderType}<br>
+Area       : ${order["Delivery Area"] || ""}<br>
+Address    : ${order["Delivery Address"] || ""}<br>
+Instructions : ${order.Instructions || "-"}<br>
+
+<div class="line"></div>
+
+<b>Items : Check Add-On & Quantity</b>
+
+<div class="items">
+${order.Items}
+</div>
+
+<div class="line"></div>
+
+<div class="total">
+TOTAL Rs.${order.Total}
+</div>
+
+<div class="center">
+<br>
+Thank You ☕
+</div>
+
+<script>
+window.onload=function(){
+  window.print();
+}
+<\/script>
+
+</body>
+</html>
+`);
+
+  win.document.close();
+
+}
+loadOrders();
+
+setInterval(
+  loadOrders,
+  15000
+);
+
+</script>
+
+</body>
+</html>
