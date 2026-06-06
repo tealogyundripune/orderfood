@@ -482,7 +482,7 @@ function renderMenu(selectedCategory='frequently'){
 
     let qty = 0;
 
-	Object.keys(ca	rt).forEach(cartKey => {
+	Object.keys(cart).forEach(cartKey => {
 
 	  if(
 		cartKey === item.id ||
@@ -516,6 +516,11 @@ ${
 
         ${item.addons.map(addon => {
 		
+		const addonQty =
+  addonQuantities[
+    item.id + '__' + addon.name
+  ] || 0;
+  
 		const isChecked =
   Object.values(cart).some(cartItem =>
     cartItem.id.startsWith(item.id) &&
@@ -524,10 +529,7 @@ ${
     )
   );
 	
-	const addonQty =
-  addonQuantities[
-    item.id + '__' + addon.name
-  ] || 0;
+	
 		
   if(addon.type === 'qtyaddon'){
 
