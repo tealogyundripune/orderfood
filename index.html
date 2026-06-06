@@ -480,10 +480,19 @@ function renderMenu(selectedCategory='frequently'){
 
   category.items.forEach(item => {
 
-    let qty =
-      cart[item.id]
-      ? cart[item.id].qty
-      : 0;
+    let qty = 0;
+
+	Object.keys(ca	rt).forEach(cartKey => {
+
+	  if(
+		cartKey === item.id ||
+		cartKey.startsWith(item.id + '__')
+	  ){
+
+		qty += cart[cartKey].qty;
+	  }
+
+	});
 
     html += `
 
