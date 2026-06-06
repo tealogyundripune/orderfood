@@ -552,7 +552,8 @@ ${
 
       <input
         type="checkbox"
-        id="${item.id}-${addon.name}">
+        id="${item.id}-${addon.name}"
+		onchange="refreshCartItemForAddonChange('${item.id}')">
 
       <span>
         ${addon.name}
@@ -632,6 +633,7 @@ function increaseAddonQty(itemId,addonName){
     (addonQuantities[key] || 0) + 1;
 
   updateAddonDisplay(itemId,addonName);
+  refreshCartItemForAddonChange(itemId);
 }
 
 function decreaseAddonQty(itemId,addonName){
@@ -646,6 +648,110 @@ function decreaseAddonQty(itemId,addonName){
     );
 
   updateAddonDisplay(itemId,addonName);
+  refreshCartItemForAddonChange(itemId);
+}
+
+function refreshCartItemForAddonChange(itemId){
+
+  const item =
+    menu
+      .flatMap(cat => cat.items)
+      .find(i => i.id === itemId);
+
+  if(!item){
+    return;
+  }
+
+  const matchingCartItems =
+    Object.values(cart)
+      .filter(c =>
+        c.id.startsWith(itemId + "__") ||
+        c.id === itemId
+      );
+
+  matchingCartItems.forEach(cartItem => {
+
+    const existingQty = cartItem.qty;
+
+    delete cart[cartItem.id];
+
+    let selectedAddons = [];
+
+    let finalPrice =
+      item.basePrice;
+
+    item.addons?.forEach(addon => {
+
+      if(addon.type === 'qtyaddon'){
+
+        const key =
+          item.id + '__' + addon.name;
+
+        const qty =
+          addonQuantities[key] || 0;
+
+        if(qty > 0){
+
+          selectedAddons.push({
+            ...addon,
+            qty: qty
+          });
+
+          finalPrice +=
+            addon.price * qty;
+        }
+
+        return;
+      }
+
+      const checkbox =
+        document.getElementById(
+          `${item.id}-${addon.name}`
+        );
+
+      if(
+        checkbox &&
+        checkbox.checked
+      ){
+
+        selectedAddons.push(addon);
+
+        finalPrice += addon.price;
+      }
+
+    });
+
+    const addonKey =
+      selectedAddons
+        .map(a =>
+          a.qty
+            ? `${a.name}:${a.qty}`
+            : a.name
+        )
+        .join('|');
+
+    const newCartId =
+      addonKey
+        ? `${item.id}__${addonKey}`
+        : item.id;
+
+    cart[newCartId] = {
+
+      id: newCartId,
+
+      name: item.name,
+
+      qty: existingQty,
+
+      price: finalPrice,
+
+      addons: selectedAddons
+
+    };
+
+  });
+
+  updateCart();
 }
 
 function updateAddonDisplay(itemId,addonName){
