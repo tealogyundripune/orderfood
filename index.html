@@ -453,7 +453,8 @@ function renderMenu(selectedCategory='frequently'){
 
   const category =
     menu.find(cat => cat.id === selectedCategory);
-
+	
+	
   if(!category){
 
     html = '<div class="text-red-500">Category not found</div>';
@@ -505,7 +506,20 @@ ${
       <div class="mt-2 text-xs text-gray-700">
 
         ${item.addons.map(addon => {
-
+		
+		const isChecked =
+  Object.values(cart).some(cartItem =>
+    cartItem.id.startsWith(item.id) &&
+    cartItem.addons?.some(a =>
+      a.name === addon.name
+    )
+  );
+	
+	const addonQty =
+  addonQuantities[
+    item.id + '__' + addon.name
+  ] || 0;
+		
   if(addon.type === 'qtyaddon'){
 
     return `
@@ -528,7 +542,7 @@ ${
 
           <span
             id="addonqty-${item.id}-${addon.name}">
-            0
+            ${addonQty}
           </span>
 
           <button
@@ -553,6 +567,7 @@ ${
       <input
         type="checkbox"
         id="${item.id}-${addon.name}"
+		${isChecked ? 'checked' : ''}
 		onchange="refreshCartItemForAddonChange('${item.id}')">
 
       <span>
