@@ -1,0 +1,1180 @@
+[
+	{
+    "id":"frequently",
+    "category":"Best Seller ⭐",
+    "items":[
+      {
+        "id": "adrak_tea_2nos_f_k",
+        "name": "ADRAK TEA (2 Nos.)",
+        "basePrice": 31,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+
+        "details": "A soothing and aromatic blend of ginger roots, tea leaves and milk. Perfect for a calming and refreshing experience."
+      },
+      {
+        "id": "baarish_wali_chai_2nos_f_k",
+        "name": "BAARISH WALI CHAI (2 Nos.)",
+        "basePrice": 41,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A soothing blend of tea with a hint of ginger + elachi, perfect for those who love the warmth of a cup of tea."
+      },
+	  {
+        "id": "indori_poha_f",
+        "name": "INDORI POHA",
+        "basePrice": 70,
+        "details": "White rice poha tossed with ready to eat, onion, potato and spices. Sev and lemon on the side."
+      },
+	  {
+        "id": "maska_bun_f",
+        "name": "MASKA BUN",
+        "basePrice": 40,
+        "details": "Freshly baked pillowy soft sweet bun sliced in the middle and generously slathered with tealogy special maska cream, some even oozing out from the sides."
+      },
+	  {
+        "id": "vada_pav_f",
+        "name": "VADA PAV",
+        "basePrice": 26,
+        "details": "Mumbai Style , deep-fried, spiced potato fritter (vada)  sandwiched inside a soft bread bun (pav)"
+      },
+      {
+        "id": "dabeli_f",
+        "name": "DABELI",
+        "basePrice": 40,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Spicy, tangy, and sweet potato filling sandwiched in a soft bun with chutneys and crunchy sev — a flavorful street-style snack in every bite."
+      },
+	  {
+        "id": "cheese_corn_sandwich_f",
+        "name": "CHEESE CORN SANDWICH",
+        "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Grilled sandwich stuffed with boiled corn  and cheese along with Tealogy special spices"
+      },
+      {
+        "id": "vegetable_club_sandwich_f",
+        "name": "VEGETABLE CLUB SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with an overload of assorted veggies seasoned to perfection."
+      },
+	  {
+        "id": "vegetable_maggi_f",
+        "name": "VEGETABLE MAGGI",
+        "basePrice": 81,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "A tasty and nutritious dish that is perfect for vegetarians. It is a spicy and flavorful dish that contains mixed vegetables and noodles in a flavorful gravy."
+      },
+	  {
+        "id": "dal_chawal_f",
+        "name": "DAL CHAWAL",
+        "basePrice": 132,
+        "details": "Simple, comforting lentils served with steamed rice — wholesome, hearty, and satisfying."
+      },
+	  {
+        "id":"cold_coffee_f",
+        "name":"COLD COFFEE",
+        "basePrice":91,
+        "details":"A refreshing beverage made with  coffee and milk that is rich and creamy with a hint of sweetness."
+	  },
+	  {
+        "id": "naughty_nutella_waffle_f",
+        "name": "NAUGHTY NUTELLA WAFFLE",
+        "basePrice": 132,
+        "details": "Warm, crispy  waffle slathered with rich, creamy  Nutella spread"
+      }
+    ]
+  },
+  {
+    "id": "combo",
+    "category": "Best Value 🎁",
+	"highlight": true,
+    "items": [
+      {
+        "id": "poha_vadapav_chai_2nos",
+        "name": "CHAI(2 Nos.)+ INDORI POHA + VADA PAV",
+        "basePrice": 119,
+        "details": "Chai In Combination with Golden, crispy toast generously spread with creamy butter. Simple, warm, and delightfully comforting in every bite. "
+      },
+	  {
+        "id": "butter_toast_chai_2nos",
+        "name": "CHAI(2 Nos.)+ BUTTER TOAST",
+        "basePrice": 69,
+        "details": "Chai In Combination with Golden, crispy toast generously spread with creamy butter. Simple, warm, and delightfully comforting in every bite. "
+      },
+      {
+        "id": "bun_maska_chai_2nos",
+        "name": "CHAI(2 Nos.) + BUN MASKA",
+        "basePrice": 69,
+        "details": "Chai in combination with Freshly baked pillowy soft sweet bun sliced in the middle and generously slathered with tealogy special maska cream, some even oozing out from the sides."
+      },
+      {
+        "id": "masala_tea_fries_2nos_combo",
+        "name": "FRIES + MASALA TEA(2 Nos.)",
+        "basePrice": 119,
+        "details": "Masala tea in combiation with Crispy, crunchy, and a perfect accompaniment to any meal. These golden, fried potato sticks are a favorite among all ages."
+      },
+      {
+        "id": "masala_sandwich_cold_coffee_combo",
+        "name": "MASALA SANDWICH + COLD COFFEE",
+        "basePrice": 149,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Enjoy cold cofffee with Crispy grilled sandwich with spicy Indori masala, veggies and chutney."
+      },
+      {
+        "id": "masala_maggi_mango_shake_combo",
+        "name": "MASALA MAGGI + MANGO SHAKE",
+        "basePrice": 149,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],		
+		
+        "details": "Enjoy your favorite Mango Shake with a delicious combination of masala and Maggi noodles, this dish is a wholesome meal that will satisfy your hunger."
+      },
+      {
+        "id": "Vada_Pav_Masala_Lemon_combo",
+        "name": "VADA PAV + MASALA LEMON",
+        "basePrice": 91,
+        "details": "Mumbai Style Vada Pav  paired with a zesty Masala Lemon cooler for a spicy refreshing and satisfying combo"
+      },
+      {
+        "id": "dabeli_classic_jeeru_combo",
+        "name": "DABELI ( 2PCS )+ CLASSIC JEERU",
+        "basePrice": 149,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Sweet Spicy and Tangy Dabeli served with a  Classic Jeeru Cooler for a bold and refreshing mini snack combo"
+      },
+      {
+        "id": "vegetable_club_cold_coffee_combo",
+        "name": "VEGETABLE CLUB SANDWICH + COLD COFFEE",
+        "basePrice": 189,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Grilled Veg Sandwich  paired with creamy cold coffee  for a filling meal combo"
+      },
+      {
+        "id": "PAV_BHAJI_SHIKANJI_combo",
+        "name": "PAV BHAJI + SHIKANJI",
+        "basePrice": 189,
+		"addons": [
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			  "qty": 0
+			},
+			{
+				"name": "Double Pav(2x)",
+				"price": 10,
+				"type": "qtyaddon"
+			}
+		],
+		"details": "Flavourful Pav Bhaji Paired with Minty and Tangy Refreshing Shikanji Cooler"
+      },
+      {
+        "id": "POTATO_SHOTS_CHEESE_CORN_SANDWICH_CHOCOLATE_combo",
+        "name": "CHILLI GARLIC POTATO SHOTS + CHEESE CORN SANDWICH + COLD COFFEE(CHOCOLATE)",
+        "basePrice": 259,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],	
+        "details": "Cheezy Corn Sandwich paired with rich Chocolate cold coffee and crispy potato shots ideal for brunch"
+      },
+      {
+        "id": "vegetable_maggi_cold_coffee_combo",
+        "name": "Vegetable Maggi + Cold Coffee",
+        "basePrice": 169,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],		
+        "details": "Comforting hot-and-cold meal combo"
+      }
+    ]
+  },
+  {
+	  
+    "id": "desi_chai",
+    "category": "Desi Chai ☕",
+    "items": [
+		
+      {
+        "id": "cutting_chai_2nos",
+        "name": "CUTTING CHAI (2 Nos.)",
+        "basePrice": 31,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A stronger version of the regular chai."
+      },
+      {
+        "id": "adrak_tea_2nos",
+        "name": "ADRAK TEA (2 Nos.)",
+        "basePrice": 41,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A soothing and aromatic blend of ginger roots, tea leaves and milk. Perfect for a calming and refreshing experience."
+      },
+      {
+        "id": "baarish_wali_chai_2nos",
+        "name": "BAARISH WALI CHAI (2 Nos.)",
+        "basePrice": 41,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A soothing blend of tea with a hint of ginger + elachi, perfect for those who love the warmth of a cup of tea."
+      },
+      {
+        "id": "elaichi_tea_2nos",
+        "name": "ELAICHI TEA (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A soothing blend of tea with a hint of aromatic elachi, perfect for those who love the warmth of a cup of tea."
+      },
+      {
+        "id": "masala_tea_2nos",
+        "name": "MASALA TEA (2 Nos.)",
+        "basePrice": 31,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "It is made by brewing black tea in milk and water and then sweetening with sugar. Adding herbs and spices creates masala chai. Masala chai is just that amazing flavorsome, delicious and totally relaxing."
+      },
+      {
+        "id": "gud_wali_chai_2nos",
+        "name": "GUD WALI CHAI (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "Rich, slow-brewed tea sweetened with natural jaggery for a warm, earthy, caramel-like taste in every comforting sip."        
+      }
+    ]
+  },
+  {
+    "id": "flavoured_tea",
+    "category": "Flavoured Tea 🍵",
+    "items": [
+      {
+        "id": "chocolate_tea_2nos",
+        "name": "CHOCOLATE TEA (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A rich Tea-logy  black tea with milk blended with real morsels of dark chocolate and cocoa beans, yielding a truly enveloping and lingering aftertaste. A perfect dessert tea."
+      },
+      {
+        "id": "paan_tea_2nos",
+        "name": "PAAN TEA (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "This paan tea leaves gives you a sweet-smelling and exceptional tasting cup of tea with a plethora of health perks. Tealogy paan tea consists of a premium blend of assam black tea and milk flavored with paan extract."
+      },
+      {
+        "id": "kesar_tea_2nos",
+        "name": "KESAR TEA (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A rich and flavorful chai made with saffron and milk."
+      },
+      {
+        "id": "rose_tea_2nos",
+        "name": "ROSE TEA (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A rich and flavorful chai made with rose flavor and milk."
+      },
+      {
+        "id": "mango_tea_2nos",
+        "name": "MANGO TEA (2 Nos.)",
+        "basePrice": 51,
+		"addons": [
+
+			{
+			  "name": "In Kulhad",
+			  "price": 11
+			}
+
+		  ],
+        "details": "A rich and flavorful chai made with mango flavor and milk."
+      }
+    ]
+  },
+  {
+    "id": "healthy_tea",
+    "category": "Healthy Tea 🍃",
+    "items": [
+      {
+        "id": "green_tea",
+        "name": "GREEN TEA (2 Nos)",
+        "basePrice": 31,
+        "details": "A refreshing blend of green tea leaves with a touch of mint and lemongrass, this beverage is a perfect way to start your day."
+      },
+      {
+        "id": "black_tea",
+        "name": "BLACK TEA (2 Nos)",
+        "basePrice": 31,
+        "details": "Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
+      },
+      {
+        "id": "lemon_tea",
+        "name": "LEMON TEA (2 Nos)",
+        "basePrice": 31,
+        "details": "Lemon flavored black tea.Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
+      },
+      {
+        "id": "lemon_honey_tea",
+        "name": "LEMON HONEY TEA (2 Nos)",
+        "basePrice": 31,
+        "details": "Sipping hot cup of water with honey and lemon is both tasty and soothing. Honey, Chia seeds and lemons may also have many health benefits, such as melting fat, clearing up acne, or flushing out toxins from the body."
+      }
+    ]
+  },
+  {
+    "id": "coffee",
+    "category": "Coffee 🍵",
+    "items": [
+      {
+        "id": "black_coffee",
+        "name": "BLACK COFFEE (2 Nos)",
+        "basePrice": 62,
+        "details": "Indulge in a delightful, rich and aromatic sip of this classic beverage that will awaken your senses."
+      },
+      {
+        "id": "hot_coffee_2nos",
+        "name": "HOT COFFEE (2 Nos.)",
+        "basePrice": 51,
+        "details": "coffee beans  hot coffee by adding hot water or milk to coffee solids in powdered or crystallized form and steam."
+      },
+      {
+        "id": "chocolate_hot_coffee_2nos",
+        "name": "CHOCOLATE HOT COFFEE (2 Nos.)",
+        "basePrice": 71,
+        "details": "A delicious blend of coffee and chocolate."
+      }
+    ]
+  },
+  {
+    "id": "tea_snacks",
+    "category": "Tea Snacks 🥖🍟",
+    "items": [
+      {
+        "id": "butter_toast",
+        "name": "BUTTER TOAST",
+        "basePrice": 40,
+        "details": "Golden, crispy toast generously spread with creamy butter. Simple, warm, and delightfully comforting in every bite."
+      },
+      {
+        "id": "maska_bun",
+        "name": "MASKA BUN",
+        "basePrice": 40,
+        "details": "Freshly baked pillowy soft sweet bun sliced in the middle and generously slathered with tealogy special maska cream, some even oozing out from the sides."
+      },
+      {
+        "id": "french_fries",
+        "name": "FRENCH FRIES",
+        "basePrice": 91,
+        "details": "Crispy, crunchy, and a perfect accompaniment to any meal. These golden, fried potato sticks are a favorite among all ages."
+      },
+      {
+        "id": "peri_peri_french_fries",
+        "name": "PERI PERI FRENCH FRIES",
+        "basePrice": 111,
+        "details": "Crispy and flavorful fries with a kick of spice from the peri peri sauce. A delightful snack for any occasion."
+      },
+      {
+        "id": "potato_shots_12nos",
+        "name": "CHILLI GARLIC POTATO SHOTS",
+        "basePrice": 81,
+        "details": "Chilli Garlic Potato Shots"
+      }
+    ]
+  },
+  {
+    "id": "desi_food",
+    "category": "Desi🍔🌶️",
+    "items": [
+      {
+        "id": "vada_pav",
+        "name": "VADA PAV",
+        "basePrice": 26,
+        "details": "Mumbai Style , deep-fried, spiced potato fritter (vada)  sandwiched inside a soft bread bun (pav)"
+      },
+      {
+        "id": "dabeli",
+        "name": "DABELI",
+        "basePrice": 40,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Spicy, tangy, and sweet potato filling sandwiched in a soft bun with chutneys and crunchy sev — a flavorful street-style snack in every bite."
+      },
+      {
+        "id": "indori_poha",
+        "name": "INDORI POHA",
+        "basePrice": 70,
+        "details": "White rice poha tossed with ready to eat, onion, potato and spices. Sev and lemon on the side."
+      },
+      {
+        "id": "dry_fruite_upma_mix",
+        "name": "DRY FRUIT UPMA MIX",
+        "basePrice": 91,
+        "details": "Nutty and wholesome upma blended with crunchy dry fruits — hearty, flavorful, and perfect for a quick, nutritious meal."
+      },
+      {
+        "id": "masala_oats_meal",
+        "name": "MASALA OATS MEAL",
+        "basePrice": 91,
+        "details": "Healthy and flavorful oats cooked with aromatic spices and vegetables — warm, hearty, and packed with taste in every bite."
+      },
+      {
+        "id": "pav_bhaji",
+        "name": "PAV BHAJI (1 Pax)",
+        "basePrice": 111,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			},
+			{
+				"name": "Double Pav(2x)",
+				"price": 10,
+				"type": "qtyaddon"
+			}
+
+		  ],
+        "details": "Pav bhaji is a spiced mixture of mashed vegetables in a thick gravy served with bread. Ready to eat Vegetables in the curry may commonly include potatoes, onion, carrots, chillies, peas, bell peppers and tomatoes."
+      }
+    ]
+  },
+  {
+    "id": "maggi",
+    "category": "Maggi 🍜",
+    "items": [
+      {
+        "id": "masala_maggi",
+        "name": "MASALA MAGGI",
+        "basePrice": 70,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],		
+        "details": "A delicious combination of masala and Maggi noodles, this dish is a wholesome meal that will satisfy your hunger."
+      },
+      {
+        "id": "vegetable_maggi",
+        "name": "VEGETABLE MAGGI",
+        "basePrice": 81,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],		
+        "details": "A tasty and nutritious dish that is perfect for vegetarians. It is a spicy and flavorful dish that contains mixed vegetables and noodles in a flavorful gravy."
+      },
+      {
+        "id": "cheese_corn_maggi",
+        "name": "CHEESE CORN MAGGI",
+        "basePrice": 91,
+		
+        "details": "Maggi always remains the favourite recipe for kids. Add a twist to this quick and easy recipe by adding cheese and corn. Tada! the cheese and corn maggi for new fav."
+      }
+    ]
+  },
+  {
+    "id": "sandwich",
+    "category": "Sandwich 🥪",
+    "items": [
+      {
+        "id": "coleslaw_sandwich",
+        "name": "COLESLAW SANDWICH",
+        "basePrice": 60,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "Cold and crunchy non grilled with finely chopped veges mixed with a creamy, tangy mayonnaise-based dressing, served between soft bread."
+      },
+      {
+        "id": "masala_sandwich",
+        "name": "MASALA SANDWICH",
+        "basePrice": 70,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "Crispy grilled sandwich with spicy Indori masala, veggies and chutney."
+      },
+      {
+        "id": "cheese_chutney_sandwich",
+        "name": "CHEESE CHUTNEY SANDWICH",
+        "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "A  triple layered sandwich stuffed with a delectable mix of cheese and chutney. A perfect snack for those looking for a quick bite."
+      },
+      {
+        "id": "cheese_corn_sandwich",
+        "name": "CHEESE CORN SANDWICH",
+        "basePrice": 91,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "Grilled sandwich stuffed with boiled corn  and cheese along with Tealogy special spices"
+      },
+      {
+        "id": "chocolate_sandwich",
+        "name": "CHOCOLATE SANDWICH",
+        "basePrice": 81,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "A quick-fix dessert or snack featuring crispy, butter-toasted bread stuffed with melted chocolate,"
+      },
+      {
+        "id": "vegetable_club_sandwich",
+        "name": "VEGETABLE CLUB SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with an overload of assorted veggies seasoned to perfection."
+      }
+    ]
+  },
+  {
+    "id": "nong_jain",
+    "category": "Jain Preparation",
+    "items": [
+      {
+        "id": "masala_maggi_j",
+        "name": "MASALA MAGGI (Jain)",
+        "basePrice": 90,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],		
+        "details": "A delicious combination of masala and Maggi noodles, this dish is a wholesome meal that will satisfy your hunger."
+      },
+      {
+        "id": "vegetable_maggi_j",
+        "name": "VEGETABLE MAGGI(Jain)",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],		
+        "details": "A tasty and nutritious dish that is perfect for vegetarians. It is a spicy and flavorful dish that contains mixed vegetables and noodles in a flavorful gravy."
+      },
+      {
+        "id": "cheese_corn_maggi_j",
+        "name": "CHEESE CORN MAGGI (Jain)",
+        "basePrice": 111,
+		
+        "details": "Maggi always remains the favourite recipe for kids. Add a twist to this quick and easy recipe by adding cheese and corn. Tada! the cheese and corn maggi for new fav."
+      },
+	  {
+        "id": "coleslaw_sandwich_j",
+        "name": "COLESLAW SANDWICH (Jain)",
+        "basePrice": 80,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "Cold and crunchy non grilled with finely chopped veges mixed with a creamy, tangy mayonnaise-based dressing, served between soft bread."
+      },
+      {
+        "id": "masala_sandwich_j",
+        "name": "MASALA SANDWICH (Jain)",
+        "basePrice": 90,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "Crispy grilled sandwich with spicy Indori masala, veggies and chutney."
+      },
+      {
+        "id": "cheese_chutney_sandwich_j",
+        "name": "CHEESE CHUTNEY SANDWICH (Jain)",
+        "basePrice": 111,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "A  triple layered sandwich stuffed with a delectable mix of cheese and chutney. A perfect snack for those looking for a quick bite."
+      },
+      {
+        "id": "cheese_corn_sandwich_j",
+        "name": "CHEESE CORN SANDWICH (Jain)",
+        "basePrice": 111,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "Grilled sandwich stuffed with boiled corn  and cheese along with Tealogy special spices"
+      },
+      {
+        "id": "chocolate_sandwich_j",
+        "name": "CHOCOLATE SANDWICH (Jain)",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+			"qty": 0
+			}
+
+		  ],
+        "details": "A quick-fix dessert or snack featuring crispy, butter-toasted bread stuffed with melted chocolate,"
+      },
+      {
+        "id": "vegetable_club_sandwich_j",
+        "name": "VEGETABLE CLUB SANDWICH (Jain)",
+        "basePrice": 121,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with an overload of assorted veggies seasoned to perfection."
+      }
+    ]
+  }, 
+  {
+    "id": "rice_bowl",
+    "category": "Meals & Rice Bowls 🍛🍽",
+    "items": [
+      {
+        "id": "dal_chawal",
+        "name": "DAL CHAWAL (1 Pax)",
+        "basePrice": 132,
+        "details": "Simple, comforting lentils served with steamed rice — wholesome, hearty, and satisfying."
+      },
+      {
+        "id": "butter_khichdi",
+        "name": "BUTTER KHICHDI (1 Pax)",
+        "basePrice": 142,
+        "details": "Soft, creamy khichdi cooked with butter and spices — light, warm, and comforting."
+      },
+      {
+        "id": "rajma_rice",
+        "name": "RAJMA RICE (1 Pax)",
+        "basePrice": 162,
+        "details": "Spiced kidney beans served with steamed rice — flavorful, hearty, and homely."
+      },
+      {
+        "id": "dal_makhani_with_rice",
+        "name": "DAL MAKHANI WITH RICE (1 Pax)",
+        "basePrice": 183,
+        "details": "Creamy black lentils cooked in butter and spices, served with rice — rich, indulgent, and flavorful."
+      },
+      {
+        "id": "paneer_butter_masala_with_rice",
+        "name": "PANEER BUTTER MASALA WITH RICE (1 Pax)",
+        "basePrice": 183,
+        "details": "Soft paneer cubes in creamy tomato-butter gravy, served with steamed rice — indulgent, rich, and full of flavor."
+      }
+    ]
+  },
+  {
+    "id": "waffles",
+    "category": "Waffles 🧇",
+    "items": [
+      {
+        "id": "chocolate_waffle",
+        "name": "CHOCOLATE WAFFLE WAFFLE",
+        "basePrice": 101,
+        "details": "Crispy chocolate waffle stuffed with   chocolate spread"
+      },
+      {
+        "id": "white_chocolate_waffle",
+        "name": "WHITE CHOCOLATE WAFFLE",
+        "basePrice": 107,
+        "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with white chocolate"
+      },
+      {
+        "id": "fantasy_dark_white_waffle",
+        "name": "FANTASY (DARK + WHITE) WAFFLE",
+        "basePrice": 107,
+        "details": "Crispy chocolate waffle stuffed with dark n white  chocolate spread"
+      },
+      {
+        "id": "oreo_delight_waffle",
+        "name": "OREO DELIGHT WAFFLE",
+        "basePrice": 111,
+        "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with crushed oreo bites bites"
+      },
+      {
+        "id": "krazy_kitkat_waffle",
+        "name": "KRAZY KITKAT WAFFLE",
+        "basePrice": 111,
+        "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with crunchy KitKat bites"
+      },
+      {
+        "id": "cokkie_n_cream_waffle",
+        "name": "COOKIE N CREAM WAFFLE",
+        "basePrice": 132,
+        "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with creamy cookie n cream filling"
+      },
+      {
+        "id": "chewy_caramel_waffle",
+        "name": "CHEWY CARAMEL WAFFLE",
+        "basePrice": 132,
+        "details": "Crispy chocolate waffle stuffed with  chocolate spread and loaded with chewy caramel inside"
+      },
+      {
+        "id": "fudgy_brownie_waffle",
+        "name": "FUDGY BROWNIE WAFFLE",
+        "basePrice": 132,
+        "details": "Crispy chocolate waffle stuffed with   chocolate spread and loaded with walnut brownie"
+      },
+      {
+        "id": "naughty_nutella_waffle",
+        "name": "NAUGHTY NUTELLA WAFFLE",
+        "basePrice": 132,
+        "details": "Warm, crispy  waffle slathered with rich, creamy  Nutella spread"
+      }
+    ]
+  },
+  {
+    "id": "cold_coffee",
+    "category": "Cold Coffee 🧋",
+    "items": [
+      {
+        "id": "cold_coffee_item",
+        "name": "COLD COFFEE",
+        "basePrice": 91,
+        "details": "A refreshing beverage made with  coffee and milk that is rich and creamy with a hint of sweetness."
+      },
+      {
+        "id": "cold_coffee_with_ice_cream",
+        "name": "COLD COFFEE WITH ICE CREAM",
+        "basePrice": 111,
+        "details": "A refreshing beverage made with  coffee and milk that is rich and creamy with a hint of sweetness. with a generous scoop of vanilla ice cream"
+      },
+      {
+        "id": "chocolate_cold_coffee",
+        "name": "CHOCOLATE COLD COFFEE",
+        "basePrice": 101,
+        "details": "A refreshing beverage made with chocolate, coffee and milk that is rich and creamy with a hint of sweetness. with extra chocolate."
+      }
+    ]
+  },
+  {
+    "id": "hot_milk",
+    "category": "Hot Beverages ♨",
+    "items": [
+      {
+        "id": "badam_kesar_milk",
+        "name": "BADAM KESAR MILK (Kulhad)",
+        "basePrice": 91,
+        "details": "Almond milk, saffron, cardamom, and honey combine into a rich, hearty hot drink."
+      },
+      {
+        "id": "hot_chocolate",
+        "name": "HOT CHOCOLATE (Kulhad)",
+        "basePrice": 60,
+        "details": "A blend of premium dark chocolate and steamed milk that creates a comforting drink that warms the soul"
+      }
+    ]
+  },
+  {
+    "id": "coolers",
+    "category": "Coolers 😎",
+    "items": [
+      {
+        "id": "classic_jeeru",
+        "name": "CLASSIC JEERU",
+        "basePrice": 70,
+        "details": "Traditional Indian-style spiced soda with tangy citrus and subtle spices — refreshing, fizzy, and perfectly balanced in every sip."
+      },
+      {
+        "id": "masala_lemond",
+        "name": "MASALA LEMONADE",
+        "basePrice": 70,
+        "details": "Zesty lemonade blended with tangy spices — refreshing, tangy, and perfectly spiced for a cooling, flavorful sip."
+      },
+      {
+        "id": "shikanji",
+        "name": "SHIKANJI",
+        "basePrice": 81,
+        "details": "Classic Indian spiced lemonade with tangy lemon, black salt, and aromatic spices — refreshing, tangy, and perfectly cooling in every sip."
+      },
+      {
+        "id": "chilli_guava",
+        "name": "CHILLI GUAVA",
+        "basePrice": 81,
+        "details": "Refreshing guava drink with a spicy kick — sweet, tangy, and zesty for a bold and flavorful sip."
+      },
+      {
+        "id": "kala_khatta",
+        "name": "KALA KHATTA",
+        "basePrice": 81,
+        "details": "Tangy and sweet Indian-style black jamun syrup drink — bold, refreshing, and bursting with nostalgic summer flavors."
+      },
+	  {
+        "id": "lemon_mint_iced_tea",
+        "name": "LEMON MINT ICED TEA",
+        "basePrice": 91,
+        "details": "A refreshing beverage made with the perfect blend of tea and lemon, to quench your thirst in the hot and humid weather. The perfect way to cool down."
+      }
+    ]
+  },
+  {
+    "id": "ice_crush",
+    "category": "Ice Crush 🌪️",
+    "items": [
+      {
+        "id": "strawberry_ice_crush",
+        "name": "STRAWBERRY",
+        "basePrice": 81,
+        "details": "Sweet, fruity, and chilled to perfection."
+      },
+      {
+        "id": "kiwi_ice_crush",
+        "name": "KIWI",
+        "basePrice": 81,
+        "details": "tangy, zesty, and super refreshing."
+      },
+      {
+        "id": "blueberry_ice_crush",
+        "name": "BLUEBERRY",
+        "basePrice": 81,
+        "details": "Naturally sweet, fruity, and perfectly chilled."
+      },
+      {
+        "id": "kalakhatta_ice_crush",
+        "name": "KALA KHATTA",
+        "basePrice": 81,
+        "details": "Naturally sweet, fruity, and perfectly chilled."
+      }
+    ]
+  },
+  {
+    "id": "shakes",
+    "category": "Shakes 🧋",
+    "items": [
+      {
+        "id": "chocolate_shake",
+        "name": "CHOCOLATE SHAKE",
+        "basePrice": 101,
+        "details": "A refreshment, blended with chocolate, coco powder and milk, is a perfect cooler for your appetite."
+      },
+      {
+        "id": "oreo_shake",
+        "name": "OREO SHAKE",
+        "basePrice": 101,
+        "details": "A creamy and refreshing Oreo shake made with the goodness of milk, Oreo cookies and a hint of chocolate. A perfect blend of sweet and chocolate."
+      },
+      {
+        "id": "kit_kat_shake",
+        "name": "KIT KAT SHAKE",
+        "basePrice": 101,
+        "details": "Indulge in the ultimate sweet sensation with our delectable KitKat Shake! Satisfy your cravings with a creamy blend of rich chocolate  pieces and crunchy KitKat chunks."
+      },
+      {
+        "id": "brownie_shake",
+        "name": "BROWNIE SHAKE",
+        "basePrice": 111,
+        "details": "Indulge in the ultimate sweet sensation with our delectable Brownie Shake! Satisfy your cravings with a creamy blend of rich chocolate brownie pieces and crunchy  chunks."
+      }
+    ]
+  },
+  {
+    "id": "fruit_shakes",
+    "category": "Fruit Shakes 🍓",
+    "items": [
+      {
+        "id": "strawberry_shake",
+        "name": "STRAWBERRY SHAKE",
+        "basePrice": 91,
+        "details": "Idulge in the cold milk shake blend with strawberry flavour & topped with ice cream. Lusciousness of this creamy and refreshing strawberry milkshake, perfect for a fruity and delightful treat."
+      },
+      {
+        "id": "mango_shake",
+        "name": "MANGO SHAKE",
+        "basePrice": 91,
+        "details": "A creamy and tangy beverage that is packed with the goodness of mangoes. A perfect way to cool down on a sweltering summer day."
+      },
+      {
+        "id": "kiwi_shake",
+        "name": "KIWI SHAKE",
+        "basePrice": 91,
+        "details": "A creamy and rich milkshake made from milk and kiwi ice cream and kiwi refreshing beverage for your thirst."
+      },
+      {
+        "id": "blueberry_shake",
+        "name": "BLUEBERRY SHAKE",
+        "basePrice": 101,
+        "details": "Taste the richness of blackberry, blackcurrant purple plum in this thick & creamy milkshake, providing a burst of summer sweetness with every sip"
+      },
+      {
+        "id": "kesar_thandaai_milkshake",
+        "name": "KESAR THANDAAI MILKSHAKE",
+        "basePrice": 121,
+        "details": "Chilled, creamy milkshake infused with saffron and traditional Thandai spices — aromatic, rich, and refreshingly indulgent."
+      },
+      {
+        "id": "chiku_milkshake",
+        "name": "CHIKU MILKSHAKE",
+        "basePrice": 121,
+        "details": "Smooth and creamy milkshake made with ripe chiku (sapodilla) — naturally sweet, rich, and delightfully refreshing in every sip."
+      }
+    ]
+  },
+  {
+    "id": "cheese_milk_shake",
+    "category": "Cheesecake Milk Shake 🥛",
+    "items": [
+      {
+        "id": "mango_cheese_cake_milk_shake",
+        "name": "MANGO CHEESE CAKE MILK SHAKE",
+        "basePrice": 152,
+        "details": "Creamy milkshake blended with ripe mango and rich cheesecake flavor — sweet, indulgent, and decadently smooth in every sip."
+      },
+      {
+        "id": "strawberry_cheese_cake_milk_shake",
+        "name": "STRAWBERRY CHEESE CAKE MILK SHAKE",
+        "basePrice": 152,
+        "details": "Smooth and creamy milkshake with sweet strawberries and rich cheesecake flavor — indulgent, fruity, and delightfully decadent in every sip."
+      },
+      {
+        "id": "blueberry_cheese_cake_milk_shake",
+        "name": "BLUEBERRY CHEESE CAKE MILK SHAKE",
+        "basePrice": 152,
+        "details": "Creamy milkshake blended with juicy blueberries and rich cheesecake flavor — smooth, fruity, and decadently indulgent in every sip."
+      }
+    ]
+  }
+]
