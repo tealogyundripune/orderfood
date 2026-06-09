@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+
+  <base target="_top">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Tealogy Cafe (Undri) Food Order App</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+	
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+	
+
+  <style>
+	
+	html{
+	scroll-behavior:smooth;
+	}
+	
+    body{
+      background:#fcfbf8;
+      font-family:Arial,sans-serif;
+    }
+
+    .card{
+      background:white;
+      padding:12px;
+      border-radius:14px;
+      margin-bottom:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .btn{
+      background:#e23744;
+      color:white;
+      border:none;
+      padding:10px;
+      border-radius:10px;
+      font-weight:bold;
+    }
+
+    .qty-btn{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      border:none;
+      background:#e23744;
+      color:white;
+      font-size:18px;
+      font-weight:bold;
+    }
+	.qty-btn:disabled{
+		opacity:0.4;
+		cursor:not-allowed;
+	}
+
+    .drawer-btn{
+      display:block;
+      width:100%;
+      text-align:left;
+      padding:14px;
+      border-bottom:1px solid #eee;
+      font-weight:bold;
+    }
+
+    .drawer-btn:hover{
+      background:#f5f5f5;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .item-title{
+      font-size:15px;
+      font-weight:bold;
+      line-height:1.2;
+    }
+
+    .price{
+      color:#666;
+      font-size:14px;
+    }
+
+    .details-link{
+      color:#e23744;
+      font-size:12px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:4px;
+    }
+
+    @media(max-width:640px){
+
+      .menu-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+	
+	.blink-dot {
+	animation: blink 1s infinite;
+	}
+
+	@keyframes blink {
+	  0%   { opacity: 1; }
+	  50%  { opacity: 0.2; }
+	  100% { opacity: 1; }
+	}
+	
+	.tagline {
+  color: #c2410c;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 2px rgba(234,88,12,0.2);
+  }
+  to {
+    text-shadow: 0 0 10px rgba(234,88,12,0.6);
+  }
+}
+
+body {
+  background: #fcfbf8;
+}
+
+.hero-section {
+  background: linear-gradient(
+    to bottom,
+    #fff7ec,
+    #fffdf9
+  );
+  border-radius: 20px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.hero-banner {
+  width: 100%;
+  max-height:180px;
+	object-fit:cover;
+    border-radius: 16px;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.08),
+    0 1px 3px rgba(0,0,0,0.05);
+}
+
+.visit-wrapper{
+    text-align:center;
+    margin:16px 0;
+}
+
+.visit-btn{
+
+    display:inline-block;
+
+    padding:10px 24px;
+
+    border-radius:999px;
+
+    border:1px solid #f4b183;
+
+    background:white;
+
+    color:#dc2626;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.05);
+
+    transition:.2s;
+}
+
+.visit-btn:hover{
+    transform:translateY(-1px);
+}
+
+.hero-banner-container{
+    margin-bottom:16px;
+}
+
+.tagline-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    margin:16px 0;
+
+    color:#c2410c;
+    font-size:1.5rem;
+    font-weight:700;
+}
+
+.visit-wrapper{
+    margin-top:16px;
+    margin-bottom:16px;
+}
+
+.kulhad-icon{
+    height:42px;
+    width:auto;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="max-w-md mx-auto p-4 pb-32">
+
+  <div class="hero-banner-container">
+  <img
+    src="Background.png"
+    alt="Tealogy Cafe"
+    class="hero-banner"
+    
+  >
+</div>
+  <div class="tagline-divider">
+	<img
+		src = "Kulhad.png"
+		alt = "Yaar Mera Kulhad"
+		class="kulhad-icon" 
+	>
+	<span>Yaar Mera Kulhad</span>
+	</div>
+	<p class="text-center font-bold text-gray-500 mb-4">
+    Fresh Tea | Breakfast | Snacks | Meal | Waffles
+	</p>
+	
+	<div class="visit-wrapper">
+		<a
+		  href="https://maps.app.goo.gl/Z6xVWp7v9HAjTfEq5" target="_blank" class="visit-btn">
+		  📍 Visit Cafe
+		</a>
+
+	</div>
+	
+	
+	  
+    <h3 class="font-bold text-s text-center text-blue-500 text-l mb-5">
+    🎂 Parties • 👨‍👩‍👧 Events • 🍽️ Bulk Orders 
+	</h3>
+	
+	<div  id="storeStatus"  class="text-center text-sm font-bold mb-4">
+	</div>
+  
+  <div id="menu"></div>
+	
+	<div class="text-center text-xs text-gray-400 mt-8 mb-6">
+		Powered by SaMona Digital Ordering
+	</div>
+	<h2 class="text-center mb-2">
+    Shop No. 12, Undri City Centre Mall,
+    Beside Airtel Store, Undri, Pune
+	</h2>
+</div>
+
+<!-- Floating Menu Button -->
+
+<div class="fixed right-4 bottom-24 z-50">
+
+  <button
+    onclick="toggleMenu()"
+    class="bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg font-bold text-2xl">
+
+    🍴 Menu
+
+  </button>
+
+	<div
+		id="menuDrawer"
+		class="hidden mt-3 bg-white rounded-2xl shadow-xl w-56 max-h-80 overflow-y-auto border">
+	</div>
+
+  
+
+</div>
+
+<script>
+
+
+let menu = [];
+const cart = {};
+
+let storeConfig = {};
+
+let orderingEnabled = true;
+
+let storeStatusMessage = '';
+
+
+
+
+const deliveryCharges = {
+
+  "Undri": 29,
+
+  "Wadachi Wadi": 39,
+
+  "Mohammed Wadi": 49,
+
+  "Handewadi": 49,
+
+  "Pisoli": 59,
+
+  "Yewalewadi": 59,
+
+  "NIBM Road / NIBM Annexe": 69,
+
+  "Kondhwa (selected areas)": 79,
+
+  "Wanowrie": 89
+
+};
+
+let paymentInProgress = false;
+
+let paymentSuccess = false;
+
+let razorpayPaymentId = '';
+
+let orderSubmitting = false;
+
+
+
+const GOOGLE_SCRIPT_URL =
+'https://script.google.com/macros/s/AKfycbwhnGZWszjdPMqtbzlVMs8Y5Q9KeLWcBSv0m9-OgTSRdKuMKWtgqhuE-uRpex4kDITfdg/exec';
+
+function toggleMenu(){
+
+  document
+    .getElementById('menuDrawer')
+    .classList.toggle('hidden');
+}
+
+function toggleDeliveryFields(){
+
+  const orderType =
+    document.getElementById('orderType').value;
+
+  const container =
+    document.getElementById(
+      'deliveryAreaContainer'
+    );
+	
+	if(orderType !== 'Delivery'){
+
+	document.getElementById('deliveryArea').value =
+    '';
+	}
+	
+  if(orderType === 'Delivery'){
+
+    container.classList.remove('hidden');
+
+  }else{
+
+    container.classList.add('hidden');
+
+    document.getElementById(
+      'deliveryArea'
+    ).selectedIndex = 0;
+  }
+
+  updateCart();
+}
+
+function showCategory(categoryId){
+
+  renderMenu(categoryId);
+
+  document
+    .getElementById('menuDrawer')
+    .classList.add('hidden');
+}
+
+async function loadStoreConfig(){
+
+  try{
+
+    const response =
+      await fetch('store-config.json');
+					
+    storeConfig =
+      await response.json();
+
+    evaluateStoreStatus();
+
+  }catch(error){
+
+    console.error(
+      'Store config load failed',
+      error
+    );
+
+    orderingEnabled = false;
+
+  storeStatusMessage =
+    '🔴 Store Status Unavailable. Please refresh and try after sometime.';
+
+  updateStoreBanner();
+  }
+
+}
+
+function evaluateStoreStatus(){
+
+  if(
+    storeConfig.storeOpen === false
+  ){
+
+    orderingEnabled = false;
+
+    storeStatusMessage =
+      '🔴 Store Closed';
+
+    updateStoreBanner();
+
+    return;
+  }
+
+  const now = new Date(
+  new Date().toLocaleString(
+    "en-US",
+    { timeZone: "Asia/Kolkata" }
+  )
+);
+
+  const currentMinutes =
+    now.getHours() * 60 +
+    now.getMinutes();
+
+  const openTime =
+    storeConfig.schedule.daily.open;
+
+  const closeTime =
+    storeConfig.schedule.daily.close;
+
+  const openParts =
+    openTime.split(':');
+
+  const closeParts =
+    closeTime.split(':');
+
+  const openMinutes =
+    parseInt(openParts[0]) * 60 +
+    parseInt(openParts[1]);
+
+  const closeMinutes =
+    parseInt(closeParts[0]) * 60 +
+    parseInt(closeParts[1]);
+
+  const lastOrderTime =
+  closeMinutes -
+  storeConfig.lastOrderBufferMinutes;
+
+	if(closeMinutes > openMinutes){
+
+	  // Same-day schedule
+
+	  orderingEnabled =
+		currentMinutes >= openMinutes &&
+		currentMinutes < lastOrderTime;
+
+	}else{
+
+	  // Schedule crosses midnight
+
+	  orderingEnabled =
+		currentMinutes >= openMinutes ||
+		currentMinutes < lastOrderTime;
+
+	}
+
+  if(orderingEnabled){
+
+    storeStatusMessage =
+      `🟢 Accepting Orders from ${openTime} to ${closeTime}`;
+
+  }else{
+
+    storeStatusMessage =
+      `🔴 Cafe is Closed for Today. Next Orders: Tomorrow Open ${openTime} to ${closeTime}`;
+  }
+	console.log({
+  currentMinutes,
+  openMinutes,
+  closeMinutes,
+  lastOrderTime,
+  orderingEnabled
+});
+  updateStoreBanner();
+}
+
+function updateStoreBanner(){
+
+  const banner =
+    document.getElementById(
+      'storeStatus'
+    );
+
+  if(!banner){
+
+    return;
+  }
+
+  banner.innerHTML =
+    storeStatusMessage;
+
+}
+
+
+async function loadMenu(){
+
+  const response =
+    await fetch('menu.json');
+
+  menu = await response.json();
+
+  createMenuButtons();
+
+  renderMenu('frequently');
+	
+
+}
+
+function createMenuButtons(){
+
+  let html = '';
+
+  menu.forEach(category => {
+
+    html += `
+
+      <button
+        class="drawer-btn"
+        onclick="showCategory('${category.id}')">
+
+        ${category.category}
+
+      </button>
+
+    `;
+  });
+
+  document.getElementById(
+    'menuDrawer'
+  ).innerHTML = html;
+}
+
+
+function renderMenu(selectedCategory='frequently'){
+
+  let html='';
+
+  const category =
+    menu.find(cat => cat.id === selectedCategory);
+	
+	
+  if(!category){
+
+    html = '<div class="text-red-500">Category not found</div>';
+
+    document.getElementById('menu').innerHTML = html;
+
+    return;
+  }
+
+  html += `
+
+    <div class="mb-4">
+
+      <h2 class="text-2xl font-bold">
+        ${category.category}
+      </h2>
+
+    </div>
+
+    <div class="menu-grid">
+
+  `;
+
+  category.items.forEach(item => {
+
+    let qty = 0;
+
+	Object.keys(cart).forEach(cartKey => {
+
+	  if(
+		cartKey === item.id ||
+		cartKey.startsWith(item.id + '__')
+	  ){
+
+		qty += cart[cartKey].qty;
+	  }
+
+	});
+
+    html += `
+
+      <div class="card">
+
+        <div class="item-title">
+          ${item.name}
+        </div>
+
+        <div class="price mt-1">
+
+  ₹${item.basePrice}
+
+</div>
+
+${
+  item.addons
+    ? `
+
+      <div class="mt-2 text-xs text-gray-700">
+
+        ${item.addons.map(addon => {
+		
+		const addonQty =
+  addonQuantities[
+    item.id + '__' + addon.name
+  ] || 0;
+  
+		const isChecked =
+  Object.values(cart).some(cartItem =>
+    cartItem.id.startsWith(item.id) &&
+    cartItem.addons?.some(a =>
+      a.name === addon.name
+    )
+  );
+	
+	
+		
+  if(addon.type === 'qtyaddon'){
+
+    return `
+
+      <div class="flex items-center justify-between mb-1">
+
+        <span>
+          ${addon.name}
+          (+₹${addon.price})
+        </span>
+
+        <div class="flex items-center gap-2">
+
+          <button
+            type="button"
+            class="qty-btn"
+            onclick="decreaseAddonQty('${item.id}','${addon.name}')">
+            -
+          </button>
+
+          <span
+            id="addonqty-${item.id}-${addon.name}">
+            ${addonQty}
+          </span>
+
+          <button
+            type="button"
+            class="qty-btn"
+            onclick="increaseAddonQty('${item.id}','${addon.name}')">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+  return `
+
+    <label class="flex items-center gap-2 mb-1">
+
+      <input
+        type="checkbox"
+        id="${item.id}-${addon.name}"
+		${isChecked ? 'checked' : ''}
+		onchange="refreshCartItemForAddonChange('${item.id}')">
+
+      <span>
+        ${addon.name}
+        (+₹${addon.price})
+      </span>
+
+    </label>
+
+  `;
+
+}).join('')}
+
+	  <div class="font-bold text-[10px] text-green-500 mt-1">
+		Select add-ons before clicking +
+	  </div>
+  </div>
+  
+
+` : ''}
+    
+
+        <div
+          class="details-link"
+          onclick="showDetails('${item.name}','${item.details || ''}')">
+
+          Details
+
+        </div>
+
+        <div class="flex items-center justify-center gap-3 mt-3">
+
+          <button
+            class="qty-btn"
+            onclick="decrease('${item.id}')">
+
+            -
+
+          </button>
+
+          <span
+            id="qty-${item.id}"
+            class="font-bold text-base">
+
+            ${qty}
+
+          </span>
+
+          <button
+            class="qty-btn"
+			${orderingEnabled ? '' : 'disabled'}
+            onclick="increase('${item.id}','${item.name}',${item.basePrice})">
+
+            +
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+  });
+
+  html += `</div>`;
+
+  document.getElementById('menu').innerHTML = html;
+}
+
+const addonQuantities = {};
+
+function increaseAddonQty(itemId,addonName){
+
+  const key =
+    itemId + '__' + addonName;
+
+  addonQuantities[key] =
+    (addonQuantities[key] || 0) + 1;
+
+  updateAddonDisplay(itemId,addonName);
+  refreshCartItemForAddonChange(itemId);
+}
+
+function decreaseAddonQty(itemId,addonName){
+
+  const key =
+    itemId + '__' + addonName;
+
+  addonQuantities[key] =
+    Math.max(
+      0,
+      (addonQuantities[key] || 0) - 1
+    );
+
+  updateAddonDisplay(itemId,addonName);
+  refreshCartItemForAddonChange(itemId);
+}
+
+function refreshCartItemForAddonChange(itemId){
+
+  const item =
+    menu
+      .flatMap(cat => cat.items)
+      .find(i => i.id === itemId);
+
+  if(!item){
+    return;
+  }
+
+  const matchingCartItems =
+    Object.values(cart)
+      .filter(c =>
+        c.id.startsWith(itemId + "__") ||
+        c.id === itemId
+      );
+
+  matchingCartItems.forEach(cartItem => {
+
+    const existingQty = cartItem.qty;
+
+    delete cart[cartItem.id];
+
+    let selectedAddons = [];
+
+    let finalPrice =
+      item.basePrice;
+
+    item.addons?.forEach(addon => {
+
+      if(addon.type === 'qtyaddon'){
+
+        const key =
+          item.id + '__' + addon.name;
+
+        const qty =
+          addonQuantities[key] || 0;
+
+        if(qty > 0){
+
+          selectedAddons.push({
+            ...addon,
+            qty: qty
+          });
+
+          finalPrice +=
+            addon.price * qty;
+        }
+
+        return;
+      }
+
+      const checkbox =
+        document.getElementById(
+          `${item.id}-${addon.name}`
+        );
+
+      if(
+        checkbox &&
+        checkbox.checked
+      ){
+
+        selectedAddons.push(addon);
+
+        finalPrice += addon.price;
+      }
+
+    });
+
+    const addonKey =
+      selectedAddons
+        .map(a =>
+          a.qty
+            ? `${a.name}:${a.qty}`
+            : a.name
+        )
+        .join('|');
+
+    const newCartId =
+      addonKey
+        ? `${item.id}__${addonKey}`
+        : item.id;
+
+    cart[newCartId] = {
+
+      id: newCartId,
+
+      name: item.name,
+
+      qty: existingQty,
+
+      price: finalPrice,
+
+      addons: selectedAddons
+
+    };
+
+  });
+
+  updateCart();
+}
+
+function updateAddonDisplay(itemId,addonName){
+
+  const key =
+    itemId + '__' + addonName;
+
+  const span =
+    document.getElementById(
+      `addonqty-${itemId}-${addonName}`
+    );
+
+  if(span){
+
+    span.innerText =
+      addonQuantities[key] || 0;
+  }
+}
+function showDetails(name,details){
+
+  alert(name + '\n\n' + details);
+}
+
+
+function increase(id,name,basePrice){
+
+if(!orderingEnabled){
+
+  alert(
+    'Store is currently closed for new orders.'
+  );
+
+  return;
+}
+
+
+  let selectedAddons = [];
+
+  let finalPrice = basePrice;
+
+  const item =
+    menu
+      .flatMap(cat => cat.items)
+      .find(i => i.id === id);
+	  
+	  
+
+  if(item && item.addons){
+
+  item.addons.forEach(addon => {
+
+  if(addon.type === 'qtyaddon'){
+
+    const key =
+      id + '__' + addon.name;
+
+    const qty =
+      addonQuantities[key] || 0;
+
+    if(qty > 0){
+
+      selectedAddons.push({
+        ...addon,
+        qty: qty
+      });
+
+      finalPrice +=
+        addon.price * qty;
+    }
+
+    return;
+  }
+
+  const checkbox =
+    document.getElementById(
+      `${id}-${addon.name}`
+    );
+
+  if(checkbox && checkbox.checked){
+
+    selectedAddons.push(addon);
+
+    finalPrice += addon.price;
+  }
+
+});
+
+}
+
+ const addonKey =
+  selectedAddons
+    .map(a =>
+      a.qty
+      ? `${a.name}:${a.qty}`
+      : a.name
+    )
+    .join('|');
+
+  const cartId =
+    addonKey
+      ? `${id}__${addonKey}`
+      : id;
+
+    
+  const displayName = name;
+
+  if(!cart[cartId]){
+
+    cart[cartId] = {
+
+      id: cartId,
+
+      name: displayName,
+
+      qty: 0,
+
+      price: finalPrice,
+
+      addons: selectedAddons
+    };
+  }
+
+  cart[cartId].qty++;
+	
+	
+	
+  updateCart();
+}
+
+function decrease(id){
+
+  const matchingKeys =
+    Object.keys(cart).filter(key =>
+      key === id ||
+      key.startsWith(id + '__')
+    );
+
+  if(matchingKeys.length === 0){
+
+    return;
+  }
+
+  const lastKey =
+    matchingKeys[matchingKeys.length - 1];
+
+  cart[lastKey].qty--;
+
+  if(cart[lastKey].qty <= 0){
+
+    delete cart[lastKey];
+  }
+	
+	const stillExists =
+  Object.keys(cart).some(key =>
+    key === id ||
+    key.startsWith(id + '__')
+  );
+
+if(!stillExists){
+
+  const item =
+    menu
+      .flatMap(cat => cat.items)
+      .find(i => i.id === id);
+
+  item?.addons?.forEach(addon => {
+
+    if(addon.type === 'qtyaddon'){
+
+      const key =
+        id + '__' + addon.name;
+
+      addonQuantities[key] = 0;
+
+      updateAddonDisplay(
+        id,
+        addon.name
+      );
+    }
+    else{
+
+      const checkbox =
+        document.getElementById(
+          `${id}-${addon.name}`
+        );
+
+      if(checkbox){
+
+        checkbox.checked = false;
+      }
+
+    }
+
+  });
+
+}
+	
+  updateCart();
+}
+
+function updateCart(){
+
+  let html='';
+  let total=0;
+  let itemCount=0;
+
+  for(let itemId in cart){
+
+    let item = cart[itemId];
+
+    let itemTotal =
+      item.qty * item.price;
+
+    total += itemTotal;
+
+    itemCount += item.qty;
+
+    const addonText =
+  item.addons?.length
+    ? item.addons
+        .map(a =>
+          a.qty
+            ? `${a.name} x${a.qty}`
+            : a.name
+        )
+        .join(', ')
+    : '';
+
+html += `
+
+  <div class="flex justify-between mb-2">
+
+    <span>
+
+      ${item.name} x${item.qty}
+
+      ${
+        addonText
+          ? `<div class="text-xs text-gray-500">
+               Addon: ${addonText}
+             </div>`
+          : ''
+      }
+
+    </span>
+
+    <span>
+      ₹${itemTotal}
+    </span>
+
+  </div>
+
+`;
+  }
+
+
+
+if(itemCount === 0){
+
+  document.getElementById('orderType').selectedIndex = 0;
+
+  document.getElementById('deliveryArea').selectedIndex = 0;
+
+  document.getElementById('address').value = '';
+
+  document
+    .getElementById('deliveryAreaContainer')
+    .classList.add('hidden');
+}
+
+
+
+
+  if(total > 0){
+
+  const packingCharge = 25;
+  
+  
+
+  const gst =
+    Math.round(total * 0.05);
+	
+let deliveryFee = 0;
+
+const orderType =
+  document.getElementById('orderType')
+  ? document.getElementById('orderType').value
+  : '';
+
+const deliveryArea =
+  document.getElementById('deliveryArea')
+  ? document.getElementById('deliveryArea').value
+  : '';
+
+if(
+  orderType.includes('Delivery')
+  &&
+  deliveryArea
+){
+
+  deliveryFee =
+    deliveryCharges[deliveryArea] || 0;
+
+  total += deliveryFee;
+
+  html += `
+
+    <div class="flex justify-between text-sm text-gray-500 mt-2">
+
+      <span>
+        Delivery Fee
+      </span>
+
+      <span>
+        ₹${deliveryFee}
+      </span>
+
+    </div>
+
+  `;
+}	
+
+  total =
+    total + packingCharge + gst;
+
+  html += `
+
+    <div class="flex justify-between text-sm text-gray-500 mt-2">
+
+      <span>
+        Packing
+      </span>
+
+      <span>
+        ₹${packingCharge}
+      </span>
+
+    </div>
+
+    <div class="flex justify-between text-sm text-gray-500 mt-2">
+
+      <span>
+        GST (5%)
+      </span>
+
+      <span>
+        ₹${gst}
+      </span>
+
+    </div>
+
+  `;
+}
+	
+  document.getElementById('cartItems').innerHTML = html;
+
+  document.getElementById('total').innerText = total;
+
+  document.getElementById('floatingCount').innerText =
+  `${itemCount}`;
+
+  menu.forEach(category=>{
+
+    category.items.forEach(item=>{
+
+      
+	
+	let qty = 0;
+
+	Object.keys(cart).forEach(cartKey => {
+
+	  if(
+		cartKey === item.id ||
+		cartKey.startsWith(item.id + '__')
+	  ){
+
+		qty += cart[cartKey].qty;
+	  }
+
+	});
+	
+      const qtyElement =
+        document.getElementById(
+          'qty-' + item.id
+        );
+
+      if(qtyElement){
+
+        qtyElement.innerText = qty;
+      }
+
+    });
+
+  });
+
+}
+
+
+function startPayment(){
+
+if(!orderingEnabled){
+
+  alert(
+    'Store is currently closed for new orders.'
+  );
+
+  return;
+}
+
+  if(paymentInProgress){
+
+    return;
+  }
+
+  let total =
+    parseInt(
+      document.getElementById('total').innerText
+    );
+
+  if(total <= 0){
+
+    alert('Please add items');
+
+    return;
+  }
+
+  const name =
+    document.getElementById('name').value.trim();
+
+  const phone =
+    document.getElementById('phone').value.trim();
+
+  const orderType =
+    document.getElementById('orderType').value;
+
+  const address =
+    document.getElementById('address').value.trim();
+	
+		const deliveryArea =
+  document.getElementById('deliveryArea').value;
+
+  if(name === ''){
+
+    alert('Please enter your name');
+
+    return;
+  }
+
+  if(phone === ''){
+
+    alert('Please enter WhatsApp number');
+
+    return;
+  }
+
+  if(!/^\d{10}$/.test(phone)){
+
+    alert('Please enter valid WhatsApp number');
+
+    return;
+  }
+  
+  if(
+  orderType.includes('Delivery')
+  &&
+  deliveryArea === ''
+){
+
+  alert('Please select delivery area');
+
+  return;
+}
+
+  if(
+    orderType.includes('Delivery')
+    &&
+    address === ''
+  ){
+
+    alert('Please enter delivery address');
+
+    return;
+  }
+
+  paymentInProgress = true;
+	
+
+	
+  const payButton =
+    document.getElementById('payButton');
+
+  payButton.disabled = true;
+
+  payButton.innerText =
+    'Processing Payment...';
+
+  window.onbeforeunload = function () {
+
+    if(paymentInProgress){
+
+      return 'Payment is in progress';
+    }
+  };
+
+  const options = {
+
+    key: 'rzp_live_SwRrGCSSZjDCT9',
+
+    amount: total * 100,
+
+    currency: 'INR',
+
+    name: 'Tealogy Cafe',
+
+    description: 'Cafe Order Payment',
+
+    method: {
+
+      upi: true,
+      card: true,
+      netbanking: true,
+      wallet: true
+    },
+
+    handler: function(response){
+
+      paymentSuccess = true;
+
+      razorpayPaymentId =
+        response.razorpay_payment_id;
+
+      submitOrder();
+    },
+
+    modal: {
+
+      ondismiss: function(){
+		
+	
+  
+        paymentInProgress = false;
+
+        payButton.disabled = false;
+
+        payButton.innerText =
+          'Pay & Place Order (Secured by Razorpay Payment)';
+
+        window.onbeforeunload = null;
+      }
+    },
+
+    prefill: {
+
+      name: name,
+
+      contact: phone
+    },
+
+    theme: {
+
+      color: '#e23744'
+    }
+  };
+
+  const rzp =
+    new Razorpay(options);
+
+  rzp.on('payment.failed', function () {
+	
+	
+	
+    paymentInProgress = false;
+    payButton.disabled = false;
+
+    payButton.innerText =
+      'Pay & Place Order (Secured by Razorpay Payment)';
+
+    window.onbeforeunload = null;
+
+    alert(
+      'Payment failed. Please try again.'
+    );
+  });
+
+  rzp.open();
+}
+
+
+
+
+async function submitOrder(){
+
+  if(orderSubmitting){
+
+    return;
+  }
+
+  orderSubmitting = true;
+
+  const name =
+    document.getElementById('name').value;
+
+  const phone =
+    document.getElementById('phone').value;
+
+  const orderType =
+    document.getElementById('orderType').value;
+
+  const address =
+    document.getElementById('address').value;
+
+  const payment =
+    document.getElementById('payment').value;
+
+  const instructions =
+    document.getElementById('instructions').value;
+	
+	const deliveryArea =
+  document.getElementById('deliveryArea').value;
+
+  let orderText='';
+
+  let total=0;
+
+  for(let itemId in cart){
+
+    let item = cart[itemId];
+
+    let qty = item.qty;
+
+    let itemTotal =
+      qty * item.price;
+
+    total += itemTotal;
+
+  const addonText =
+  item.addons?.length
+    ? item.addons
+        .map(a =>
+          a.qty
+            ? `${a.name} | Qty = ${a.qty}`
+            : a.name
+        )
+        .join('; ')
+    : '';
+
+orderText +=
+  `• ${item.name} | Qty = ${qty}\n`;
+
+if(addonText){
+
+  orderText +=
+    `   Addon: ${addonText}\n`;
+
+}
+  }
+
+  const packingCharge = 25;
+
+  const gst =
+    Math.round(total * 0.05);
+	
+	let deliveryFee = 0;
+
+if(
+  orderType.includes('Delivery')
+  &&
+  deliveryArea
+){
+
+  deliveryFee =
+    deliveryCharges[deliveryArea] || 0;
+
+  total += deliveryFee;
+}
+
+  total =
+    total + packingCharge + gst;
+
+  const orderData = {
+
+    orderId:
+      'ORD' + Date.now(),
+
+    orderReceived:
+      new Date().toLocaleString(),
+
+    customer: name,
+
+    phone: phone,
+
+    items: orderText,
+
+    subtotal:
+	total - packingCharge - gst - deliveryFee,
+
+    packing: packingCharge,
+	deliveryFee: deliveryFee,
+    gst: gst,
+	total: total,
+	orderType: orderType,
+	
+	deliveryArea: deliveryArea,
+
+    deliveryAddress: address,
+
+    instructions: instructions,
+
+    paymentId: razorpayPaymentId,
+
+    status: 'NEW'
+  };
+
+  let googleSheetSuccess = false;
+
+  try{
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+
+		  method: 'POST',
+
+		  headers: {
+			'Content-Type': 'text/plain'
+		  },
+
+		  body: JSON.stringify(orderData)
+		});
+		
+		const result =
+		  await response.json();
+
+		if(result.success){
+
+		  googleSheetSuccess = true;
+
+		}else{
+
+		  googleSheetSuccess = false;
+		}
+
+		
+    console.log('Order Saved');
+
+  }catch(error){
+
+    console.error(error);
+  }
+
+  paymentInProgress = false;
+
+  orderSubmitting = false;
+
+  const payButton =
+    document.getElementById('payButton');
+
+  payButton.disabled = false;
+
+  payButton.innerText =
+    'Pay & Place Order (Secured by Razorpay Payment)';
+
+  if(googleSheetSuccess)
+  {
+
+    console.log('Order completed');
+
+  }
+  else
+  {
+	console.log('Order completed');
+  }
+  
+  
+    const message =
+`☕ *TEALOGY CAFE - PAID ORDER*
+	
+📝 Order ID: ${orderData.orderId}
+👤 Customer: ${name}
+📞 Phone: ${phone}
+🚗 Order Type : ${orderType}     
+🚚 Delivery Area: ${deliveryArea}
+🚚 Delivery Address: ${address}
+
+🛒 *Items Ordered:*
+${orderText}
+
+🚚 Delivery Fee: ₹${deliveryFee}
+
+💰 Total: ₹${total}
+
+📍 Address:
+${address}
+
+📝 Instructions:
+${instructions}
+
+💳 Razorpay Payment ID:
+${razorpayPaymentId}`;
+
+	const whatsappURL =
+'https://wa.me/917385556163?text=' +
+encodeURIComponent(message);
+
+showOrderSuccess(
+  orderData.orderId,
+  total,
+  orderText,
+  whatsappURL
+);
+
+return;
+	
+
+	window.onbeforeunload = null;
+	
+
+  for(let itemId in cart){
+
+    delete cart[itemId];
+  }
+
+  paymentSuccess = false;
+
+  razorpayPaymentId = '';
+  
+
+  document.getElementById('name').value = '';
+
+  document.getElementById('phone').value = '';
+
+  document.getElementById('address').value = '';
+
+  document.getElementById('instructions').value = '';
+
+  document.getElementById('payment').selectedIndex = 0;
+
+  document.getElementById('orderType').selectedIndex = 0;
+  
+  document.getElementById('deliveryArea').selectedIndex = 0;
+  
+  document.getElementById('cartItems').innerHTML = '';
+
+document.getElementById('total').innerText = '0';
+
+document.getElementById('floatingCount').innerText = '0';
+
+	updateCart();
+
+	renderMenu('frequently');
+
+	toggleDeliveryFields();
+
+	closeCart();
+}
+
+function showOrderSuccess(
+  orderId,
+  total,
+  orderText,
+  whatsappURL
+  ){
+
+  document.body.innerHTML = `
+
+  <div class="max-w-md mx-auto p-6">
+
+    <div class="text-center">
+
+      <div class="text-5xl mb-3">
+        ✅
+      </div>
+
+      <h1 class="text-3xl font-bold text-green-600 mb-3">
+        Order Confirmed
+      </h1>
+
+      <p class="mb-2">
+        Thank you for ordering from
+        <b>Tealogy Cafe</b>
+      </p>
+
+      <div class="bg-gray-100 rounded-xl p-4 mt-4 text-left">
+
+        <div class="mb-2">
+          <b>Order ID:</b> ${orderId}
+        </div>
+
+        <div class="mb-2">
+          <b>Total Paid:</b> ₹${total}
+        </div>
+
+        <div class="mb-2">
+          <b>Items Ordered:</b>
+        </div>
+
+        <pre style="
+          white-space:pre-wrap;
+          font-family:inherit;
+          font-size:14px;
+        ">${orderText}</pre>
+
+      </div>
+
+      <div class="mt-5 text-sm text-gray-600">
+
+        Kitchen has received your order.
+
+        <br><br>
+
+        Estimated preparation time:
+        30 minutes.
+
+      </div>
+
+      <a
+        href="${whatsappURL}"
+        class="block mt-6 bg-green-600 text-white py-3 rounded-xl font-bold">
+
+        📱 Send Order to Kitchen on WhatsApp
+
+      </a>
+
+      <button
+        onclick="location.reload()"
+        class="w-full mt-3 bg-blue-600 text-white py-3 rounded-xl font-bold">
+
+        Place Another Order
+
+      </button>
+
+    </div>
+
+  </div>
+  `;
+}
+function openCart(){
+
+  document
+    .getElementById('cartModal')
+    .classList.remove('hidden');
+}
+
+function closeCart(){
+
+  document
+    .getElementById('cartModal')
+    .classList.add('hidden');
+}
+
+
+(async function(){
+
+  await loadStoreConfig();
+
+  await loadMenu();
+
+})();
+
+
+
+
+</script>
+
+<!-- Floating Cart Button -->
+
+<div
+  id="floatingCart"
+  onclick="openCart()"
+  class="fixed bottom-4 right-4 bg-red-500 text-white px-5 py-3 rounded-full shadow-lg z-50 cursor-pointer font-bold">
+
+  🛒 Cart (
+  <span id="floatingCount">0</span>
+  )
+
+</div>
+
+<!-- Cart Modal -->
+
+<div
+  id="cartModal"
+  class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-end">
+
+  <div
+    class="bg-white w-full rounded-t-3xl p-4 max-h-[90vh] overflow-y-auto">
+
+    <div class="flex justify-between items-center mb-4">
+
+      <h2 class="text-2xl font-bold">
+        🛒 Your Cart
+      </h2>
+
+      <button
+        onclick="closeCart()"
+        class="text-2xl font-bold">
+
+        ×
+
+      </button>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="mt-3 font-bold text-xl">
+      Total: ₹<span id="total">0</span>
+    </div>
+
+    <div class="mt-4">
+
+      <input
+        id="name"
+        class="w-full border p-3 rounded mb-3"
+        placeholder="Your Name">
+
+      <input
+        id="phone"
+		type = "tel"
+        class="w-full border p-3 rounded mb-3"
+        placeholder="WhatsApp Number">
+
+      <select
+        id="orderType"
+		onchange="toggleDeliveryFields()"
+        class="w-full border p-3 rounded mb-3">
+		<option value="Pickup">Pickup</option>
+
+		<option value="Delivery">
+			Delivery (Delivery fee auto-calculated based on area)
+		</option>
+		
+		</select>
+		
+		<div
+  id="deliveryAreaContainer"
+  class="hidden">
+
+  <select
+    id="deliveryArea"
+	onchange="updateCart()"
+    class="w-full border p-3 rounded mb-3">
+	
+    <option value="">
+      Select Delivery Area
+    </option>
+
+    <option>Undri</option>
+
+    <option>Wadachi Wadi</option>
+
+    <option>Mohammed Wadi</option>
+
+    <option>Handewadi</option>
+
+    <option>Pisoli</option>
+
+    <option>Yewalewadi</option>
+
+    <option>NIBM Road / NIBM Annexe</option>
+
+    <option>Kondhwa (selected areas)</option>
+
+    <option>Wanowrie</option>
+
+  </select>
+
+</div>	
+		
+      <textarea
+        id="address"
+		class="w-full border p-3 rounded mb-3"
+        placeholder="Delivery Address"></textarea>
+
+      <select
+        id="payment"
+        class="w-full border p-3 rounded mb-3">
+
+        <option>UPI</option>
+        
+
+      </select>
+
+      <textarea
+        id="instructions"
+        class="w-full border p-3 rounded mb-3"
+        placeholder="Special Instructions"></textarea>
+
+     
+		
+	  
+	<button
+		id="payButton"
+		onclick="startPayment()"
+		class="btn w-full text-lg mb-3 bg-green-600">
+
+	  Pay & Place Order (Secured by Razorpay Payment)
+
+	</button>
+			
+			
+		
+		<div class="text-center font-bold text-sm text-black-600 mb-3">
+			Please note : 
+		</div>
+		<div class="text-left-side text-sm text-black-600 mb-3">
+		  1. Menu prices are subject to change without prior notice. The final payable amount includes the menu price, applicable taxes (like GST), and packaging charges.<br>
+		  2. Restaurants reserve the right to cancel orders due to stock unavailability, unforeseen operational issues, or incorrect address listings.<br>
+		  3. Order once placed can't be cancelled after 5 mins. Cancellation charges applies.<br>
+		  4. Please consider to place your order through Food Order app only. Do not send your order directly on WhatsApp.<br>
+		  5. Please make the payment before confirming the Orders to help serve you better.<br>
+		  6. Ensure to include Special Instructions (e.g. No Sugar).<br>
+		  7. Validate Order before payment.Any modifications after order is placed may attract as applicable charges, if any.<br>
+		  8. Order Preparation time is 30 mins.<br>
+		  9. If you opt for pickup, we recommend you to book Pickup after 30 mins of placing an order.<br>
+		  10. In case if you wish us to deliver the order, ensure to share exact Address and Google Location link for smooth delivery.<br>
+		  11. We use third party delivery app and the delivery itself is governed by their specific terms.<br> 
+		  12. The restaurant is not responsible for damages, delays, or unprofessional behavior by the delivery partner once the food leaves the premises.<br>
+		  	
+		</div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+
+</html>
