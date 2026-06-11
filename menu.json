@@ -740,12 +740,21 @@
   },
   {
     "id": "nong_jain",
-    "category": "Jain Preparation",
+    "category": "Jain/NONG Preparation",
     "items": [
       {
         "id": "indori_poha_j",
         "name": "INDORI POHA (Jain)",
         "basePrice": 90,
+		"addons": [
+
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
+			"qty": 0
+			}
+
+		  ],
         "details": "White rice poha tossed with ready to eat, onion, potato and spices. Sev and lemon on the side."
       },
 	  {
@@ -757,6 +766,11 @@
 			{
 			  "name": "Extra Cheese",
 			  "price": 21,
+			"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
 			"qty": 0
 			}
 
@@ -772,6 +786,11 @@
 			{
 			  "name": "Extra Cheese",
 			  "price": 21,
+			"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
 			"qty": 0
 			}
 
@@ -795,6 +814,11 @@
 			  "name": "Extra Cheese",
 			  "price": 21,
 			"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
+			"qty": 0
 			}
 
 		  ],
@@ -809,6 +833,11 @@
 			{
 			  "name": "Extra Cheese",
 			  "price": 21,
+			"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
 			"qty": 0
 			}
 
@@ -825,6 +854,11 @@
 			  "name": "Extra Cheese",
 			  "price": 21,
 				"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
+			"qty": 0
 			}
 
 		  ],
@@ -839,6 +873,11 @@
 			{
 			  "name": "Extra Cheese",
 			  "price": 21,
+			"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
 			"qty": 0
 			}
 
@@ -870,6 +909,11 @@
 			  "name": "Extra Cheese",
 			  "price": 21,
 				"qty": 0
+			},
+			{
+			  "name": "Half Jain (NONG)",
+			  "price": 0,
+			"qty": 0
 			}
 
 		  ],
