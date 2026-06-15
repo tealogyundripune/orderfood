@@ -6,7 +6,7 @@
   "schedule": {
     "daily": {
       "open": "08:00",
-      "close": "23:50"
+      "close": "23:15"
     }
   }
 }
