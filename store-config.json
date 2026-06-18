@@ -1,11 +1,11 @@
 {
-  "storeOpen": true,
+  "storeOpen": close,
 
   "lastOrderBufferMinutes": 0,
 
   "schedule": {
     "daily": {
-      "open": "08:00",
+      "open": "18:00",
       "close": "23:15"
     }
   }
