@@ -39,6 +39,12 @@
         "details": "White rice poha tossed with ready to eat, onion, potato and spices. Sev and lemon on the side."
       },
 	  {
+        "id": "sabudana_khichadi_f",
+        "name": "SABUDANA KHICHADI",
+        "basePrice": 71,
+        "details": "Sabudana Khichadi served with curd."
+      },
+	  {
         "id": "maska_bun_f",
         "name": "MASKA BUN",
         "basePrice": 40,
@@ -94,6 +100,36 @@
 
 		  ],
         "details": "Perfectly grilled sandwich stuffed with an overload of assorted veggies seasoned to perfection."
+      },
+	  {
+        "id": "pineapple_sandwich_f",
+        "name": "PINEAPPLE SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with an overload of cheese and pineapple seasoned to perfection."
+      },
+	  {
+        "id": "cheese_samosa_sandwich_f",
+        "name": "CHEESE SAMOSA SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with cheese and samosa seasoned to perfection."
       },
 	  {
         "id": "vegetable_maggi_f",
@@ -530,7 +566,31 @@
         "id": "potato_shots_12nos",
         "name": "CHILLI GARLIC POTATO SHOTS",
         "basePrice": 81,
-        "details": "Chilli Garlic Potato Shots"
+        "details": "Chilli Garlic Potato Shots (12 Nos)"
+      },
+      {
+        "id": "cheese_corn_nuggets_7nos",
+        "name": "CHEESE CORN NUGGETS",
+        "basePrice": 91,
+        "details": "Cheese Corn Nuggets (7 Nos)"
+      },
+      {
+        "id": "veg_nuggets_7nos",
+        "name": "VEG NUGGETS",
+        "basePrice": 91,
+        "details": "Veg Nuggets (7 Nos)"
+      },
+      {
+        "id": "mini_punjabi_samosa_5nos",
+        "name": "MINI PUNJABI SAMOSA",
+        "basePrice": 101,
+        "details": "Mini Punjabi Samosa (5 Nos)"
+      },
+      {
+        "id": "batata_vada_bits_7nos",
+        "name": "BATATA VADA BITES",
+        "basePrice": 81,
+        "details": "Batata vada bites (7 Nos)"
       }
     ]
   },
@@ -558,6 +618,12 @@
 
 		  ],
         "details": "Spicy, tangy, and sweet potato filling sandwiched in a soft bun with chutneys and crunchy sev — a flavorful street-style snack in every bite."
+      },
+	  {
+        "id": "sabudana_khichadi",
+        "name": "SABUDANA KHICHADI",
+        "basePrice": 71,
+        "details": "Sabudana Khichadi served with curd."
       },
       {
         "id": "indori_poha",
@@ -735,6 +801,67 @@
 
 		  ],
         "details": "Perfectly grilled sandwich stuffed with an overload of assorted veggies seasoned to perfection."
+      },
+	  {
+        "id": "pineapple_sandwich",
+        "name": "PINEAPPLE SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with an overload of cheese and pineapple seasoned to perfection."
+      },
+	  {
+        "id": "cheese_samosa_sandwich",
+        "name": "CHEESE SAMOSA SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with cheese and samosa seasoned to perfection."
+      },
+	  
+	  {
+        "id": "cheese_corn_capsicum",
+        "name": "CHEESE CORN CAPCICUM SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Grilled sandwich stuffed with boiled corn, capcicum and cheese along with Tealogy special spices."
+      },
+	  {
+        "id": "peri_peri_paneer_sandwich_f",
+        "name": "PERI PERI PANEER SANDWICH",
+        "basePrice": 101,
+		"addons": [
+
+			{
+			  "name": "Extra Cheese",
+			  "price": 21,
+				"qty": 0
+			}
+
+		  ],
+        "details": "Perfectly grilled sandwich stuffed with an overload of assorted veggies, paneer seasoned to perfection."
       }
     ]
   },
