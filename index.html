@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+
+
+  <base target="_top">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Tealogy Cafe (Undri) Food Order App</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+	
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+	
+
+  <style>
+	
+	html{
+	scroll-behavior:smooth;
+	}
+	
+    body{
+      background:#fcfbf8;
+      font-family:Arial,sans-serif;
+    }
+
+    .card{
+      background:white;
+      padding:12px;
+      border-radius:14px;
+      margin-bottom:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .btn{
+      background:#e23744;
+      color:white;
+      border:none;
+      padding:10px;
+      border-radius:10px;
+      font-weight:bold;
+    }
+
+    .qty-btn{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      border:none;
+      background:#e23744;
+      color:white;
+      font-size:18px;
+      font-weight:bold;
+    }
+	.qty-btn:disabled{
+		opacity:0.4;
+		cursor:not-allowed;
+	}
+
+    .drawer-btn{
+      display:block;
+      width:100%;
+      text-align:left;
+      padding:14px;
+      border-bottom:1px solid #eee;
+      font-weight:bold;
+    }
+
+    .drawer-btn:hover{
+      background:#f5f5f5;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .item-title{
+      font-size:15px;
+      font-weight:bold;
+      line-height:1.2;
+    }
+
+    .price{
+      color:#666;
+      font-size:14px;
+    }
+
+    .details-link{
+      color:#e23744;
+      font-size:12px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:4px;
+    }
+
+    @media(max-width:640px){
+
+      .menu-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+	
+	.blink-dot {
+	animation: blink 1s infinite;
+	}
+
+	@keyframes blink {
+	  0%   { opacity: 1; }
+	  50%  { opacity: 0.2; }
+	  100% { opacity: 1; }
+	}
+	
+	.tagline {
+  color: #c2410c;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 2px rgba(234,88,12,0.2);
+  }
+  to {
+    text-shadow: 0 0 10px rgba(234,88,12,0.6);
+  }
+}
+
+body {
+  background: #fcfbf8;
+}
+
+.hero-section {
+  background: linear-gradient(
+    to bottom,
+    #fff7ec,
+    #fffdf9
+  );
+  border-radius: 20px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.hero-banner {
+  
+	width: 100%;
+  max-height:180px;
+	object-fit:cover;
+    border-radius: 16px;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.08),
+    0 1px 3px rgba(0,0,0,0.05);
+}
+
+.visit-wrapper{
+    text-align:center;
+    margin:16px 0;
+}
+
+.visit-btn{
+
+    display:inline-block;
+
+    padding:10px 24px;
+
+    border-radius:999px;
+
+    border:1px solid #f4b183;
+
+    background:white;
+
+    color:#dc2626;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.05);
+
+    transition:.2s;
+}
+
+.visit-btn:hover{
+    transform:translateY(-1px);
+}
+
+.hero-banner-container{
+    margin-bottom:16px;
+}
+
+.tagline-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    margin:16px 0;
+
+    color:#c2410c;
+    font-size:1.5rem;
+    font-weight:700;
+}
+
+.visit-wrapper{
+    margin-top:16px;
+    margin-bottom:16px;
+}
+
+.kulhad-icon{
+    height:42px;
+    width:auto;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+<div class="max-w-md mx-auto p-4 pb-32">
+
+  <div class="hero-banner-container">
+  <img
+    src="Background.webp"
+    alt="Tealogy Cafe"
+    class="hero-banner"
+	loading="eager"
+    decoding="async"
+    >
+</div>
+  <div class="tagline-divider">
+	<img
+		src = "Kulhad.png"
+		alt = "Yaar Mera Kulhad"
+		class="kulhad-icon" 
+	>
+	<span>Yaar Mera Kulhad</span>
+	</div>
+	<p class="text-center font-bold text-gray-500 mb-4">
+    Fresh Tea | Breakfast | Snacks | Meal | Waffles
+	</p>
+	
+	<div class="visit-wrapper">
+		<a
+		  href="https://maps.app.goo.gl/Z6xVWp7v9HAjTfEq5" target="_blank" class="visit-btn">
+		  📍 Visit Cafe
+		</a>
+
+	</div>
+	
+	
+	  
+    <h3 class="font-bold text-s text-center text-blue-500 text-l mb-5">
+    🎂 Parties • 👨‍👩‍👧 Events • 🍽️ Bulk Orders 
+	</h3>
+	
+	<div class="visit-wrapper">
+		<a
+		  href="https://waayu.app.link/jnhpdYcRW5b" target="_blank" class="visit-btn">
+		  🍽️ SCAN QR or Click to Order
+		</a>
+
+	</div>
+	<div>
+		<img
+		src="WebApp.webp"
+		alt="WebApp"
+		class=""
+		loading="eager"
+		decoding="async"
+		>
+	</div>
+	
+	
+	
+  	
+	<div class="text-center text-xs text-gray-400 mt-8 mb-6">
+		Powered by SaMona Digital Ordering
+	</div>
+	<h2 class="text-center mb-2">
+    Shop No. 12, Undri City Centre Mall,
+    Beside Airtel Store, Undri, Pune
+	</h2>
+</div>
+
+
+
+
+
+</body>
+
+</html>
